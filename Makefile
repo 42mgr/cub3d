@@ -6,8 +6,8 @@ SRC_DIRS ?= ./srcs
 INCL_DIR ?= ./include
 
 LIB = libft-42
-LIBMLX = MLX42/build
-LIBS = $(addprefix -L ,$(LIB) $(LIBMLX))
+LIBMLX = MLX42
+LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build)
 
 SRCS := $(filter-out %_bonus.c, $(shell find $(SRC_DIRS) -name *.c))
 OBJS := $(subst $(SRC_DIRS), $(BUILD_DIR), $(SRCS:.c=.o))
@@ -28,6 +28,7 @@ all: init_submodules $(NAME)
 # improve by making -lft -lmlx42 modular
 $(NAME): $(OBJS)
 	@make -C $(LIB)
+	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 	@make libmlx
 	@echo "\nLinking:"
 	$(LD) $(LIBS) -o $@ $(OBJS) -lft -lmlx42
@@ -75,9 +76,9 @@ init_submodules:
 valgrind: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
-git: fclean
+commit: fclean
 	git add .
 	git commit -m "$(m)"
 	git push origin main
 
-.PHONY: clean fclean re all bonus init_submodules valgrind libmlx git
+.PHONY: clean fclean re all bonus init_submodules valgrind libmlx commit
