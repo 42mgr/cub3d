@@ -1,0 +1,5 @@
+[submodule "libft-42"]
+	path = libft-42
+	url = https://github.com/42mgr/libft-42.git
+	branch = main
+	tag = v1.0.3
