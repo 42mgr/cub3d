@@ -10,6 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <unistd.h>
 #include "cub3d.h"
 
 int	main(int ac, char **av, char **env)
@@ -31,5 +32,7 @@ int	main(int ac, char **av, char **env)
 		ret = raytracker(data);
 	if (ret == 0)
 		ret = draw_game(data); */
+	data.mlx = mlx_init(1000, 500, "cub3d mg fh", true);
+	usleep(1000000);
 	return (ret);
 }
