@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/20 12:19:15 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/20 13:32:07 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 # define CUB3D_H
 # include "../libft-42/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <fcntl.h>
+# include <unistd.h>
+# include <errno.h>
+# include <string.h>
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -74,5 +80,8 @@ typedef struct s_data
 	t_textures	textures;
 	char		**maze;
 }				t_data;
+
+// check_args.c
+int	check_args(int ac, char **av);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/20 12:27:55 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/20 13:30:18 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(int ac, char **av, char **env)
 	(void)data;
 
 	ret = 1;
-/* 	ret = check_args(ac, av)
-	if (ret == 0)
+ 	ret = check_args(ac, av);
+/*	if (ret == 0)
 		ret = setup_file(data, av);
 	if (ret == 0)
 		ret = raytracker(data);
