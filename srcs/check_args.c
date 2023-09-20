@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:29:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/20 21:54:16 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/20 22:32:22 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,11 @@ int	check_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
+		ft_putstr(path, ": ");
 		if (errno == ENOENT)
-			ft_putstr("File path is invalid or does not exist.", NULL);
+			ft_putstr("\tFile path is invalid or does not exist.", NULL);
 		else
-			ft_putstr("Error opening the the file: ", strerror(errno));
+			ft_putstr("\tError opening the the file: ", strerror(errno));
 		close(fd);
 		return (1);
 	}
@@ -37,7 +38,8 @@ int	check_file(char *path)
 	{
 		if (read(fd, NULL, 0) == -1)
 		{
-			ft_putstr("File is valid, but no read permissions.", NULL);
+			ft_putstr(path, ": ");
+			ft_putstr("\tFile is valid, but no read permissions.", NULL);
 			close(fd);
 			return (1);
 		}
@@ -55,7 +57,7 @@ int	check_args(int ac, char **av)
 		ft_putstr("Wrong number of arguments. Only one .cub file.", NULL);
 		return (1);
 	}
- 	len = ft_strlen(av[1]);
+	len = ft_strlen(av[1]);
 	if (len < 5)
 	{
 		ft_putstr("Invalid name for .cub file.", NULL);

@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/20 13:32:07 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/20 23:08:19 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,13 @@ typedef struct s_llen
 }				t_llen;
 
 /**
- * Helps to navigate around the char **maze, stay inside boundaries and draw the 2D minimap
+ * Helps to navigate around the char **maze, stay inside boundaries
+ * and draw the 2D minimap
 */
 typedef struct s_dim
 {
 	int		lines;
-	t_llen	llen_head;
+	t_llen	**llen_head;
 	int		min_x;
 	int		min_y;
 	int		max_x;
@@ -79,9 +80,14 @@ typedef struct s_data
 	t_player	start;
 	t_textures	textures;
 	char		**maze;
+	t_dim		dim;
+	int			fd;
 }				t_data;
 
 // check_args.c
 int	check_args(int ac, char **av);
+
+// setup_file.c
+int	setup_file(t_data *data, char **av);
 
 #endif

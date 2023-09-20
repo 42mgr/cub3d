@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/20 21:56:15 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/20 22:31:10 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ int	main(int ac, char **av, char **env)
 
 	ret = 1;
  	ret = check_args(ac, av);
+	if (ret == 0)
+		ret = setup_file(&data, av);
 /*	if (ret == 0)
-		ret = setup_file(data, av);
+		ret = raytracker(&data);
 	if (ret == 0)
-		ret = raytracker(data);
-	if (ret == 0)
-		ret = draw_game(data); */
+		ret = draw_game(&data); */
 	return (ret);
 }
