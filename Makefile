@@ -8,6 +8,7 @@ INCL_DIR ?= ./include
 LIB = libft-42
 LIBMLX = MLX42
 LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build)
+MLXFLAGS := -Iinclude -ldl -lglfw -pthread -lm
 
 SRCS := $(filter-out %_bonus.c, $(shell find $(SRC_DIRS) -name *.c))
 OBJS := $(subst $(SRC_DIRS), $(BUILD_DIR), $(SRCS:.c=.o))
@@ -31,7 +32,7 @@ $(NAME): $(OBJS)
 	@cmake $(LIBMLX) -B $(LIBMLX)/build && make -C $(LIBMLX)/build -j4
 	@make libmlx
 	@echo "\nLinking:"
-	$(LD) $(LIBS) -o $@ $(OBJS) -lft -lmlx42
+	$(LD) $(LIBS) $(MLXFLAGS) -o $@ $(OBJS) -lft -lmlx42
 	@echo "..\n"
 
 $(BUILD_DIR)/%.o: $(SRC_DIRS)/%.c
