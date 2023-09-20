@@ -84,4 +84,6 @@ typedef struct s_data
 // check_args.c
 int	check_args(int ac, char **av);
 
+void	put_minimap(mlx_t **mlx);
+
 #endif
