@@ -33,6 +33,7 @@ $(NAME): $(OBJS)
 	@echo "\nLinking:"
 	$(LD) $(LIBS) -o $@ $(OBJS) -lft -lmlx42
 	@echo "..\n"
+	chmod -r maps/norights.cub
 
 $(BUILD_DIR)/%.o: $(SRC_DIRS)/%.c
 	mkdir -p $(@D)
@@ -77,6 +78,7 @@ valgrind: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 commit: fclean
+	chmod +r maps/norights.cub
 	git add .
 	git commit -m "$(m)"
 	git push origin main
