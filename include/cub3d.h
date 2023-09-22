@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/22 14:50:48 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/22 21:09:14 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,16 @@
 # include <unistd.h>
 # include <errno.h>
 # include <string.h>
+
+# define NORTH 0
+# define EAST 90
+# define SOUTH 180
+# define WEST 270
+# define NL_ARRAY_SIZE 1000
+# define DEFAULT_NORTH_TEXTURE "./textures/default_n_wall"
+# define DEFAULT_SOUTH_TEXTURE "./textures/default_s_wall"
+# define DEFAULT_WEST_TEXTURE "./textures/default_w_wall"
+# define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -69,6 +79,8 @@ typedef struct s_dim
 	int		min_y;
 	int		max_x;
 	int		max_y;
+	int		fd;
+	int		omitted[NL_ARRAY_SIZE];
 }				t_dim;
 
 /**
@@ -82,7 +94,6 @@ typedef struct s_data
 	char		**maze;
 	char		**maze_cpy;
 	t_dim		dim;
-	int			fd;
 }				t_data;
 
 // check_args.c

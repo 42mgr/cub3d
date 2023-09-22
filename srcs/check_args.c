@@ -6,19 +6,25 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:29:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/20 22:32:22 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/22 22:11:15 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * Writes string to fd 2 (stderr)
+*/
 static void	ft_putstr(char *string, char *arg)
 {
-	ft_putstr_fd(string, 1);
-	ft_putstr_fd(arg, 1);
-	ft_putstr_fd("\n", 1);
+	ft_putstr_fd(string, 2);
+	ft_putstr_fd(arg, 2);
+	ft_putstr_fd("\n", 2);
 }
 
+/**
+ * Checks if the file exists and is readable
+*/
 int	check_file(char *path)
 {
 	int	fd;
@@ -26,19 +32,19 @@ int	check_file(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
 	{
-		ft_putstr(path, ": ");
 		if (errno == ENOENT)
-			ft_putstr("\tFile path is invalid or does not exist.", NULL);
+			ft_putstr("-> Error:\n", "\tFile path is invalid or does not exist.");
 		else
-			ft_putstr("\tError opening the the file: ", strerror(errno));
+			ft_putstr("-> Error opening the the file:\t", strerror(errno));
 		close(fd);
+		ft_putstr("\t", path);
 		return (1);
 	}
 	else
 	{
 		if (read(fd, NULL, 0) == -1)
 		{
-			ft_putstr(path, ": ");
+			ft_putstr("-> Error:\n\t", path);
 			ft_putstr("\tFile is valid, but no read permissions.", NULL);
 			close(fd);
 			return (1);
@@ -48,6 +54,9 @@ int	check_file(char *path)
 	return (0);
 }
 
+/**
+ * Checks if the file extension is .cub
+*/
 int	check_args(int ac, char **av)
 {
 	int	len;

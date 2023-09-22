@@ -6,13 +6,16 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/22 14:58:13 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/22 20:48:16 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	print_maze(char **maze, int lines)
+/**
+ * Prints the entire file to the terminal for debugging
+*/
+void	print_all(char **maze, int lines)
 {
 	int	x;
 	int	y;
@@ -31,6 +34,9 @@ void	print_maze(char **maze, int lines)
 	}
 }
 
+/**
+ * Creates a duplicate of the enitre char **maze to be used for flood fill
+*/
 char	**duplicate_maze(int lines, char **maze)
 {
 	char	**copy;
@@ -38,9 +44,11 @@ char	**duplicate_maze(int lines, char **maze)
 	int		len;
 
 	copy = (char **)malloc(sizeof(char *) * lines);
+	if (!copy)
+		return (NULL);
 	x = 0;
-	len = 0;
 	(void)len;
+	len = 0;
 	while (maze[x])
 	{
 		len = ft_strlen(maze[x]);
@@ -49,6 +57,11 @@ char	**duplicate_maze(int lines, char **maze)
 	}
 	return (copy);
 }
+
+/**
+ * Function to keep track of area the flood fill algorithm is running
+ * useful to check for newlines omitted by ft_split and drawing the Minimap
+*/
 void	box_min_max(t_data *data, int x, int y)
 {
 	if (data->dim.min_x == -1 || data->dim.min_x > x)
@@ -61,6 +74,10 @@ void	box_min_max(t_data *data, int x, int y)
 		data->dim.max_y = y;
 }
 
+/**
+ * Checks if only 1 or 0 can be found around the current positon ('1')
+ * If not, the maze is not closed and the flood fill algorithm will fail
+*/
 int	check_around(t_data *data, int dxy[2][8], int x, int y)
 {
 	int				i;
@@ -81,6 +98,10 @@ int	check_around(t_data *data, int dxy[2][8], int x, int y)
 	return (0);
 }
 
+/**
+ * Recursive flood fill algorithm
+ * Fills in all 8 directions, to even fill a 0 in an exposed corner
+*/
 int	run_fill(t_data *data, int dxy[2][8], int x, int y)
 {
 	static int	error = 0;
@@ -96,7 +117,7 @@ int	run_fill(t_data *data, int dxy[2][8], int x, int y)
 		if (check_around(data, dxy, x, y))
 		{
 			error = error + 1;
-			return (0);
+			return (1);
 		}
 	}
 	i = 0;
@@ -108,6 +129,90 @@ int	run_fill(t_data *data, int dxy[2][8], int x, int y)
 		i++;
 	}
 	return (error);
+}
+
+/**
+ * 2D array with all numbers to calculate the 8 directions
+ * manually initialzed (Norminette)
+*/
+void	create_dxy(int dxy[2][8])
+{
+	dxy[0][0] = 1;
+	dxy[0][1] = -1;
+	dxy[0][2] = 0;
+	dxy[0][3] = 0;
+	dxy[0][4] = 1;
+	dxy[0][5] = 1;
+	dxy[0][6] = -1;
+	dxy[0][7] = -1;
+	dxy[1][0] = 0;
+	dxy[1][1] = 0;
+	dxy[1][2] = 1;
+	dxy[1][3] = -1;
+	dxy[1][4] = 1;
+	dxy[1][5] = -1;
+	dxy[1][6] = 1;
+	dxy[1][7] = -1;
+}
+
+/**
+ * Checks with the omitted newline array if there is a newline within the maze
+ * ft_split omits newlines and this could close a maze that is not closed
+*/
+int	omitted_nl_check(t_data *data)
+{
+	int	i;
+	int	nl;
+
+	i = 0;
+	nl = 0;
+	while (data->dim.omitted[i] != 0)
+		i++;
+	if (i != data->dim.lines)
+	{
+		i = 0;
+		while (data->dim.omitted[i] != 0)
+		{
+			if (data->dim.omitted[i] == 2)
+				nl++;
+			if (((data->dim.min_y + nl) <= i) && (data->dim.max_y + nl >= i))
+				return (1);
+			i++;
+		}
+	}
+	return (0);
+}
+
+/**
+ * The main function to check if the maze is closed
+*/
+int	flood_fill(t_data *data)
+{
+	int		ret;
+	int		dxy[2][8];
+
+	create_dxy(dxy);
+	ret = 0;
+	data->maze_cpy = duplicate_maze(data->dim.lines, data->maze);
+	if (!data->maze_cpy)
+	{
+		ft_putstr_fd("-> Error:\n\tMalloc failed for maze copy\n", 2);
+		ret = 1;
+	}
+	if (ret == 0)
+	{
+		ret = run_fill(data, dxy, data->start.x, data->start.y - 1);
+		if (ret != 0)
+			ft_putstr_fd("-> Error:\n\tMaze is not closed\n", 2);
+	}
+	if (ret == 0)
+	{
+		ret = omitted_nl_check(data);
+		if (ret != 0)
+			ft_putstr_fd("-> Error:\n\tThere is a newline within the map\n", 2);
+	}
+	// free (data->maze_cpy);
+	return (ret);
 }
 
 /* int	run_fill(t_data *data, char **maze, int x, int y)
@@ -218,38 +323,3 @@ while (i < 8) {
     }
     return error;
 } */
-
-void	create_dxy(int dxy[2][8])
-{
-	dxy[0][0] = 1;
-	dxy[0][1] = -1;
-	dxy[0][2] = 0;
-	dxy[0][3] = 0;
-	dxy[0][4] = 1;
-	dxy[0][5] = 1;
-	dxy[0][6] = -1;
-	dxy[0][7] = -1;
-	dxy[1][0] = 0;
-	dxy[1][1] = 0;
-	dxy[1][2] = 1;
-	dxy[1][3] = -1;
-	dxy[1][4] = 1;
-	dxy[1][5] = -1;
-	dxy[1][6] = 1;
-	dxy[1][7] = -1;
-}
-
-int	flood_fill(t_data *data)
-{
-	int		errors;
-	int		dxy[2][8];
-
-	create_dxy(dxy);
-	errors = 0;
-	data->maze_cpy = duplicate_maze(data->dim.lines, data->maze);
-	errors = run_fill(data, dxy, data->start.x, data->start.y - 1);
-	//printf("min_x: %i, max_x: %i, min_y: %i, max_y: %i\n", data->dim.min_x, data->dim.max_x, data->dim.min_y, data->dim.max_y);
-	printf("---> error: %i\n", errors);
-	//free (maze_cpy); // and while loop ...
-	return (0);
-}
