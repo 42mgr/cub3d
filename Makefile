@@ -83,4 +83,20 @@ commit: fclean
 	git commit -m "$(m)"
 	git push origin main
 
-.PHONY: clean fclean re all bonus init_submodules valgrind libmlx commit
+maptest: all
+	-./$(NAME) maps/map00.cub
+	-./$(NAME) maps/map00_left_top_space.cub
+	-./$(NAME) maps/map00_left_top_zero.cub
+	-./$(NAME) maps/map00_right_btm_0.cub
+	-./$(NAME) maps/map00_right_btm_eof.cub
+	-./$(NAME) maps/map00_right_btm_nl.cub
+	-./$(NAME) maps/map00_right_top_nl.cub
+	-./$(NAME) maps/map00_right_top_space.cub
+	-./$(NAME) maps/map00_right_top_zero.cub
+	-./$(NAME) maps/map00_simple.cub
+	-./$(NAME) maps/map01.cub
+	-./$(NAME) maps/map02.cub
+	-./$(NAME) maps/map03.cub
+	-./$(NAME) maps/norights.cub
+
+.PHONY: clean fclean re all bonus init_submodules valgrind libmlx commit maptest

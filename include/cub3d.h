@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/20 23:08:19 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/22 14:50:48 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ typedef struct s_llen
 typedef struct s_dim
 {
 	int		lines;
-	t_llen	**llen_head;
+	t_llen	*llen_head;
 	int		min_x;
 	int		min_y;
 	int		max_x;
@@ -80,14 +80,18 @@ typedef struct s_data
 	t_player	start;
 	t_textures	textures;
 	char		**maze;
+	char		**maze_cpy;
 	t_dim		dim;
 	int			fd;
 }				t_data;
 
 // check_args.c
 int	check_args(int ac, char **av);
+int	check_file(char *path);
 
 // setup_file.c
 int	setup_file(t_data *data, char **av);
 
+// flood_fill.c
+int	flood_fill(t_data *data);
 #endif
