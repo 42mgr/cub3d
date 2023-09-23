@@ -2,7 +2,7 @@
 	path = libft-42
 	url = https://github.com/42mgr/libft-42.git
 	branch = main
-	tag = v1.0.3
+	tag = v1.0.4
 [submodule "MLX42"]
 	path = MLX42
 	url = https://github.com/codam-coding-college/MLX42.git
