@@ -33,7 +33,7 @@ $(NAME): $(OBJS)
 	@echo "\nLinking:"
 	$(LD) $(LIBS) -o $@ $(OBJS) -lft -lmlx42
 	@echo "..\n"
-	chmod -r maps/norights.cub
+	chmod -r maps/bad_rights/norights.cub
 
 $(BUILD_DIR)/%.o: $(SRC_DIRS)/%.c
 	mkdir -p $(@D)
@@ -78,25 +78,24 @@ valgrind: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
 commit: fclean
-	chmod +r maps/norights.cub
+	chmod +r maps/bad_rights/norights.cub
 	git add .
 	git commit -m "$(m)"
 	git push origin main
 
 maptest: all
-	-./$(NAME) maps/map00.cub
-	-./$(NAME) maps/map00_left_top_space.cub
-	-./$(NAME) maps/map00_left_top_zero.cub
-	-./$(NAME) maps/map00_right_btm_0.cub
-	-./$(NAME) maps/map00_right_btm_eof.cub
-	-./$(NAME) maps/map00_right_btm_nl.cub
-	-./$(NAME) maps/map00_right_top_nl.cub
-	-./$(NAME) maps/map00_right_top_space.cub
-	-./$(NAME) maps/map00_right_top_zero.cub
-	-./$(NAME) maps/map00_simple.cub
-	-./$(NAME) maps/map01.cub
+	-./$(NAME) maps/bad_file_path/map03.cub
+	-./$(NAME) maps/bad_open/map00_left_top_space.cub
+	-./$(NAME) maps/bad_open/map00_left_top_zero.cub
+	-./$(NAME) maps/bad_open/map00_right_btm_0.cub
+	-./$(NAME) maps/bad_open/map00_right_btm_eof.cub
+	-./$(NAME) maps/bad_open/map00_right_btm_nl.cub
+	-./$(NAME) maps/bad_open/map00_right_top_nl.cub
+	-./$(NAME) maps/bad_open/map00_right_top_space.cub
+	-./$(NAME) maps/bad_open/map00_right_top_zero.cub
+	-./$(NAME) maps/bad_open/map01.cub
+	-./$(NAME) maps/bad_rights/norights.cub
 	-./$(NAME) maps/map02.cub
-	-./$(NAME) maps/map03.cub
-	-./$(NAME) maps/norights.cub
+	-./$(NAME) maps/map00.cub
 
 .PHONY: clean fclean re all bonus init_submodules valgrind libmlx commit maptest

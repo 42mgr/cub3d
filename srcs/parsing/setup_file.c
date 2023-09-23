@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/22 22:16:53 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/23 12:12:28 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,6 +128,8 @@ void	omitted_nl_write(t_data *data, char c)
 {
 	static int	i = 0;
 
+	data->dim.omitted[i] = 0;
+	data->dim.omitted[i + 1] = 0;
 	if (c == '\n')
 		data->dim.omitted[i] = 2;
 	else
