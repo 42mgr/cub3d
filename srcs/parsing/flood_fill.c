@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/23 13:01:08 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/25 11:52:08 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ void	print_all(char **maze, int lines)
 		x = 0;
 		while (maze[y][x])
 		{
-			printf("%c", maze[y][x]);
+			ft_putchar_fd(maze[y][x], 2);
 			x++;
 		}
-		printf("\n");
+		ft_putchar_fd('\n', 2);
 		y++;
 	}
 }
@@ -39,9 +39,9 @@ void	print_all(char **maze, int lines)
 */
 char	**duplicate_maze(int lines, char **maze)
 {
-	char	**copy;
 	int		x;
 	int		len;
+	char	**copy;
 
 	copy = (char **)malloc(sizeof(char *) * lines);
 	if (!copy)
@@ -156,34 +156,6 @@ void	create_dxy(int dxy[2][8])
 }
 
 /**
- * Checks with the omitted newline array if there is a newline within the maze
- * ft_split omits newlines and this could close a maze that is not closed
-*/
-int	omitted_nl_check(t_data *data)
-{
-	int	i;
-	int	nl;
-
-	i = 0;
-	nl = 0;
-	while (data->dim.omitted[i] != 0)
-		i++;
-	if (i != data->dim.lines)
-	{
-		i = 0;
-		while (data->dim.omitted[i] != 0)
-		{
-			if (data->dim.omitted[i] == 2)
-				nl++;
-			if (((data->dim.min_y + nl) <= i) && (data->dim.max_y + nl >= i))
-				return (1);
-			i++;
-		}
-	}
-	return (0);
-}
-
-/**
  * The main function to check if the maze is closed
 */
 int	flood_fill(t_data *data)
@@ -204,14 +176,8 @@ int	flood_fill(t_data *data)
 		ret = run_fill(data, dxy, data->start.x, data->start.y - 1);
 		if (ret != 0)
 			ft_putstr_fd("-> Error:\n\tMaze is not closed\n", 2);
+		free_strs(NULL, data->maze_cpy);
 	}
-	if (ret == 0)
-	{
-		ret = omitted_nl_check(data);
-		if (ret != 0)
-			ft_putstr_fd("-> Error:\n\tThere is a newline within the map\n", 2);
-	}
-	// free (data->maze_cpy);
 	return (ret);
 }
 

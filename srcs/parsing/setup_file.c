@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/23 12:12:28 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/25 11:50:57 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ int	init_data(t_data *data)
 	data->start.x = -1;
 	data->start.y = -1;
 	data->maze = NULL;
+	data->maze_cpy = NULL;
 	data->textures.n_path = ft_strdup(DEFAULT_NORTH_TEXTURE);
 	data->textures.e_path = ft_strdup(DEFAULT_EAST_TEXTURE);
 	data->textures.s_path = ft_strdup(DEFAULT_SOUTH_TEXTURE);
@@ -47,12 +48,10 @@ int	init_data(t_data *data)
 	write_rgb(data->textures.ceiling_rgb, 0, 0, 255);
 	write_rgb(data->textures.floor_rgb, 0, 255, 0);
 	data->dim.lines = 0;
-	data->dim.llen_head = NULL;
 	data->dim.min_x = -1;
 	data->dim.min_y = -1;
 	data->dim.max_x = -1;
 	data->dim.max_y = -1;
-	data->dim.fd = 0;
 	return (0);
 }
 
@@ -122,19 +121,15 @@ int	check_for_start(t_data *data, char *buffer)
 }
 
 /**
- * Populates the omitted newline array for later checks
+ * Replaces a line with only "\n" with " \n" to create a line after ft_split
 */
-void	omitted_nl_write(t_data *data, char c)
+void	check_nl(char *string)
 {
-	static int	i = 0;
-
-	data->dim.omitted[i] = 0;
-	data->dim.omitted[i + 1] = 0;
-	if (c == '\n')
-		data->dim.omitted[i] = 2;
-	else
-		data->dim.omitted[i] = 1;
-	i++;
+	if (string[0] == '\n')
+	{
+		free(string);
+		string = ft_strdup(" \n");
+	}
 }
 
 /**
@@ -147,17 +142,14 @@ char	*read_file(t_data *data, char *path)
 	char	*buffer;
 	char	*temp;
 	char	*line;
-	//int		len;
+
 	line = ft_strdup("");
 	fd = open(path, O_RDONLY);
 	buffer = get_next_line(fd);
 	while (buffer)
 	{
-		if (buffer[0] != '\n')
-			data->dim.lines++;
-		omitted_nl_write(data, buffer[0]);
-		//len = ft_strlen(buffer);
-		//add_length_list(&data->dim.llen_head, data->dim.lines, len);
+		data->dim.lines++;
+		check_nl(buffer);
 		check_for_start(data, buffer);
 		temp = ft_strjoin(line, buffer);
 		free(buffer);
@@ -173,6 +165,7 @@ char	*read_file(t_data *data, char *path)
 /**
  * Helper function to print the linked list
 */
+/*
 void	print_ll(t_llen **head)
 {
 	t_llen	*current;
@@ -183,7 +176,7 @@ void	print_ll(t_llen **head)
 		printf("line: %i\tlength: %i\n", current->lno, current->llen);
 		current = current->next;
 	}
-}
+} */
 
 /**
  * Counts the length of a continous string until a space, tab or newline
@@ -342,7 +335,8 @@ int	read_line(t_data *data, char *line)
 	{
 		line_ptr = line_ptr + detect_textures(data, line_ptr, &error);
 		line_ptr = line_ptr + detect_colors(data, line_ptr, &error);
-		error = detect_char(*line_ptr);
+		if (detect_char(*line_ptr))
+			error = 1;
 		if (error != 0)
 			return (error);
 		line_ptr++;

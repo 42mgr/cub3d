@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/23 12:18:06 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/24 02:45:50 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@
 # define EAST 90
 # define SOUTH 180
 # define WEST 270
-# define NL_ARRAY_SIZE 10000
 # define DEFAULT_NORTH_TEXTURE "./textures/default_n_wall"
 # define DEFAULT_SOUTH_TEXTURE "./textures/default_s_wall"
 # define DEFAULT_WEST_TEXTURE "./textures/default_w_wall"
@@ -74,13 +73,10 @@ typedef struct s_llen
 typedef struct s_dim
 {
 	int		lines;
-	t_llen	*llen_head;
 	int		min_x;
 	int		min_y;
 	int		max_x;
 	int		max_y;
-	int		fd;
-	int		omitted[NL_ARRAY_SIZE];
 }				t_dim;
 
 /**
