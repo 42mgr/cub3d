@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "${workspaceFolder}/cub3d",
-			"args": ["maps/map02.cub"],
+			"args": ["maps/bad_rights/norights.cub"],
 			"cwd": "${workspaceFolder}"
 			"preLaunchTask": "build",
         }
