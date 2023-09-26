@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/26 16:47:34 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/26 20:01:23 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,14 +93,14 @@ typedef struct s_data
 }				t_data;
 
 // check_args.c
-int	check_args(int ac, char **av);
-int	check_file(char *path);
+int		check_args(int ac, char **av);
+int		check_file(char *path);
 
 // setup_file.c
-int	setup_file(t_data *data, char **av);
+int		setup_file(t_data *data, char **av);
 
 // flood_fill.c
-int	flood_fill(t_data *data);
+int		flood_fill(t_data *data);
 
 char	*ft_strjoin_mod(char *s1, char *s2);
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/26 19:03:51 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/26 20:02:07 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,8 @@ int	main(int ac, char **av)
 		ret = draw_game(&data);
 	free_data(&data)	*/
 
-	/*
-	my free_strs is not working, so everything here manually
-	 */
-	if (data.maze)
+
+ 	if (data.maze)
 	{
 		int i = 0;
 		while (data.maze[i])
@@ -46,7 +44,7 @@ int	main(int ac, char **av)
 			free(data.maze[i++]);
 		}
 		free(data.maze);
-	}
+	} 
 	free(data.textures.n_path);
 	free(data.textures.e_path);
 	free(data.textures.s_path);
