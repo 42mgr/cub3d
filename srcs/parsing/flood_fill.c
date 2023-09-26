@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/25 11:52:08 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/26 19:06:52 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ char	**duplicate_maze(int lines, char **maze)
 	int		len;
 	char	**copy;
 
-	copy = (char **)malloc(sizeof(char *) * lines);
+	copy = (char **)malloc(sizeof(char *) * lines + 1);
 	if (!copy)
 		return (NULL);
 	x = 0;
@@ -55,6 +55,7 @@ char	**duplicate_maze(int lines, char **maze)
 		copy[x] = ft_strdup(maze[x]);
 		x++;
 	}
+	copy[x] = NULL;
 	return (copy);
 }
 
@@ -176,7 +177,14 @@ int	flood_fill(t_data *data)
 		ret = run_fill(data, dxy, data->start.x, data->start.y - 1);
 		if (ret != 0)
 			ft_putstr_fd("-> Error:\n\tMaze is not closed\n", 2);
-		free_strs(NULL, data->maze_cpy);
+	/* free_strs not working, that's why manually */
+	if (data->maze_cpy)
+	{
+		int i = 0;
+		while (data->maze_cpy[i])
+			free(data->maze_cpy[i++]);
+		free(data->maze_cpy);
+	}
 	}
 	return (ret);
 }

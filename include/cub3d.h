@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/24 02:45:50 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/26 16:47:34 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,6 @@ int	setup_file(t_data *data, char **av);
 
 // flood_fill.c
 int	flood_fill(t_data *data);
+
+char	*ft_strjoin_mod(char *s1, char *s2);
 #endif

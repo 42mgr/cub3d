@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/25 11:50:57 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/26 19:49:24 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ void	add_length_list(t_llen **head, int line, int length)
  * Identifies a (valid) starting position and direction of the player
  * and sets it to '0'
 */
-int	check_for_start(t_data *data, char *buffer)
+int	check_for_start(t_data *data, char *buffer, int line)
 {
 	int	i;
 
@@ -103,7 +103,7 @@ int	check_for_start(t_data *data, char *buffer)
 				|| buffer[i + 1] == '0') && (buffer[i - 1] == '1'
 				|| buffer[i - 1] == '0'))
 		{
-			data->start.y = data->dim.lines;
+			data->start.y = line;
 			data->start.x = i;
 			if (buffer[i] == 'N')
 				data->start.dir = NORTH;
@@ -121,18 +121,6 @@ int	check_for_start(t_data *data, char *buffer)
 }
 
 /**
- * Replaces a line with only "\n" with " \n" to create a line after ft_split
-*/
-void	check_nl(char *string)
-{
-	if (string[0] == '\n')
-	{
-		free(string);
-		string = ft_strdup(" \n");
-	}
-}
-
-/**
  * Reads the file and saves the lines in a char *line
  * !!! linked list not necessary??
 */
@@ -142,19 +130,21 @@ char	*read_file(t_data *data, char *path)
 	char	*buffer;
 	char	*temp;
 	char	*line;
+	int		i;
 
-	line = ft_strdup("");
 	fd = open(path, O_RDONLY);
 	buffer = get_next_line(fd);
+	i = 0;
 	while (buffer)
 	{
 		data->dim.lines++;
-		check_nl(buffer);
-		check_for_start(data, buffer);
-		temp = ft_strjoin(line, buffer);
-		free(buffer);
+		if (buffer[0] == '\n')
+			buffer[0] = ' ';
+		check_for_start(data, buffer, i);
+		temp = ft_strjoin_mod(line, buffer);
 		buffer = get_next_line(fd);
 		line = temp;
+		i++;
 	}
 	if (buffer)
 		free(buffer);
@@ -271,7 +261,14 @@ int	parse_colors(t_data *data, char *line, int len, int offset)
 		return (err);
 	}
 	free(temp);
-	free(rgb);
+	/* free_strs not working thats why manually */
+	if (rgb)
+	{
+		int i = 0;
+		while (rgb[i])
+			free(rgb[i++]);
+		free(rgb);
+	}
 	return (err);
 }
 
@@ -338,7 +335,10 @@ int	read_line(t_data *data, char *line)
 		if (detect_char(*line_ptr))
 			error = 1;
 		if (error != 0)
+		{
+			free(line);
 			return (error);
+		}
 		line_ptr++;
 	}
 	return (error);

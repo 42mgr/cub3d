@@ -77,6 +77,20 @@ init_submodules:
 valgrind: all
 	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
 
+valtest: all
+	-valgrind ./$(NAME) maps/bad_file_path/map03.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_left_top_space.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_left_top_zero.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_right_btm_0.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_right_btm_eof.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_right_btm_nl.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_right_top_nl.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_right_top_space.cub
+	-valgrind ./$(NAME) maps/bad_open/map00_right_top_zero.cub
+	-valgrind ./$(NAME) maps/bad_open/map01.cub
+	-valgrind ./$(NAME) maps/bad_rights/norights.cub
+	-valgrind ./$(NAME) maps/map02.cub
+
 commit: fclean
 	chmod +r maps/bad_rights/norights.cub
 	git add .
