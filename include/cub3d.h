@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/26 20:01:23 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/28 15:48:05 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define DEFAULT_SOUTH_TEXTURE "./textures/default_s_wall"
 # define DEFAULT_WEST_TEXTURE "./textures/default_w_wall"
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
+# define SPRITE_SIZE 64
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -103,4 +104,6 @@ int		setup_file(t_data *data, char **av);
 int		flood_fill(t_data *data);
 
 char	*ft_strjoin_mod(char *s1, char *s2);
+int		render_map(t_data *data);
+void	free_2d_array(char **array);
 #endif

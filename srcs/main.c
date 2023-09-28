@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/26 20:02:07 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/28 15:48:33 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,9 @@ int	main(int ac, char **av)
 		ret = raytracker(&data);
 	if (ret == 0)
 		ret = draw_game(&data);
-	free_data(&data)	*/
-
-
- 	if (data.maze)
-	{
-		int i = 0;
-		while (data.maze[i])
-		{
-			free(data.maze[i++]);
-		}
-		free(data.maze);
-	} 
+ 	if (ret == 0)
+		ret = render_map(&data); */
+	free_2d_array(data.maze);
 	free(data.textures.n_path);
 	free(data.textures.e_path);
 	free(data.textures.s_path);

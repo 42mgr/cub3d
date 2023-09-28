@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/26 19:49:24 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/28 15:46:08 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,15 @@ int	check_for_start(t_data *data, char *buffer, int line)
 	return (0);
 }
 
+void	replace_nl(char **buffer)
+{
+	if (*buffer[0] == '\n')
+	{
+		free(*buffer);
+		*buffer = ft_strdup(" \n");
+	}
+}
+
 /**
  * Reads the file and saves the lines in a char *line
  * !!! linked list not necessary??
@@ -138,8 +147,7 @@ char	*read_file(t_data *data, char *path)
 	while (buffer)
 	{
 		data->dim.lines++;
-		if (buffer[0] == '\n')
-			buffer[0] = ' ';
+		replace_nl(&buffer);
 		check_for_start(data, buffer, i);
 		temp = ft_strjoin_mod(line, buffer);
 		buffer = get_next_line(fd);
@@ -233,6 +241,18 @@ int	detect_textures(t_data *data, char *line, int *error)
 	return (0);
 }
 
+void	free_2d_array(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (!array)
+		return ;
+	while (array[i])
+		free(array[i++]);
+	free(array);
+}
+
 /**
  * Takes the line with the identified color and parses it to the data struct
 */
@@ -261,14 +281,7 @@ int	parse_colors(t_data *data, char *line, int len, int offset)
 		return (err);
 	}
 	free(temp);
-	/* free_strs not working thats why manually */
-	if (rgb)
-	{
-		int i = 0;
-		while (rgb[i])
-			free(rgb[i++]);
-		free(rgb);
-	}
+	free_2d_array(rgb);
 	return (err);
 }
 

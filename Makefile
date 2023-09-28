@@ -7,7 +7,8 @@ INCL_DIR ?= ./include
 
 LIB = libft-42
 LIBMLX = MLX42
-LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build)
+LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build) -lglfw
+# LIBS = -lglfw $(LIBMLX)/build/libmlx42.a $(LIB)/libft.a
 
 SRCS := $(filter-out %_bonus.c, $(shell find $(SRC_DIRS) -name *.c))
 OBJS := $(subst $(SRC_DIRS), $(BUILD_DIR), $(SRCS:.c=.o))
@@ -90,6 +91,7 @@ valtest: all
 	-valgrind ./$(NAME) maps/bad_open/map01.cub
 	-valgrind ./$(NAME) maps/bad_rights/norights.cub
 	-valgrind ./$(NAME) maps/map02.cub
+	-valgrind ./$(NAME) maps/map00.cub
 
 commit: fclean
 	chmod +r maps/bad_rights/norights.cub
