@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 15:48:05 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/28 22:47:00 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,17 @@ typedef struct s_dim
 	int		max_y;
 }				t_dim;
 
+typedef struct s_mlx42
+{
+	mlx_t	*mlx_ptr;
+	xpm_t	*mm_black;
+	xpm_t	*mm_white;
+	xpm_t	*mm_grey;
+	mlx_image_t *mm_black_img;
+	mlx_image_t *mm_white_img;
+	mlx_image_t *mm_grey_img;
+}			t_mlx42;
+
 /**
  * The struct that contains them all and is passed around
 */
@@ -91,6 +102,7 @@ typedef struct s_data
 	char		**maze;
 	char		**maze_cpy;
 	t_dim		dim;
+	t_mlx42		mlx42;
 }				t_data;
 
 // check_args.c

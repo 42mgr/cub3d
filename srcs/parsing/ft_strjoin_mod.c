@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:44:41 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 15:25:14 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/28 22:17:05 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ char	*ft_strjoin_mod(char *s1, char *s2)
 		j++;
 	}
 	joined[i + j] = '\0';
-	if (*s1 != '\0')
-		free(s1);
+//	if (*s1 != '\0')
+//		free(s1);
 	free(s2);
 	return (joined);
 }

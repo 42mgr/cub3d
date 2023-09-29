@@ -6,11 +6,22 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 15:48:33 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/28 22:40:28 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+int	final_free(t_data *data)
+{
+	free_2d_array(data->maze);
+	free(data->textures.n_path);
+	free(data->textures.e_path);
+	free(data->textures.s_path);
+	free(data->textures.w_path);
+	free(data->mlx42.mlx);
+	return (0);
+}
 
 int	main(int ac, char **av)
 {
@@ -32,13 +43,9 @@ int	main(int ac, char **av)
 /*	if (ret == 0)
 		ret = raytracker(&data);
 	if (ret == 0)
-		ret = draw_game(&data);
+		ret = draw_game(&data); */
  	if (ret == 0)
-		ret = render_map(&data); */
-	free_2d_array(data.maze);
-	free(data.textures.n_path);
-	free(data.textures.e_path);
-	free(data.textures.s_path);
-	free(data.textures.w_path);
+		ret = render_map(&data);
+	final_free(&data);
 	return (0);
 }

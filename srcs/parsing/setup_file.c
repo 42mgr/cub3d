@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 15:46:08 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/28 22:18:35 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,6 +144,7 @@ char	*read_file(t_data *data, char *path)
 	fd = open(path, O_RDONLY);
 	buffer = get_next_line(fd);
 	i = 0;
+	line = ft_strdup("");
 	while (buffer)
 	{
 		data->dim.lines++;
