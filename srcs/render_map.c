@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/29 09:08:34 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/29 09:56:47 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	load_texture(mlx_t *mlx, mlx_image_t **image, char *path)
 
 void	load_pics(t_data *data)
 {
-	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_black_img), "textures/mm_black.xpm42");
-	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_grey_img), "textures/mm_black.xpm42");
-	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_white_img), "textures/mm_black.xpm42");
+	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_black_img), "textures/minimap/mm_black_64x64.xpm42");
+	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_grey_img), "textures/minimap/mm_black_64x64.xpm42");
+	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_white_img), "textures/minimap/mm_black_64x64.xpm42");
 }
 
 void	draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x)
@@ -39,10 +39,10 @@ void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int))
 	int	y;
 
 	y = 0;
-	while (data->maze[y])
+	while (data->maze[y + data->dim.min_y])
 	{
 		x = 0;
-		while (data->maze[y][x])
+		while (data->maze[y + data->dim.min_y][x + data->dim.min_x])
 		{
 			f(data, y, x);
 			x++;
@@ -57,6 +57,17 @@ void	draw_floor(t_data *data, int y, int x)
 		(y * SPRITE_SIZE), (x * SPRITE_SIZE));
 }
 
+void	which_picture(t_data *data, int y, int x)
+{
+/* 	printf("y: %d, x: %d value: %c\n", y, x, data->maze[y + data->dim.min_y][x + data->dim.min_x]);
+	(void)data; */
+	if (data->maze[y + data->dim.min_y][x + data->dim.min_x] == '1')
+	{
+		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_grey_img, \
+			(y * SPRITE_SIZE), (x * SPRITE_SIZE));
+	}
+}
+
 int	render_map(t_data *data)
 {
 	data->mlx42.mlx_ptr = mlx_init(
@@ -64,7 +75,8 @@ int	render_map(t_data *data)
 			(data->dim.max_y - data->dim.min_y) * SPRITE_SIZE, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	load_pics(data);
-	check_for_tile(data, draw_floor);
+	//check_for_tile(data, draw_floor);
+	check_for_tile(data, which_picture);
 	mlx_loop(data->mlx42.mlx_ptr);
 	mlx_close_window(data->mlx42.mlx_ptr);
 	mlx_terminate(data->mlx42.mlx_ptr);

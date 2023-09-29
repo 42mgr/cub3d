@@ -7,7 +7,7 @@ INCL_DIR ?= ./include
 
 LIB = libft-42
 LIBMLX = MLX42
-LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build) -L /opt/homebrew/lib -lglfw
+LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build) -L /opt/homebrew/lib -lglfw -framework OpenGL
 # LIBS = -lglfw $(LIBMLX)/build/libmlx42.a $(LIB)/libft.a
 
 SRCS := $(filter-out %_bonus.c, $(shell find $(SRC_DIRS) -name *.c))

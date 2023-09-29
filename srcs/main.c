@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 22:40:28 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/29 09:32:41 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	final_free(t_data *data)
 	free(data->textures.e_path);
 	free(data->textures.s_path);
 	free(data->textures.w_path);
-	free(data->mlx42.mlx);
+	free(data->mlx42.mlx_ptr);
 	return (0);
 }
 
