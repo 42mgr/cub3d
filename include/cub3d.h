@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 22:47:00 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/09/30 14:55:52 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,7 @@ typedef struct s_mlx42
 	mlx_image_t *mm_black_img;
 	mlx_image_t *mm_white_img;
 	mlx_image_t *mm_grey_img;
+	mlx_image_t	*mm_player_img;
 }			t_mlx42;
 
 /**

@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/30 11:53:24 by fheld            ###   ########.fr       */
+/*   Updated: 2023/09/30 15:03:06 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,38 @@ void	which_picture(t_data *data, int y, int x)
 
 void esc_hook(void* arg)
 {
-	mlx_t* mlx = arg;
-
+	mlx_t* mlx; 
+	
+	mlx = arg;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
+}
+
+void move_player(void* arg)
+{
+	t_data	*data; 
+	
+	data = arg;
+	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_RIGHT))
+		data->start.x++;
+	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_LEFT))
+		data->start.x--;
+	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_UP))
+		data->start.y--;
+	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_DOWN))
+		data->start.y++;
+}
+
+void draw_player(void* arg)
+{
+	t_data	*data; 
+	
+	data = arg;
+	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, \
+		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, \
+		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.mm_player_img, 0, 0);
+	mlx_put_pixel(data->mlx42.mm_player_img, data->start.x, data->start.y, 0xFFFF00FF);
 }
 
 int	render_map(t_data *data)
@@ -91,6 +119,8 @@ int	render_map(t_data *data)
 	check_for_tile(data, draw_floor);
 	check_for_tile(data, which_picture);
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
+	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
+	mlx_loop_hook(data->mlx42.mlx_ptr, draw_player, data);
 	mlx_loop(data->mlx42.mlx_ptr);
 	mlx_close_window(data->mlx42.mlx_ptr);
 	mlx_terminate(data->mlx42.mlx_ptr);
