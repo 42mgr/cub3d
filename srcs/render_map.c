@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/01 22:46:39 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/01 22:57:58 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,56 +80,6 @@ void esc_hook(void* arg)
 	mlx = arg;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
-}
-
-/**
- * checks if moving up would collide with the wall, if not moves one step
-*/
-void	move_up(t_data *data)
-{
-	if (data->maze_cpy[(data->start.y - WALL_OFFSET) / SPRITE_SIZE] \
-		[data->start.x / SPRITE_SIZE] == '0')
-		data->start.y--;
-}
-
-void	move_down(t_data *data)
-{
-	if (data->maze_cpy[(data->start.y + WALL_OFFSET) / SPRITE_SIZE] \
-		[data->start.x / SPRITE_SIZE] == '0')
-		data->start.y++;
-}
-
-void	move_left(t_data *data)
-{
-	if (data->maze_cpy[data->start.y / SPRITE_SIZE] \
-		[(data->start.x - WALL_OFFSET) / SPRITE_SIZE] == '0')
-		data->start.x--;
-}
-
-void	move_right(t_data *data)
-{
-	if (data->maze_cpy[data->start.y / SPRITE_SIZE] \
-		[(data->start.x + WALL_OFFSET) / SPRITE_SIZE] == '0')
-		data->start.x++;
-}
-
-void move_player(void* arg)
-{
-	t_data	*data;
-
-	data = arg;
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_RIGHT))
-		move_right(data);
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_LEFT))
-		move_left(data);
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_UP))
-		move_up(data);
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_DOWN))
-		move_down(data);
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_A))
-		data->start.dir++;
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_D))
-		data->start.dir--;
 }
 
 /**

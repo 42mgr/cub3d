@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/01 22:44:13 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/01 22:59:04 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,5 +138,12 @@ void	create_image_player(t_data *data);
 
 // draw line
 void 	draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color);
+
+// move_player.c
+void	move_up(t_data *data);
+void	move_down(t_data *data);
+void	move_left(t_data *data);
+void	move_right(t_data *data);
+void 	move_player(void* arg);
 
 #endif
