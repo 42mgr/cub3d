@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:45:21 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/01 17:08:48 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/01 17:55:59 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ void	draw_line_case_a(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 	while (abs1(i) < abs1(d.x))
 	{
 		mlx_put_pixel(data->mlx42.mm_player_img, a.x + i, a.y + (d.y * i / d.x), color);
-		// *((int *) data + (a.y + (d.y * i / d.x)) * (sl / 4) + a.x + i) = \
-			// 0xffffff;
 		i += inc;
 	}
 }
@@ -62,8 +60,6 @@ void	draw_line_case_b(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 	{
 		mlx_put_pixel(data->mlx42.mm_player_img, \
 			a.x + (d.x * i / d.y), a.y + i, color);
-		// *((int *) data + (a.y + i) * (sl / 4) + a.x + (d.x * i / d.y)) = \
-			// 0xffffff;
 		i += inc;
 	}
 }
