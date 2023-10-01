@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/01 09:42:54 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/01 22:44:13 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <unistd.h>
 # include <errno.h>
 # include <string.h>
+# include <math.h>
 
 # define NORTH 0
 # define EAST 90
@@ -30,6 +31,7 @@
 # define DEFAULT_WEST_TEXTURE "./textures/default_w_wall"
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 # define SPRITE_SIZE 64
+# define WALL_OFFSET 5
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -106,6 +108,15 @@ typedef struct s_data
 	t_mlx42		mlx42;
 }				t_data;
 
+/**
+ * The struct contains two ints that mean the x/y position on a plane
+*/
+typedef struct s_int_p2
+{
+	int	x;
+	int	y;
+}				t_int_p2;
+
 // check_args.c
 int		check_args(int ac, char **av);
 int		check_file(char *path);
@@ -121,5 +132,11 @@ int		render_map(t_data *data);
 void	free_2d_array(char **array);
 void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int));
 void	draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x);
+
+// draw map
+void	create_image_player(t_data *data);
+
+// draw line
+void 	draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color);
 
 #endif
