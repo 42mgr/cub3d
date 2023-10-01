@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/30 15:03:06 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/01 10:26:07 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int))
 	int	y;
 
 	y = 0;
-	while (data->maze[y + data->dim.min_y])
+	while (data->maze[y + data->dim.min_y] && y < data->dim.max_y - data->dim.min_y + 1)
 	{
 		x = 0;
-		while (data->maze[y + data->dim.min_y][x + data->dim.min_x])
+		while (x < data->dim.max_x - data->dim.min_x + 1)
 		{
 			f(data, y, x);
 			x++;
@@ -75,8 +75,8 @@ void	which_picture(t_data *data, int y, int x)
 
 void esc_hook(void* arg)
 {
-	mlx_t* mlx; 
-	
+	mlx_t* mlx;
+
 	mlx = arg;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
@@ -84,8 +84,8 @@ void esc_hook(void* arg)
 
 void move_player(void* arg)
 {
-	t_data	*data; 
-	
+	t_data	*data;
+
 	data = arg;
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_RIGHT))
 		data->start.x++;
@@ -99,8 +99,8 @@ void move_player(void* arg)
 
 void draw_player(void* arg)
 {
-	t_data	*data; 
-	
+	t_data	*data;
+
 	data = arg;
 	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, \
 		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, \

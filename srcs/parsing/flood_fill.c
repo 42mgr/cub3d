@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 15:47:36 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/01 10:23:20 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,6 +156,58 @@ void	create_dxy(int dxy[2][8])
 	dxy[1][7] = -1;
 }
 
+void	mm_draw_floor(t_data *data, int y, int x)
+{
+	if (x > (data->dim.max_x - data->dim.min_x + 1))
+		return ;
+/* 	draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_black_img, \
+		(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
+	data->maze_cpy[y][x] = '1';
+}
+
+void	mm_draw_objects(t_data *data, int y, int x)
+{
+	if (x > (data->dim.max_x - data->dim.min_x + 1))
+		return ;
+	if (data->maze[y + data->dim.min_y][x + data->dim.min_x] == '1')
+	{
+/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_grey_img, \
+			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
+		data->maze_cpy[y][x] = '1';
+	}
+	else if (data->maze[y + data->dim.min_y][x + data->dim.min_x] == '0')
+	{
+/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_white_img, \
+			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
+		data->maze_cpy[y][x] = '0';
+	}
+}
+int	create_clean_maze(t_data *data)
+{
+	int		y;
+	int		x;
+	int		i;
+
+	y = data->dim.max_y - data->dim.min_y + 1;
+	x = data->dim.max_x - data->dim.min_x + 1;
+	data->maze_cpy = (char **)malloc(sizeof(char *) * y + 1);
+	if (!data->maze_cpy)
+		return (1);
+	data->maze_cpy[y] = NULL;
+	i = 0;
+	while (i < y)
+	{
+		data->maze_cpy[i] = (char *)malloc(sizeof(char) * x + 1);
+		if (!data->maze_cpy[i])
+			return (1);
+		data->maze_cpy[i][x] = '\0';
+		i++;
+	}
+	check_for_tile(data, mm_draw_floor);
+	check_for_tile(data, mm_draw_objects);
+	return (0);
+}
+
 /**
  * The main function to check if the maze is closed
 */
@@ -179,6 +231,8 @@ int	flood_fill(t_data *data)
 			ft_putstr_fd("-> Error:\n\tMaze is not closed\n", 2);
 		free_2d_array(data->maze_cpy);
 	}
+	create_clean_maze(data);
+	print_all(data->maze_cpy, data->dim.max_y - data->dim.min_y + 1);
 	return (ret);
 }
 

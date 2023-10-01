@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/30 14:55:52 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/01 09:42:54 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,4 +119,7 @@ int		flood_fill(t_data *data);
 char	*ft_strjoin_mod(char *s1, char *s2);
 int		render_map(t_data *data);
 void	free_2d_array(char **array);
+void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int));
+void	draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x);
+
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/29 18:47:53 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/01 10:23:52 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 int	final_free(t_data *data)
 {
 	free_2d_array(data->maze);
+	free_2d_array(data->maze_cpy);
 	free(data->textures.n_path);
 	free(data->textures.e_path);
 	free(data->textures.s_path);
