@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/01 10:26:07 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/01 17:02:55 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,16 +97,32 @@ void move_player(void* arg)
 		data->start.y++;
 }
 
+/**
+ * creates new image
+ * sets inital position of player
+ * puts image to window
+*/
+void	create_image_player(t_data *data)
+{
+	data->start.x = (data->start.x - data->dim.min_x) * SPRITE_SIZE + (SPRITE_SIZE / 2);
+	data->start.y = (data->start.y - data->dim.min_y) * SPRITE_SIZE + (SPRITE_SIZE / 2);
+	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, \
+		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, \
+		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.mm_player_img, 0, 0);
+}
+
+// no idea why we need the last 4 multipier
 void draw_player(void* arg)
 {
 	t_data	*data;
 
 	data = arg;
-	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, \
-		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, \
-		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE);
-	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.mm_player_img, 0, 0);
-	mlx_put_pixel(data->mlx42.mm_player_img, data->start.x, data->start.y, 0xFFFF00FF);
+	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
+		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE * \
+		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE * 4);
+	draw_line(data, (t_int_p2){10, 20}, (t_int_p2){130, 140}, 0xFFFFFFFF);
+	mlx_put_pixel(data->mlx42.mm_player_img, data->start.x, data->start.y, 0x000000FF);
 }
 
 int	render_map(t_data *data)
@@ -118,6 +134,7 @@ int	render_map(t_data *data)
 	load_pics(data);
 	check_for_tile(data, draw_floor);
 	check_for_tile(data, which_picture);
+	create_image_player(data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
 	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, draw_player, data);
