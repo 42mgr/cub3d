@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/01 22:59:04 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/02 16:46:45 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,9 @@
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 # define SPRITE_SIZE 64
 # define WALL_OFFSET 5
+# define L_BLUE 0x6DC5FF
+# define L_GREEN 0x90EE90
+# define L_RED 0xFFCCCB
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)

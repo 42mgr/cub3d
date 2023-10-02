@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:45:21 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/01 17:55:59 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/02 12:54:04 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,26 @@ void	draw_line_case_b(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 	}
 }
 
-// initially just draws fixed line
+void	truncate_coordinates(t_data *data, t_int_p2 *a)
+{
+	if (a->x > (data->dim.max_x - data->dim.min_x)* SPRITE_SIZE)
+		a->x = (data->dim.max_x - data->dim.min_x) * SPRITE_SIZE;
+	if (a->x < 0)
+		a->x = 0;
+	if (a->y > (data->dim.max_y - data->dim.min_y)* SPRITE_SIZE)
+		a->y = (data->dim.max_y - data->dim.min_y) * SPRITE_SIZE;
+	if (a->y < 0)
+		a->y = 0;
+}
+
+/**
+ * draws line from point a to point b with color
+ * if a or b have coordinated that are out of the image they are truncated
+*/
 void draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 {
+	truncate_coordinates(data, &a);
+	truncate_coordinates(data, &b);
 	if ((b.x - a.x) == 0 && (b.y - a.y) == 0)
 		mlx_put_pixel(data->mlx42.mm_player_img, a.x, a.y, color);
 	else if (abs1(b.x - a.x) > abs1 (b.y - a.y))

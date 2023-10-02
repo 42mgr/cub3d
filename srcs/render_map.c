@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/01 22:57:58 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/02 17:41:10 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,18 +101,67 @@ void	draw_fan(t_data *data)
 {
 	int	i;
 
-	i = -20;
-	while (i < 21)
+	// i = -20;
+	i = 0;
+	while (i < 1)
 	{
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, \
-			(t_int_p2){data->start.x + 100 * cos((data->start.dir + i)/180.0*M_PI), \
-			data->start.y + 100 * sin((data->start.dir + i)/180.0*M_PI)}, 0x000000FF);
+			(t_int_p2){data->start.x - 50 * sin((data->start.dir + i)/180.0*M_PI), \
+			data->start.y - 50 * cos((data->start.dir + i)/180.0*M_PI)}, 0x000000FF);
 		i+=5;
 	}
 }
 
+// order of calculation is important
+t_int_p2	horizontal_ray_collision(t_data *data)
+{
+	t_int_p2	end;
+
+	if (data->start.dir > 270 || data->start.dir < 90)
+	{
+		end.y = (data->start.y / SPRITE_SIZE) * SPRITE_SIZE;
+		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y); 
+	}
+	else if (data->start.dir < 270 && data->start.dir > 90)
+	{
+		end.y = ((data->start.y / SPRITE_SIZE) + 1) * SPRITE_SIZE;
+		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y); 		
+	}
+	else
+		end = (t_int_p2){1,1};
+	return (end);
+}
+
+t_int_p2	vertical_ray_collision(t_data *data)
+{
+	t_int_p2	end;
+
+	if (data->start.dir > 0 && data->start.dir < 180)
+	{
+		end.x = (data->start.x / SPRITE_SIZE) * SPRITE_SIZE;
+		end.y = data->start.y - tan((90 - data->start.dir) / 180.0 * M_PI) * (data->start.x - end.x); 
+	}
+	else if (data->start.dir > 180 && data->start.dir < 360)
+	{
+		end.x = (data->start.x / SPRITE_SIZE + 1) * SPRITE_SIZE;
+		end.y = data->start.y - tan((-90 - data->start.dir) / 180.0 * M_PI) * (data->start.x - end.x); 
+	}
+	else if (data->start.dir == 0)
+	{
+		end.x = 0;
+		end.y = data->start.y; 
+	}
+	else if(data->start.dir == 180)
+	{
+		end.x = (data->start.x - data->dim.min_x);
+		end.y = data->start.y; 
+	}
+	else
+		end = (t_int_p2){10,1};
+	return (end);
+}
+
 // no idea why we need the last 4 multipier
-//  + 50 * cos(data->start.dir)
 void draw_player(void* arg)
 {
 	t_data	*data;
@@ -121,8 +170,11 @@ void draw_player(void* arg)
 	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
 		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE * \
 		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE * 4);
-	draw_fan(data);
+	// draw_fan(data);
+	draw_line(data, (t_int_p2){data->start.x, data->start.y}, horizontal_ray_collision(data), L_BLUE);
+	// draw_line(data, (t_int_p2){data->start.x, data->start.y}, vertical_ray_collision(data), L_RED);
 	mlx_put_pixel(data->mlx42.mm_player_img, data->start.x, data->start.y, 0x000000FF);
+	mlx_put_pixel(data->mlx42.mm_player_img, 10, 100, 0xFF0000FF);
 }
 
 int	render_map(t_data *data)
@@ -134,6 +186,7 @@ int	render_map(t_data *data)
 	load_pics(data);
 	check_for_tile(data, draw_floor);
 	check_for_tile(data, which_picture);
+	mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
 	create_image_player(data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
 	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
