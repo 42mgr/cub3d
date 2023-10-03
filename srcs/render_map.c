@@ -112,25 +112,91 @@ void	draw_fan(t_data *data)
 	}
 }
 
+// no access protection yet and only checking 10 fields deep
+t_int_p2	hrc_up(t_data *data)
+{
+	t_int_p2	end;
+	int 		i;
+
+	i = 0;
+	while (1 && i < 10)
+	{
+		end.y = ((data->start.y / SPRITE_SIZE) - i) * SPRITE_SIZE;
+		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y + (i * SPRITE_SIZE));
+		if (data->maze_cpy[end.y / SPRITE_SIZE - 1][(end.x / SPRITE_SIZE)] == '1')
+			break ;
+		i++;
+	}
+	return (end);
+}
+
+t_int_p2	hrc_down(t_data *data)
+{
+	t_int_p2	end;
+	int 		i;
+
+	i = 0;
+	while (1 && i < 10)
+	{
+		end.y = ((data->start.y / SPRITE_SIZE) + 1 + i) * SPRITE_SIZE;
+		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y + (i * SPRITE_SIZE));
+		if (data->maze_cpy[(end.y/SPRITE_SIZE)][(end.x/SPRITE_SIZE)] == '1')
+			break ;
+		i++;
+	}
+	return (end);
+}
+
 // order of calculation is important
 t_int_p2	horizontal_ray_collision(t_data *data)
 {
 	t_int_p2	end;
 
 	if (data->start.dir > 270 || data->start.dir < 90)
+		// end = hrc_up(data);
 	{
 		end.y = (data->start.y / SPRITE_SIZE) * SPRITE_SIZE;
 		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y); 
 	}
 	else if (data->start.dir < 270 && data->start.dir > 90)
+		// end = hrc_down(data);
 	{
 		end.y = ((data->start.y / SPRITE_SIZE) + 1) * SPRITE_SIZE;
 		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y); 		
+	}
+	else if (data->start.dir == 90)
+	{
+		end.x = 0;
+		end.y = data->start.y; 
+	}
+	else if(data->start.dir == 270)
+	{
+		end.x = (data->start.x - data->dim.min_x);
+		end.y = data->start.y; 
 	}
 	else
 		end = (t_int_p2){1,1};
 	return (end);
 }
+
+// note: we are not checking for out of boundness of the array
+// array access function?
+// t_int_p2	vrc_left(t_data *data)
+// {
+// 	t_int_p2	end;
+// 	int			i;
+
+// 	i = 0;
+// 	while (1)
+// 	{
+// 		end.x = ((data->start.x / SPRITE_SIZE) - i) * SPRITE_SIZE;
+// 		end.y = data->start.y - tan((90 - data->start.dir) / 180.0 * M_PI) * (data->start.x - end.x - (i * SPRITE_SIZE)); 
+// 		if (data->maze_cpy[(end.y/SPRITE_SIZE - 1)][(end.x/SPRITE_SIZE)] == '1')
+// 			break ;
+// 		i++;
+// 	}
+// 	return (end);
+// }
 
 t_int_p2	vertical_ray_collision(t_data *data)
 {
@@ -148,16 +214,16 @@ t_int_p2	vertical_ray_collision(t_data *data)
 	}
 	else if (data->start.dir == 0)
 	{
-		end.x = 0;
-		end.y = data->start.y; 
+		end.x = data->start.x; 
+		end.y = 0;
 	}
 	else if(data->start.dir == 180)
 	{
-		end.x = (data->start.x - data->dim.min_x);
-		end.y = data->start.y; 
+		end.x = data->start.x; 
+		end.y = (data->start.y - data->dim.min_y);
 	}
 	else
-		end = (t_int_p2){10,1};
+		end = (t_int_p2){1,1};
 	return (end);
 }
 
@@ -171,14 +237,25 @@ void draw_player(void* arg)
 		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE * \
 		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE * 4);
 	// draw_fan(data);
-	draw_line(data, (t_int_p2){data->start.x, data->start.y}, horizontal_ray_collision(data), L_BLUE);
+
+	t_int_p2 p = horizontal_ray_collision(data);
+	printf("p coordinates: x = %d, y = %d, maze_cpy[][] = %c\n", p.x, p.y, data->maze_cpy[(p.y/SPRITE_SIZE - 1)][(p.x/SPRITE_SIZE)]);
+	printf("p.y/SPRITE_SIZE = %d, p.x/SPRITE_SIZE = %d, start.dir = %d\n", p.y/SPRITE_SIZE, p.x/SPRITE_SIZE, data->start.dir);
+	draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_BLUE);
 	// draw_line(data, (t_int_p2){data->start.x, data->start.y}, vertical_ray_collision(data), L_RED);
 	mlx_put_pixel(data->mlx42.mm_player_img, data->start.x, data->start.y, 0x000000FF);
 	mlx_put_pixel(data->mlx42.mm_player_img, 10, 100, 0xFF0000FF);
 }
 
+void	set_dim(t_data *data)
+{
+	data->dim.dim_x = data->dim.max_x - data->dim.min_x + 1;
+	data->dim.dim_y = data->dim.max_y - data->dim.min_y + 1;
+}
+
 int	render_map(t_data *data)
 {
+	set_dim(data);
 	data->mlx42.mlx_ptr = mlx_init(
 			(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE,
 			(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE, "Cub3D", true);
