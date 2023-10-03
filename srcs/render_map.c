@@ -123,6 +123,10 @@ t_int_p2	hrc_up(t_data *data)
 	{
 		end.y = ((data->start.y / SPRITE_SIZE) - i) * SPRITE_SIZE;
 		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y + (i * SPRITE_SIZE));
+		if (end.y / SPRITE_SIZE - 1 < 0 || end.y / SPRITE_SIZE - 1 >= data->dim.dim_y)
+			break ;
+		if (end.x / SPRITE_SIZE < 0 || end.x / SPRITE_SIZE >= data->dim.dim_x)
+			break ;
 		if (data->maze_cpy[end.y / SPRITE_SIZE - 1][(end.x / SPRITE_SIZE)] == '1')
 			break ;
 		i++;
@@ -140,30 +144,34 @@ t_int_p2	hrc_down(t_data *data)
 	{
 		end.y = ((data->start.y / SPRITE_SIZE) + 1 + i) * SPRITE_SIZE;
 		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y + (i * SPRITE_SIZE));
-		if (data->maze_cpy[(end.y/SPRITE_SIZE)][(end.x/SPRITE_SIZE)] == '1')
+		if (end.y / SPRITE_SIZE < 0 || end.y / SPRITE_SIZE >= data->dim.dim_y)
+			break ;
+		if (end.x / SPRITE_SIZE < 0 || end.x / SPRITE_SIZE >= data->dim.dim_x)
+			break ;
+		if (data->maze_cpy[(end.y / SPRITE_SIZE)][(end.x / SPRITE_SIZE)] == '1')
 			break ;
 		i++;
 	}
 	return (end);
 }
 
+	// {
+	// 	end.y = (data->start.y / SPRITE_SIZE) * SPRITE_SIZE;
+	// 	end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y); 
+	// }
+	// {
+	// 	end.y = ((data->start.y / SPRITE_SIZE) + 1) * SPRITE_SIZE;
+	// 	end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y); 		
+	// }
 // order of calculation is important
 t_int_p2	horizontal_ray_collision(t_data *data)
 {
 	t_int_p2	end;
 
 	if (data->start.dir > 270 || data->start.dir < 90)
-		// end = hrc_up(data);
-	{
-		end.y = (data->start.y / SPRITE_SIZE) * SPRITE_SIZE;
-		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y); 
-	}
+		end = hrc_up(data);
 	else if (data->start.dir < 270 && data->start.dir > 90)
-		// end = hrc_down(data);
-	{
-		end.y = ((data->start.y / SPRITE_SIZE) + 1) * SPRITE_SIZE;
-		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y); 		
-	}
+		end = hrc_down(data);
 	else if (data->start.dir == 90)
 	{
 		end.x = 0;
@@ -234,8 +242,8 @@ void draw_player(void* arg)
 
 	data = arg;
 	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
-		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE * \
-		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE * 4);
+		data->dim.dim_x * SPRITE_SIZE * \
+		data->dim.dim_y * SPRITE_SIZE * 4);
 	// draw_fan(data);
 
 	t_int_p2 p = horizontal_ray_collision(data);
@@ -256,9 +264,8 @@ void	set_dim(t_data *data)
 int	render_map(t_data *data)
 {
 	set_dim(data);
-	data->mlx42.mlx_ptr = mlx_init(
-			(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE,
-			(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE, "Cub3D", true);
+	data->mlx42.mlx_ptr = mlx_init(data->dim.dim_x * SPRITE_SIZE, \
+			data->dim.dim_y * SPRITE_SIZE, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	load_pics(data);
 	check_for_tile(data, draw_floor);
