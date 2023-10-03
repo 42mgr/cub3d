@@ -43,7 +43,7 @@ char	**duplicate_maze(int lines, char **maze)
 	int		len;
 	char	**copy;
 
-	copy = (char **)malloc(sizeof(char *) * lines + 1);
+	copy = (char **)malloc(sizeof(char *) * (lines + 1));
 	if (!copy)
 		return (NULL);
 	x = 0;
@@ -190,7 +190,7 @@ int	create_clean_maze(t_data *data)
 
 	y = data->dim.max_y - data->dim.min_y + 1;
 	x = data->dim.max_x - data->dim.min_x + 1;
-	data->maze_cpy = (char **)malloc(sizeof(char *) * y + 1);
+	data->maze_cpy = (char **)malloc(sizeof(char *) * (y + 1));
 	if (!data->maze_cpy)
 		return (1);
 	data->maze_cpy[y] = NULL;

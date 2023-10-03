@@ -113,7 +113,7 @@ void	draw_fan(t_data *data)
 }
 
 // no access protection yet and only checking 10 fields deep
-t_int_p2	hrc_top(t_data *data)
+t_int_p2	hrc_up(t_data *data)
 {
 	t_int_p2	end;
 	int 		i;
@@ -122,8 +122,25 @@ t_int_p2	hrc_top(t_data *data)
 	while (1 && i < 10)
 	{
 		end.y = ((data->start.y / SPRITE_SIZE) - i) * SPRITE_SIZE;
-		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y - (i * SPRITE_SIZE)); 
-		if (data->maze_cpy[(end.y/SPRITE_SIZE - 1)][(end.x/SPRITE_SIZE)] == '1')
+		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y + (i * SPRITE_SIZE));
+		if (data->maze_cpy[end.y / SPRITE_SIZE - 1][(end.x / SPRITE_SIZE)] == '1')
+			break ;
+		i++;
+	}
+	return (end);
+}
+
+t_int_p2	hrc_down(t_data *data)
+{
+	t_int_p2	end;
+	int 		i;
+
+	i = 0;
+	while (1 && i < 10)
+	{
+		end.y = ((data->start.y / SPRITE_SIZE) + 1 + i) * SPRITE_SIZE;
+		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y + (i * SPRITE_SIZE));
+		if (data->maze_cpy[(end.y/SPRITE_SIZE)][(end.x/SPRITE_SIZE)] == '1')
 			break ;
 		i++;
 	}
@@ -136,12 +153,13 @@ t_int_p2	horizontal_ray_collision(t_data *data)
 	t_int_p2	end;
 
 	if (data->start.dir > 270 || data->start.dir < 90)
-		end = hrc_top(data);
-	// {
-	// 	end.y = (data->start.y / SPRITE_SIZE) * SPRITE_SIZE;
-	// 	end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y); 
-	// }
+		// end = hrc_up(data);
+	{
+		end.y = (data->start.y / SPRITE_SIZE) * SPRITE_SIZE;
+		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y); 
+	}
 	else if (data->start.dir < 270 && data->start.dir > 90)
+		// end = hrc_down(data);
 	{
 		end.y = ((data->start.y / SPRITE_SIZE) + 1) * SPRITE_SIZE;
 		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y); 		
@@ -229,8 +247,15 @@ void draw_player(void* arg)
 	mlx_put_pixel(data->mlx42.mm_player_img, 10, 100, 0xFF0000FF);
 }
 
+void	set_dim(t_data *data)
+{
+	data->dim.dim_x = data->dim.max_x - data->dim.min_x + 1;
+	data->dim.dim_y = data->dim.max_y - data->dim.min_y + 1;
+}
+
 int	render_map(t_data *data)
 {
+	set_dim(data);
 	data->mlx42.mlx_ptr = mlx_init(
 			(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE,
 			(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE, "Cub3D", true);

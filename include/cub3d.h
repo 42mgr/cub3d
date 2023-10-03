@@ -75,6 +75,8 @@ typedef struct s_llen
 /**
  * Helps to navigate around the char **maze, stay inside boundaries
  * and draw the 2D minimap
+ * dim_x and dim_y refer to the dimension of the acutal maze matrix
+ *  (at the moment called maze_cpy)
 */
 typedef struct s_dim
 {
@@ -83,6 +85,8 @@ typedef struct s_dim
 	int		min_y;
 	int		max_x;
 	int		max_y;
+	int		dim_x;
+	int		dim_y;
 }				t_dim;
 
 typedef struct s_mlx42
