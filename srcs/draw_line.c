@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:45:21 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/02 12:54:04 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/03 18:24:22 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	draw_line_case_b(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 	}
 }
 
-void	truncate_coordinates(t_data *data, t_int_p2 *a)
+void	truncate_coordinates2(t_data *data, t_int_p2 *a)
 {
 	if (a->x > (data->dim.max_x - data->dim.min_x)* SPRITE_SIZE)
 		a->x = (data->dim.max_x - data->dim.min_x) * SPRITE_SIZE;
@@ -74,6 +74,15 @@ void	truncate_coordinates(t_data *data, t_int_p2 *a)
 		a->y = (data->dim.max_y - data->dim.min_y) * SPRITE_SIZE;
 	if (a->y < 0)
 		a->y = 0;
+}
+
+void	truncate_coordinates(t_data *data, t_int_p2 *a)
+{
+	if (a->x > data->dim.dim_x * SPRITE_SIZE || \
+		a->x < 0 || \
+		a->y > data->dim.dim_y * SPRITE_SIZE || \
+		a->y < 0)
+		*a = (t_int_p2){0, 0};
 }
 
 /**

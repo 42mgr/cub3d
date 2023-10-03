@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/02 16:46:45 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/03 17:24:57 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@
 # define WALL_OFFSET 5
 # define L_BLUE 0x6DC5FF
 # define L_GREEN 0x90EE90
-# define L_RED 0xFFCCCB
+# define L_RED 0xFF3B01FF
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -152,5 +152,11 @@ void	move_down(t_data *data);
 void	move_left(t_data *data);
 void	move_right(t_data *data);
 void 	move_player(void* arg);
+
+// ray_collision.c
+t_int_p2	hrc_up(t_data *data);
+t_int_p2	hrc_down(t_data *data);
+t_int_p2	horizontal_ray_collision(t_data *data);
+t_int_p2	vertical_ray_collision(t_data *data);
 
 #endif
