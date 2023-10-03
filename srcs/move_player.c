@@ -59,5 +59,5 @@ void move_player(void* arg)
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_A))
 		data->start.dir = (data->start.dir + 1) % 360;
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_D))
-		data->start.dir = (data->start.dir - 1) % 360;
+		data->start.dir = (data->start.dir + 359) % 360;
 }
