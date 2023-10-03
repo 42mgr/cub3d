@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_map.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/03 19:14:32 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/03 20:36:56 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,25 +112,45 @@ void	draw_fan(t_data *data)
 	}
 }
 
+float	dist(t_int_p2 a, t_int_p2 b)
+{
+	return(sqrt(((a.x - b.x) * (a.x - b.x)) + ((a.y - b.y) * (a.y - b.y))));
+}
+
+void	ray(t_data *data)
+{
+	t_int_p2	q;
+	t_int_p2	p;
+	
+	q = horizontal_ray_collision(data);
+	p = vertical_ray_collision(data);
+	if (q.x == 0 && q.y == 0)
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+	else if (p.x == 0 && p.y == 0)
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+	else if (dist((t_int_p2){data->start.x, data->start.y}, p) > dist((t_int_p2){data->start.x, data->start.y}, q))
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);
+	else
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+}
+
 // no idea why we need the last 4 multipier
 void draw_player(void* arg)
 {
 	t_data	*data;
+	int		i;
 
 	data = arg;
 	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
 		data->dim.dim_x * SPRITE_SIZE * data->dim.dim_y * SPRITE_SIZE * 4);
-
-	t_int_p2 p = horizontal_ray_collision(data);
-	// t_int_p2 p = vertical_ray_collision(data);
-	// data->maze_cpy[(p.y/SPRITE_SIZE)][(p.x/SPRITE_SIZE)]
-	printf("p coordinates: x = %d, y = %d, maze_cpy[][] = %c\n", p.x, p.y, 99);
-	printf("p.y/SPRITE_SIZE = %d, p.x/SPRITE_SIZE = %d, start.dir = %d\n", p.y/SPRITE_SIZE, p.x/SPRITE_SIZE, data->start.dir);
-	draw_fan(data);
-	// draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);
-	draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
-	mlx_put_pixel(data->mlx42.mm_player_img, data->start.x, data->start.y, 0x000000FF);
-	mlx_put_pixel(data->mlx42.mm_player_img, 10, 100, 0xFF0000FF);
+	i = 0;
+	while (i < 30)
+	{
+		ray(data);
+		data->start.dir++;
+		i++;
+	}
+	data->start.dir-= 30;
 }
 
 void	set_dim(t_data *data)
