@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/03 17:24:57 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/04 19:46:28 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,5 +158,11 @@ t_int_p2	hrc_up(t_data *data);
 t_int_p2	hrc_down(t_data *data);
 t_int_p2	horizontal_ray_collision(t_data *data);
 t_int_p2	vertical_ray_collision(t_data *data);
+
+// game.c
+void	draw_game(void *arg);
+
+// math_helpers.c
+float	dist(t_int_p2 a, t_int_p2 b);
 
 #endif

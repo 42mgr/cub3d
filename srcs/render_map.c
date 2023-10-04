@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/04 12:38:03 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/04 20:28:59 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,10 +112,7 @@ void	draw_fan(t_data *data)
 	}
 }
 
-float	dist(t_int_p2 a, t_int_p2 b)
-{
-	return(sqrt(((a.x - b.x) * (a.x - b.x)) + ((a.y - b.y) * (a.y - b.y))));
-}
+
 
 void	ray(t_data *data)
 {
@@ -144,14 +141,14 @@ void draw_player(void* arg)
 	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
 		data->dim.dim_x * SPRITE_SIZE * data->dim.dim_y * SPRITE_SIZE * 4);
 	i = 0;
-	data->start.dir -= 15;
-	while (i < 30)
+	data->start.dir = (data->start.dir + 337) % 360;
+	while (i < 46)
 	{
 		ray(data);
-		data->start.dir++;
+		data->start.dir = (data->start.dir + 1) % 360;
 		i++;
 	}
-	data->start.dir-= 15;
+	data->start.dir = (data->start.dir + 337) % 360;
 }
 
 void	set_dim(t_data *data)
@@ -174,6 +171,7 @@ int	render_map(t_data *data)
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
 	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, draw_player, data);
+	mlx_loop_hook(data->mlx42.mlx_ptr, draw_game, data);
 	mlx_loop(data->mlx42.mlx_ptr);
 	mlx_close_window(data->mlx42.mlx_ptr);
 	mlx_terminate(data->mlx42.mlx_ptr);
