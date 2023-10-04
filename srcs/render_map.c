@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/03 20:36:56 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/04 12:38:03 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -144,13 +144,14 @@ void draw_player(void* arg)
 	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
 		data->dim.dim_x * SPRITE_SIZE * data->dim.dim_y * SPRITE_SIZE * 4);
 	i = 0;
+	data->start.dir -= 15;
 	while (i < 30)
 	{
 		ray(data);
 		data->start.dir++;
 		i++;
 	}
-	data->start.dir-= 30;
+	data->start.dir-= 15;
 }
 
 void	set_dim(t_data *data)

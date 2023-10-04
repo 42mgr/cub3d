@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_collision.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:08:37 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/03 19:15:06 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/04 12:21:38 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_int_p2	hrc_up(t_data *data)
 	int 		i;
 
 	i = 0;
-	while (1 && i < 10)
+	while (1 && i < 1000)
 	{
 		end.y = ((data->start.y / SPRITE_SIZE) - i) * SPRITE_SIZE;
 		end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y);
@@ -40,7 +40,7 @@ t_int_p2	hrc_down(t_data *data)
 	int 		i;
 
 	i = 0;
-	while (1 && i < 10)
+	while (1 && i < 1000)
 	{
 		end.y = ((data->start.y / SPRITE_SIZE) + 1 + i) * SPRITE_SIZE;
 		end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y);
@@ -79,7 +79,7 @@ t_int_p2	horizontal_ray_collision(t_data *data)
 	}
 	else if(data->start.dir == 270)
 	{
-		end.x = (data->start.x - data->dim.min_x);
+		end.x = (data->dim.dim_x - 1) * SPRITE_SIZE;
 		end.y = data->start.y; 
 	}
 	else
@@ -113,7 +113,7 @@ t_int_p2	vrc_left(t_data *data)
 	int 		i;
 
 	i = 0;
-	while (1 && i < 10)
+	while (1 && i < 1000)
 	{
 		end.x = (data->start.x / SPRITE_SIZE - i) * SPRITE_SIZE;
 		end.y = data->start.y - tan((90 - data->start.dir) / 180.0 * M_PI) * (data->start.x - end.x); 
@@ -121,7 +121,6 @@ t_int_p2	vrc_left(t_data *data)
 			break ;
 		if (end.x / SPRITE_SIZE - 1 < 0 || end.x / SPRITE_SIZE - 1 >= data->dim.dim_x)
 			break ;
-		// mlx_put_pixel(data->mlx42.mm_player_img, end.x, end.y, 0x00FF00FF);
 		if (data->maze_cpy[(end.y / SPRITE_SIZE)][(end.x / SPRITE_SIZE) -1 ] == '1')
 			break ;
 		i++;
@@ -135,7 +134,7 @@ t_int_p2	vrc_right(t_data *data)
 	int 		i;
 
 	i = 0;
-	while (1 && i < 10)
+	while (1 && i < 1000)
 	{
         end.x = (data->start.x / SPRITE_SIZE + 1 + i) * SPRITE_SIZE;
 		end.y = data->start.y - tan((data->start.dir - 270) / 180.0 * M_PI) * (end.x - data->start.x); 
@@ -166,7 +165,7 @@ t_int_p2	vertical_ray_collision(t_data *data)
 	else if(data->start.dir == 180)
 	{
 		end.x = data->start.x; 
-		end.y = (data->start.y - data->dim.min_y);
+		end.y = (data->dim.dim_y - 1) * SPRITE_SIZE;
 	}
 	else
 		end = (t_int_p2){1,1};
