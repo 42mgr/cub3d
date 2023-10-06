@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/04 21:18:42 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/06 15:29:26 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ void	draw_vertical_line(t_data *data, int x, int height, int color)
 	t_int_p2	top;
 	t_int_p2	bottom;
 
+	if (height < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
+		return ;
+	if (height > data->mlx42.mlx_ptr->height - 100)
+		height = data->mlx42.mlx_ptr->height - 100;
 	top.x = x;
 	top.y = (data->dim.dim_y * SPRITE_SIZE / 2) - (height / 2);
 	bottom.x = x;
@@ -30,41 +34,47 @@ void	draw_vertical_line(t_data *data, int x, int height, int color)
 	draw_line(data, top, bottom, color);
 }
 
-
-void	tmp_lines(t_data *data, int x)
+void	tmp_lines(t_data *data, int x, float angle)
 {
 	t_int_p2	q;
 	t_int_p2	p;
 	float		dist_to_q;
 	float		dist_to_p;
 	
-	q = horizontal_ray_collision(data);
-	p = vertical_ray_collision(data);
+	q = horizontal_ray_collision(data, angle);
+	p = vertical_ray_collision(data, angle);
 	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
 	dist_to_q = dist((t_int_p2){data->start.x, data->start.y}, q);
 	if (q.x == 0 && q.y == 0)
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
 	else if (p.x == 0 && p.y == 0)
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
-	else if (dist_to_p > dist_to_q)
-		draw_vertical_line(data, x, (40000.0 / dist_to_q), L_GREEN);
+	else if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
+		draw_vertical_line(data, x, 60000.0 / (dist_to_q * \
+			cos((data->start.dir * M_PI / 180.0) - angle)), L_BLUE);
 	else
-		draw_vertical_line(data, x, (40000.0 / dist_to_p), L_RED);
+	{
+		draw_vertical_line(data, x, 60000.0 / (dist_to_p * \
+			cos((data->start.dir * M_PI / 180.0) - angle)), L_RED);
+		// printf("dist_to_p = %f, dist_to_q = %f\n", dist_to_p, dist_to_q);	
+	}
 }
 
 void	draw_game(void *arg)
 {
 	t_data		*data;
-
+	int			ray_angle;
+	
 	data = arg;
 	int i = 0;
-	data->start.dir = (data->start.dir + 23) % 360;
-	while (i < 46)
+	ray_angle = ((data->start.dir + 23) % 360) * 10;
+
+	while (i < 460)
 	{
-		tmp_lines(data, i * 10 + 20);
-		data->start.dir = (data->start.dir + 359) % 360;
+		tmp_lines(data, i + 20, ray_angle * M_PI / 1800.0);
+		ray_angle = (ray_angle + 3599) % 3600;
 		i++;
 	}
-	data->start.dir = (data->start.dir + 23) % 360;
+	//debug_screen(data);
 	return ;
 }

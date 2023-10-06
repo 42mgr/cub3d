@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/04 20:28:59 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/06 16:20:19 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,25 +114,54 @@ void	draw_fan(t_data *data)
 
 
 
-void	ray(t_data *data)
+void	ray2(t_data *data, float angle)
 {
 	t_int_p2	q;
 	t_int_p2	p;
 	
-	q = horizontal_ray_collision(data);
-	p = vertical_ray_collision(data);
+	q = horizontal_ray_collision(data, angle);
+	p = vertical_ray_collision(data, angle);
 	if (q.x == 0 && q.y == 0)
-		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_WHITE);
 	else if (p.x == 0 && p.y == 0)
-		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_WHITE);
 	else if (dist((t_int_p2){data->start.x, data->start.y}, p) > dist((t_int_p2){data->start.x, data->start.y}, q))
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);
 	else
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
 }
 
+void	ray(t_data *data, float angle)
+{
+	t_int_p2	q;
+	t_int_p2	p;
+	float		dist_to_q;
+	float		dist_to_p;
+	
+	q = horizontal_ray_collision(data, angle);
+	p = vertical_ray_collision(data, angle);
+	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
+	dist_to_q = dist((t_int_p2){data->start.x, data->start.y}, q);
+	if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);	
+		// draw_vertical_line(data, x, 60000.0 / (dist_to_q * \
+		// 	cos((data->start.dir * M_PI / 180.0) - angle)), L_GREEN);
+	else if (dist_to_p < dist_to_q || isnan(dist_to_q) == 1)
+	{
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+		// draw_vertical_line(data, x, 60000.0 / (dist_to_p * \
+		// 	cos((data->start.dir * M_PI / 180.0) - angle)), L_RED);
+	}
+	else if (p.x == 0 && p.y == 0)
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+	else if (q.x == 0 && q.y == 0)
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+	else
+		draw_line(data, (t_int_p2){100, 100}, (t_int_p2){400, 400}, L_RED);
+}
+
 // no idea why we need the last 4 multipier
-void draw_player(void* arg)
+void draw_player2(void* arg)
 {
 	t_data	*data;
 	int		i;
@@ -144,11 +173,36 @@ void draw_player(void* arg)
 	data->start.dir = (data->start.dir + 337) % 360;
 	while (i < 46)
 	{
-		ray(data);
+		ray(data, data->start.dir * M_PI / 180.0);
 		data->start.dir = (data->start.dir + 1) % 360;
 		i++;
 	}
 	data->start.dir = (data->start.dir + 337) % 360;
+}
+
+// no idea why we need the last 4 multipier
+void draw_player(void* arg)
+{
+	t_data		*data;
+	int			ray_angle;
+	
+	data = arg;
+	int i = 0;
+	ray_angle = ((data->start.dir + 23) % 360) * 10;
+	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
+		data->dim.dim_x * SPRITE_SIZE * data->dim.dim_y * SPRITE_SIZE * 4);
+	while (i < 460)
+	{
+		ray(data, ray_angle * M_PI / 1800.0);
+		ray_angle = (ray_angle + 3599) % 3600;
+		i++;
+	}
+	return ;
+}
+
+void	debug_screen(t_data* data)
+{
+	mlx_put_string(data->mlx42.mlx_ptr, "hello", 50, 50);
 }
 
 void	set_dim(t_data *data)

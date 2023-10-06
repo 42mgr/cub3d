@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_line.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:45:21 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/03 18:24:22 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/06 16:27:00 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,22 @@ void	truncate_coordinates2(t_data *data, t_int_p2 *a)
 		a->y = 0;
 }
 
-void	truncate_coordinates(t_data *data, t_int_p2 *a)
+int	point_in_window(t_data *data, t_int_p2 *a)
 {
-	if (a->x > data->dim.dim_x * SPRITE_SIZE || \
-		a->x < 0 || \
-		a->y > data->dim.dim_y * SPRITE_SIZE || \
-		a->y < 0)
-		*a = (t_int_p2){0, 0};
+	if (a->x > data->dim.dim_x * SPRITE_SIZE || a->x < 0 || \
+		a->y > data->dim.dim_y * SPRITE_SIZE || a->y < 0)
+		return (0);
+	else
+		return (1);
+}
+
+void	truncate_coordinates(t_data *data, t_int_p2 *p)
+{
+	if (point_in_window(data, p) == 0)
+	{
+		// printf("*p = %d, %d\n (width = %d, height = %d)", p->x, p->y, data->mlx42.mlx_ptr->width, data->mlx42.mlx_ptr->height);
+		*p = (t_int_p2){50, 50};
+	}
 }
 
 /**

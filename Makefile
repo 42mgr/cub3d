@@ -1,4 +1,4 @@
-NAME ?= cub3d
+NAME ?= cub3D
 BONUS_NAME ?=
 
 BUILD_DIR ?= ./objs

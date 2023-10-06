@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/04 19:46:28 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/06 15:28:29 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 # define SPRITE_SIZE 64
 # define WALL_OFFSET 5
-# define L_BLUE 0x6DC5FF
-# define L_GREEN 0x90EE90
-# define L_RED 0xFF3B01FF
+# define L_BLUE 0x90EE90
+# define L_RED 0xFF3B0190
+# define L_WHITE 0xFFFFFFFF
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -154,15 +154,16 @@ void	move_right(t_data *data);
 void 	move_player(void* arg);
 
 // ray_collision.c
-t_int_p2	hrc_up(t_data *data);
-t_int_p2	hrc_down(t_data *data);
-t_int_p2	horizontal_ray_collision(t_data *data);
-t_int_p2	vertical_ray_collision(t_data *data);
+t_int_p2	hrc_up(t_data *data, float angle);
+t_int_p2	hrc_down(t_data *data, float angle);
+t_int_p2	horizontal_ray_collision(t_data *data, float angle);
+t_int_p2	vertical_ray_collision(t_data *data, float angle);
 
 // game.c
 void	draw_game(void *arg);
 
 // math_helpers.c
 float	dist(t_int_p2 a, t_int_p2 b);
+void	debug_screen(t_data* data);
 
 #endif
