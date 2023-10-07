@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/06 15:28:29 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/07 14:46:31 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <errno.h>
 # include <string.h>
 # include <math.h>
+# include <limits.h>
 
 # define NORTH 0
 # define EAST 90
@@ -32,9 +33,12 @@
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 # define SPRITE_SIZE 64
 # define WALL_OFFSET 5
+
+// Color macros
 # define L_BLUE 0x90EE90
 # define L_RED 0xFF3B0190
 # define L_WHITE 0xFFFFFFFF
+# define YELLOW 0xFFEA00
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)

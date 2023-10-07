@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/06 16:20:19 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/07 14:44:18 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,6 +142,8 @@ void	ray(t_data *data, float angle)
 	p = vertical_ray_collision(data, angle);
 	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
 	dist_to_q = dist((t_int_p2){data->start.x, data->start.y}, q);
+	if (p.x < 0 || q.x < 0)
+		printf("p = (%d, %d), q = (%d, %d) distp = %f, distq = %f\n", p.x, p.y, q.x, q.y, dist_to_p, dist_to_q);
 	if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);	
 		// draw_vertical_line(data, x, 60000.0 / (dist_to_q * \
@@ -153,11 +155,11 @@ void	ray(t_data *data, float angle)
 		// 	cos((data->start.dir * M_PI / 180.0) - angle)), L_RED);
 	}
 	else if (p.x == 0 && p.y == 0)
-		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, YELLOW);
 	else if (q.x == 0 && q.y == 0)
-		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, YELLOW);
 	else
-		draw_line(data, (t_int_p2){100, 100}, (t_int_p2){400, 400}, L_RED);
+		draw_line(data, (t_int_p2){100, 100}, (t_int_p2){400, 400}, YELLOW);
 }
 
 // no idea why we need the last 4 multipier
