@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/06 15:29:26 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/07 15:13:47 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,20 @@ void	tmp_lines(t_data *data, int x, float angle)
 	else if (p.x == 0 && p.y == 0)
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
 	else if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
-		draw_vertical_line(data, x, 60000.0 / (dist_to_q * \
-			cos((data->start.dir * M_PI / 180.0) - angle)), L_BLUE);
+		if (angle < M_PI / 2.0 || angle > M_PI *3.0 / 2.0)
+			draw_vertical_line(data, x, 60000.0 / (dist_to_q * \
+				cos((data->start.dir * M_PI / 180.0) - angle)), GREY_A);
+		else
+			draw_vertical_line(data, x, 60000.0 / (dist_to_q * \
+				cos((data->start.dir * M_PI / 180.0) - angle)), GREY_B);
 	else
 	{
-		draw_vertical_line(data, x, 60000.0 / (dist_to_p * \
-			cos((data->start.dir * M_PI / 180.0) - angle)), L_RED);
-		// printf("dist_to_p = %f, dist_to_q = %f\n", dist_to_p, dist_to_q);	
+		if (angle < M_PI)
+			draw_vertical_line(data, x, 60000.0 / (dist_to_p * \
+				cos((data->start.dir * M_PI / 180.0) - angle)), GREY_C);
+		else
+			draw_vertical_line(data, x, 60000.0 / (dist_to_p * \
+				cos((data->start.dir * M_PI / 180.0) - angle)), GREY_D);	
 	}
 }
 

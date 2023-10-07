@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/07 14:46:31 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/07 15:32:07 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,14 @@
 # define L_BLUE 0x90EE90
 # define L_RED 0xFF3B0190
 # define L_WHITE 0xFFFFFFFF
-# define YELLOW 0xFFEA00
+# define YELLOW 0xFFEA00FF
+# define GREY_A 0xC0C0C0FF
+# define GREY_B 0xA0A0A0FF
+# define GREY_C 0x707070FF
+# define GREY_D 0x484848FF
+# define SKY_BLUE 0x87CEEB88
+# define MUD_BROWN 0x553F2388
+
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -103,6 +110,8 @@ typedef struct s_mlx42
 	mlx_image_t *mm_white_img;
 	mlx_image_t *mm_grey_img;
 	mlx_image_t	*mm_player_img;
+	mlx_image_t	*mm_floor_img;
+	mlx_image_t	*mm_ceiling_img;
 }			t_mlx42;
 
 /**

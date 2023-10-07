@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/07 14:44:18 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/07 16:52:18 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,72 @@ void	debug_screen(t_data* data)
 	mlx_put_string(data->mlx42.mlx_ptr, "hello", 50, 50);
 }
 
+void	fill_sky(t_data *data)
+{
+	int i;
+	int	j;
+	int	height;
+	int	width;
+
+	i = 0;
+	j = 0;
+	height = SPRITE_SIZE * data->dim.dim_y / 2;
+	width = SPRITE_SIZE * data->dim.dim_x;
+	while (j < height)
+	{
+		i = 0;
+		while (i < width)
+		{
+			mlx_put_pixel(data->mlx42.mm_ceiling_img, i, j, SKY_BLUE);
+			i++;
+		}
+		j++;
+	}
+}
+
+void	fill_floor(t_data *data)
+{
+	int i;
+	int	j;
+	int	height;
+	int	width;
+
+	height = SPRITE_SIZE * data->dim.dim_y / 2;
+	width = SPRITE_SIZE * data->dim.dim_x;
+	i = 0;
+	j = 0;
+	while (j < height)
+	{
+		i = 0;
+		while (i < width)
+		{
+			mlx_put_pixel(data->mlx42.mm_floor_img, i, j, MUD_BROWN);
+			i++;
+		}
+		j++;
+	}
+}
+
+void	create_floor_ceiling_image(t_data *data)
+{
+	mlx_t	*mlx;
+	int		height;
+	int		width;
+	int		num_pixels;
+
+	mlx = data->mlx42.mlx_ptr;
+	height = SPRITE_SIZE * data->dim.dim_y / 2;
+	width = SPRITE_SIZE * data->dim.dim_x;
+	num_pixels = SPRITE_SIZE * data->dim.dim_y / 2 * \
+		SPRITE_SIZE * data->dim.dim_x;
+	data->mlx42.mm_floor_img = mlx_new_image(data->mlx42.mlx_ptr, width, height);
+	data->mlx42.mm_ceiling_img = mlx_new_image(data->mlx42.mlx_ptr, width, height);
+	fill_sky(data);
+	fill_floor(data);
+	mlx_image_to_window(mlx, data->mlx42.mm_ceiling_img, 0, 0);
+	mlx_image_to_window(mlx, data->mlx42.mm_floor_img, 0, height);
+}
+	
 void	set_dim(t_data *data)
 {
 	data->dim.dim_x = data->dim.max_x - data->dim.min_x + 1;
@@ -220,9 +286,10 @@ int	render_map(t_data *data)
 			data->dim.dim_y * SPRITE_SIZE, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	load_pics(data);
-	check_for_tile(data, draw_floor);
-	check_for_tile(data, which_picture);
-	mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
+	// check_for_tile(data, draw_floor);
+	// check_for_tile(data, which_picture);
+	// mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
+	create_floor_ceiling_image(data);
 	create_image_player(data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
 	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
