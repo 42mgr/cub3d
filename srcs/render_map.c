@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/07 16:52:18 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/08 12:12:20 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -286,9 +286,9 @@ int	render_map(t_data *data)
 			data->dim.dim_y * SPRITE_SIZE, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	load_pics(data);
-	// check_for_tile(data, draw_floor);
-	// check_for_tile(data, which_picture);
-	// mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
+	check_for_tile(data, draw_floor);
+	check_for_tile(data, which_picture);
+	mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
 	create_floor_ceiling_image(data);
 	create_image_player(data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);

@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/07 15:32:07 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/08 12:14:45 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@
 # define GREY_B 0xA0A0A0FF
 # define GREY_C 0x707070FF
 # define GREY_D 0x484848FF
-# define SKY_BLUE 0x87CEEB88
-# define MUD_BROWN 0x553F2388
+# define SKY_BLUE 0x87CEEBAA
+# define MUD_BROWN 0x553F23AA
 
 
 /**
