@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/09 14:39:31 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/09 14:52:22 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,8 @@ void	draw_vertical_texture_1(t_data *data, int x, int height, t_int_p2 loc)
 	pos_in_img = loc.x % SPRITE_SIZE;
 	if (height < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
-	if (height > data->mlx42.mlx_ptr->height - 100)
-		height = data->mlx42.mlx_ptr->height - 100;
+	// if (height > data->mlx42.mlx_ptr->height - 100)
+	// 	height = data->mlx42.mlx_ptr->height - 100;
 	top.x = x;
 	top.y = (data->dim.dim_y * SPRITE_SIZE / 2) - (height / 2);
 	bottom.x = x;
@@ -72,7 +72,8 @@ void	draw_vertical_texture_1(t_data *data, int x, int height, t_int_p2 loc)
 		pxl += data->mlx42.n_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 2] * 0x0000100;
 		pxl += data->mlx42.n_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 1] * 0x0010000;
 		pxl += data->mlx42.n_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 0] * 0x1000000;
-		mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
+		if (top.y + i >= 50 && top.y + i < data->mlx42.mlx_ptr->height - 50)
+			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
 	}
 }
