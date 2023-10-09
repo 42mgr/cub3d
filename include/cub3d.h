@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/08 12:14:45 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/08 20:34:43 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,6 +112,7 @@ typedef struct s_mlx42
 	mlx_image_t	*mm_player_img;
 	mlx_image_t	*mm_floor_img;
 	mlx_image_t	*mm_ceiling_img;
+	mlx_image_t	*n_wall;
 }			t_mlx42;
 
 /**
@@ -136,6 +137,15 @@ typedef struct s_int_p2
 	int	x;
 	int	y;
 }				t_int_p2;
+
+/**
+ * holds two doubles repesenting x and y coorinates
+*/
+typedef struct s_point
+{
+	double	x;
+	double	y;
+}				t_point;
 
 // check_args.c
 int		check_args(int ac, char **av);
@@ -167,16 +177,16 @@ void	move_right(t_data *data);
 void 	move_player(void* arg);
 
 // ray_collision.c
-t_int_p2	hrc_up(t_data *data, float angle);
-t_int_p2	hrc_down(t_data *data, float angle);
-t_int_p2	horizontal_ray_collision(t_data *data, float angle);
-t_int_p2	vertical_ray_collision(t_data *data, float angle);
+t_int_p2	hrc_up(t_data *data, double angle);
+t_int_p2	hrc_down(t_data *data, double angle);
+t_int_p2	horizontal_ray_collision(t_data *data, double angle);
+t_int_p2	vertical_ray_collision(t_data *data, double angle);
 
 // game.c
 void	draw_game(void *arg);
 
 // math_helpers.c
-float	dist(t_int_p2 a, t_int_p2 b);
+double	dist(t_int_p2 a, t_int_p2 b);
 void	debug_screen(t_data* data);
 
 #endif

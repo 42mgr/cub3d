@@ -6,14 +6,13 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:08:37 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/05 19:47:52 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/08 15:29:41 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// no access protection yet and only checking 10 fields deep
-t_int_p2	hrc_up(t_data *data, float angle)
+t_int_p2	hrc_up(t_data *data, double angle)
 {
 	t_int_p2	end;
 	int 		i;
@@ -34,7 +33,7 @@ t_int_p2	hrc_up(t_data *data, float angle)
 	return (end);
 }
 
-t_int_p2	hrc_down(t_data *data, float angle)
+t_int_p2	hrc_down(t_data *data, double angle)
 {
 	t_int_p2	end;
 	int 		i;
@@ -55,16 +54,8 @@ t_int_p2	hrc_down(t_data *data, float angle)
 	return (end);
 }
 
-	// {
-	// 	end.y = (data->start.y / SPRITE_SIZE) * SPRITE_SIZE;
-	// 	end.x = data->start.x - tan(data->start.dir / 180.0 * M_PI) * (data->start.y - end.y); 
-	// }
-	// {
-	// 	end.y = ((data->start.y / SPRITE_SIZE) + 1) * SPRITE_SIZE;
-	// 	end.x = data->start.x - tan((data->start.dir - 180) / 180.0 * M_PI) * (data->start.y - end.y); 		
-	// }
 // order of calculation is important
-t_int_p2	horizontal_ray_collision(t_data *data, float angle)
+t_int_p2	horizontal_ray_collision(t_data *data, double angle)
 {
 	t_int_p2	end;
 	
@@ -90,27 +81,7 @@ t_int_p2	horizontal_ray_collision(t_data *data, float angle)
 	return (end);
 }
 
-// note: we are not checking for out of boundness of the array
-// array access function?
-// t_int_p2	vrc_left(t_data *data)
-// {
-// 	t_int_p2	end;
-// 	int			i;
-
-// 	i = 0;
-// 	while (1)
-// 	{
-// 		end.x = ((data->start.x / SPRITE_SIZE) - i) * SPRITE_SIZE;
-// 		end.y = data->start.y - tan((90 - data->start.dir) / 180.0 * M_PI) * (data->start.x - end.x - (i * SPRITE_SIZE)); 
-// 		if (data->maze_cpy[(end.y/SPRITE_SIZE - 1)][(end.x/SPRITE_SIZE)] == '1')
-// 			break ;
-// 		i++;
-// 	}
-// 	return (end);
-// }
-
-
-t_int_p2	vrc_left(t_data *data, float angle)
+t_int_p2	vrc_left(t_data *data, double angle)
 {
 	t_int_p2	end;
 	int 		i;
@@ -131,7 +102,7 @@ t_int_p2	vrc_left(t_data *data, float angle)
 	return (end);
 }
 
-t_int_p2	vrc_right(t_data *data, float angle)
+t_int_p2	vrc_right(t_data *data, double angle)
 {
 	t_int_p2	end;
 	int 		i;
@@ -152,7 +123,7 @@ t_int_p2	vrc_right(t_data *data, float angle)
 	return (end);
 }
 
-t_int_p2	vertical_ray_collision(t_data *data, float angle)
+t_int_p2	vertical_ray_collision(t_data *data, double angle)
 {
 	t_int_p2	end;
 
