@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/08 20:44:55 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/09 21:56:52 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,11 +282,28 @@ void	set_dim(t_data *data)
 void	create_wall_images(t_data *data)
 {
 	mlx_texture_t	*north;
+	mlx_texture_t	*east;
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+
+	printf("%s\n", data->textures.n_path);
+	printf("%s\n", data->textures.e_path);
+	printf("%s\n", data->textures.s_path);
+	printf("%s\n", data->textures.w_path);
 
 	north = mlx_load_png(data->textures.n_path);
-	// mlx_new_image(data->mlx42.mlx_ptr, north->width, north->height);
+	east = mlx_load_png(data->textures.e_path);
+	south = mlx_load_png(data->textures.s_path);
+	west = mlx_load_png(data->textures.w_path);
 	data->mlx42.n_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, north);
+	data->mlx42.e_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, east);
+	data->mlx42.s_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, south);
+	data->mlx42.w_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, west);
+
 	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.n_wall, 10, 10);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.e_wall, 42, 10);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.s_wall, 74, 10);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.w_wall, 100, 10);
 }
 
 int	render_map(t_data *data)

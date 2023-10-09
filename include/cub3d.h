@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/08 20:34:43 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/09 21:39:17 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,6 +113,9 @@ typedef struct s_mlx42
 	mlx_image_t	*mm_floor_img;
 	mlx_image_t	*mm_ceiling_img;
 	mlx_image_t	*n_wall;
+	mlx_image_t	*e_wall;
+	mlx_image_t	*s_wall;
+	mlx_image_t	*w_wall;
 }			t_mlx42;
 
 /**
