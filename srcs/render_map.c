@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/07 16:52:18 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/09 21:56:52 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ void	draw_fan(t_data *data)
 
 
 
-void	ray2(t_data *data, float angle)
+void	ray2(t_data *data, double angle)
 {
 	t_int_p2	q;
 	t_int_p2	p;
@@ -131,12 +131,12 @@ void	ray2(t_data *data, float angle)
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
 }
 
-void	ray(t_data *data, float angle)
+void	ray(t_data *data, double angle)
 {
 	t_int_p2	q;
 	t_int_p2	p;
-	float		dist_to_q;
-	float		dist_to_p;
+	double		dist_to_q;
+	double		dist_to_p;
 	
 	q = horizontal_ray_collision(data, angle);
 	p = vertical_ray_collision(data, angle);
@@ -279,6 +279,33 @@ void	set_dim(t_data *data)
 	data->dim.dim_y = data->dim.max_y - data->dim.min_y + 1;
 }
 
+void	create_wall_images(t_data *data)
+{
+	mlx_texture_t	*north;
+	mlx_texture_t	*east;
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+
+	printf("%s\n", data->textures.n_path);
+	printf("%s\n", data->textures.e_path);
+	printf("%s\n", data->textures.s_path);
+	printf("%s\n", data->textures.w_path);
+
+	north = mlx_load_png(data->textures.n_path);
+	east = mlx_load_png(data->textures.e_path);
+	south = mlx_load_png(data->textures.s_path);
+	west = mlx_load_png(data->textures.w_path);
+	data->mlx42.n_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, north);
+	data->mlx42.e_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, east);
+	data->mlx42.s_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, south);
+	data->mlx42.w_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, west);
+
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.n_wall, 10, 10);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.e_wall, 42, 10);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.s_wall, 74, 10);
+	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.w_wall, 100, 10);
+}
+
 int	render_map(t_data *data)
 {
 	set_dim(data);
@@ -286,11 +313,13 @@ int	render_map(t_data *data)
 			data->dim.dim_y * SPRITE_SIZE, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	load_pics(data);
-	// check_for_tile(data, draw_floor);
-	// check_for_tile(data, which_picture);
-	// mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
+	check_for_tile(data, draw_floor);
+	check_for_tile(data, which_picture);
+	mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
 	create_floor_ceiling_image(data);
+	create_wall_images(data);
 	create_image_player(data);
+	printf("path = %s\n", data->textures.e_path);
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
 	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, draw_player, data);

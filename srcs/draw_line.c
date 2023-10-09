@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:45:21 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/07 14:23:14 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/08 16:18:00 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ void	truncate_coordinates(t_data *data, t_int_p2 *p)
 {
 	if (point_in_window(data, p) == 0)
 	{
-		printf("*p = %d, %d (width = %d, height = %d)\n", p->x, p->y, data->mlx42.mlx_ptr->width, data->mlx42.mlx_ptr->height);
-		printf("	dir = %d, start x = %d, y = %d \n", data->start.dir, data->start.x, data->start.y);
+		// printf("*p = %d, %d (width = %d, height = %d)\n", p->x, p->y, data->mlx42.mlx_ptr->width, data->mlx42.mlx_ptr->height);
+		// printf("	dir = %d, start x = %d, y = %d \n", data->start.dir, data->start.x, data->start.y);
 		*p = (t_int_p2){50, 50};
 	}
 }

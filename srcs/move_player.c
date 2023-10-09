@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/04 17:15:52 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/08 12:13:45 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ void move_player(void* arg)
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_S))
 		move_down(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_LEFT))
-		data->start.dir = (data->start.dir + 1) % 360;
+		data->start.dir = (data->start.dir + 2) % 360;
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_RIGHT))
-		data->start.dir = (data->start.dir + 359) % 360;
+		data->start.dir = (data->start.dir + 358) % 360;
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_UP))
 		move_forward(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_DOWN))
