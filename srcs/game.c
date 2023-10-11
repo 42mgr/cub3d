@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/09 21:58:21 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/10 15:58:23 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc)
 	pos_in_img = loc.x % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
-	top.y = (data->dim.dim_y * SPRITE_SIZE / 2) - (d / 2);
+	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
 	s = data->mlx42.n_wall->width * pos_in_img / SPRITE_SIZE; 
 	while (i < d)
 	{
@@ -79,7 +79,7 @@ void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
 	pos_in_img = loc.y % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
-	top.y = (data->dim.dim_y * SPRITE_SIZE / 2) - (d / 2);
+	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
 	s = data->mlx42.e_wall->width * pos_in_img / SPRITE_SIZE; 
 	while (i < d)
 	{
@@ -105,7 +105,7 @@ void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 	pos_in_img = loc.x % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
-	top.y = (data->dim.dim_y * SPRITE_SIZE / 2) - (d / 2);
+	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
 	s = data->mlx42.s_wall->width * pos_in_img / SPRITE_SIZE; 
 	while (i < d)
 	{
@@ -131,7 +131,7 @@ void	draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc)
 	pos_in_img = loc.y % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
-	top.y = (data->dim.dim_y * SPRITE_SIZE / 2) - (d / 2);
+	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
 	s = data->mlx42.w_wall->width * pos_in_img / SPRITE_SIZE; 
 	while (i < d)
 	{

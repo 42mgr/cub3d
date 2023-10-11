@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/09 21:39:17 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/10 20:01:03 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,14 @@
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 # define SPRITE_SIZE 64
 # define WALL_OFFSET 5
+# define WINDOW_WIDTH 1000
+# define WINDOW_HEIGHT 1000
+# define TINY_MAPX 100
+# define TINY_MAPY 100
 
 // Color macros
+// TRA_Y is transparency
+# define TRA_Y 0x00000088
 # define L_BLUE 0x90EE90
 # define L_RED 0xFF3B0190
 # define L_WHITE 0xFFFFFFFF
@@ -116,6 +122,7 @@ typedef struct s_mlx42
 	mlx_image_t	*e_wall;
 	mlx_image_t	*s_wall;
 	mlx_image_t	*w_wall;
+	mlx_image_t	*tiny_map;
 }			t_mlx42;
 
 /**
