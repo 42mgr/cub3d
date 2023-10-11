@@ -1,8 +1,9 @@
-NO maps/map00.cub
-SO maps/map00.cub
-WE ./textures/default_n_wall
-EA ./textures/default_n_wall
-C 225,30,0
+NO ./textures/hieroglyph_sprites_by_asalga1.png
+EA ./textures/hieroglyph_sprites_by_asalga2.png
+SO ./textures/hieroglyph_sprites_by_asalga3.png
+WE ./textures/hieroglyph_sprites_by_asalga4.png
+F 85,63,35
+C 135,206,235
 
                                         1111111111111111111111111
                                         1000000000110000000000001

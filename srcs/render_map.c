@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/09 21:56:52 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/10 19:59:40 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,48 +182,53 @@ void draw_player2(void* arg)
 	data->start.dir = (data->start.dir + 337) % 360;
 }
 
-// no idea why we need the last 4 multipier
+void	clear_image(t_data *data)
+{
+	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
+		data->dim.dim_x * SPRITE_SIZE * data->dim.dim_y * SPRITE_SIZE * 4);
+}
+
+// the last multipier by 4 is needed because 
+//every pixel consists of 4 consecutive uint_8 s
 void draw_player(void* arg)
 {
 	t_data		*data;
-	int			ray_angle;
+	// int			ray_angle;
 	
 	data = arg;
-	int i = 0;
-	ray_angle = ((data->start.dir + 23) % 360) * 10;
-	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
-		data->dim.dim_x * SPRITE_SIZE * data->dim.dim_y * SPRITE_SIZE * 4);
-	while (i < 460)
-	{
-		ray(data, ray_angle * M_PI / 1800.0);
-		ray_angle = (ray_angle + 3599) % 3600;
-		i++;
-	}
+	// int i = 0;
+	// ray_angle = ((data->start.dir + 23) % 360) * 10;
+	clear_image(data);
+	// while (i < 460)
+	// {
+	// 	ray(data, ray_angle * M_PI / 1800.0);
+	// 	ray_angle = (ray_angle + 3599) % 3600;
+	// 	i++;
+	// }
 	return ;
 }
 
-void	debug_screen(t_data* data)
-{
-	mlx_put_string(data->mlx42.mlx_ptr, "hello", 50, 50);
-}
-
-void	fill_sky(t_data *data)
+void	fill_ceiling(t_data *data)
 {
 	int i;
 	int	j;
 	int	height;
 	int	width;
+	int color;
 
 	i = 0;
 	j = 0;
-	height = SPRITE_SIZE * data->dim.dim_y / 2;
-	width = SPRITE_SIZE * data->dim.dim_x;
+	height = WINDOW_HEIGHT / 2;
+	width = WINDOW_WIDTH;
+	color = 0xFF + data->textures.ceiling_rgb[2] * 0x100 + \
+			data->textures.ceiling_rgb[1] * 0x10000 + \
+			data->textures.ceiling_rgb[0] * 0x1000000;
 	while (j < height)
 	{
 		i = 0;
 		while (i < width)
 		{
-			mlx_put_pixel(data->mlx42.mm_ceiling_img, i, j, SKY_BLUE);
+			mlx_put_pixel(data->mlx42.mm_ceiling_img, i, j, color);
 			i++;
 		}
 		j++;
@@ -236,17 +241,21 @@ void	fill_floor(t_data *data)
 	int	j;
 	int	height;
 	int	width;
+	int color;
 
-	height = SPRITE_SIZE * data->dim.dim_y / 2;
-	width = SPRITE_SIZE * data->dim.dim_x;
+	height = WINDOW_HEIGHT / 2;
+	width = WINDOW_HEIGHT;
 	i = 0;
 	j = 0;
+	color = 0xFF + data->textures.floor_rgb[2] * 0x100 + \
+		data->textures.floor_rgb[1] * 0x10000 + \
+		data->textures.floor_rgb[0] * 0x1000000;
 	while (j < height)
 	{
 		i = 0;
 		while (i < width)
 		{
-			mlx_put_pixel(data->mlx42.mm_floor_img, i, j, MUD_BROWN);
+			mlx_put_pixel(data->mlx42.mm_floor_img, i, j, color);
 			i++;
 		}
 		j++;
@@ -258,16 +267,13 @@ void	create_floor_ceiling_image(t_data *data)
 	mlx_t	*mlx;
 	int		height;
 	int		width;
-	int		num_pixels;
 
 	mlx = data->mlx42.mlx_ptr;
-	height = SPRITE_SIZE * data->dim.dim_y / 2;
-	width = SPRITE_SIZE * data->dim.dim_x;
-	num_pixels = SPRITE_SIZE * data->dim.dim_y / 2 * \
-		SPRITE_SIZE * data->dim.dim_x;
+	height = WINDOW_HEIGHT / 2;
+	width = WINDOW_WIDTH;
 	data->mlx42.mm_floor_img = mlx_new_image(data->mlx42.mlx_ptr, width, height);
 	data->mlx42.mm_ceiling_img = mlx_new_image(data->mlx42.mlx_ptr, width, height);
-	fill_sky(data);
+	fill_ceiling(data);
 	fill_floor(data);
 	mlx_image_to_window(mlx, data->mlx42.mm_ceiling_img, 0, 0);
 	mlx_image_to_window(mlx, data->mlx42.mm_floor_img, 0, height);
@@ -286,11 +292,6 @@ void	create_wall_images(t_data *data)
 	mlx_texture_t	*south;
 	mlx_texture_t	*west;
 
-	printf("%s\n", data->textures.n_path);
-	printf("%s\n", data->textures.e_path);
-	printf("%s\n", data->textures.s_path);
-	printf("%s\n", data->textures.w_path);
-
 	north = mlx_load_png(data->textures.n_path);
 	east = mlx_load_png(data->textures.e_path);
 	south = mlx_load_png(data->textures.s_path);
@@ -299,27 +300,34 @@ void	create_wall_images(t_data *data)
 	data->mlx42.e_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, east);
 	data->mlx42.s_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, south);
 	data->mlx42.w_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, west);
+	mlx_delete_texture(north);
+	mlx_delete_texture(east);
+	mlx_delete_texture(south);
+	mlx_delete_texture(west);
+}
 
-	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.n_wall, 10, 10);
-	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.e_wall, 42, 10);
-	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.s_wall, 74, 10);
-	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.w_wall, 100, 10);
+void	create_tiny_map(t_data *data)
+{
+	t_mlx42	mlx42;
+	
+	mlx42 = data->mlx42;
+	mlx42.tiny_map = mlx_new_image(mlx42.mlx_ptr, TINY_MAPX, TINY_MAPY);
+	ft_memset(mlx42.tiny_map->pixels, 255, 4 * TINY_MAPX * TINY_MAPX);
+	mlx_image_to_window(mlx42.mlx_ptr, mlx42.tiny_map, 10, 10);
 }
 
 int	render_map(t_data *data)
 {
 	set_dim(data);
-	data->mlx42.mlx_ptr = mlx_init(data->dim.dim_x * SPRITE_SIZE, \
-			data->dim.dim_y * SPRITE_SIZE, "Cub3D", true);
+	data->mlx42.mlx_ptr = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	load_pics(data);
-	check_for_tile(data, draw_floor);
-	check_for_tile(data, which_picture);
-	mlx_put_pixel(data->mlx42.mm_white_img, 63, 63, 0x000000FF);
+	// load_pics(data);
+	// check_for_tile(data, draw_floor);
+	// check_for_tile(data, which_picture);
 	create_floor_ceiling_image(data);
 	create_wall_images(data);
 	create_image_player(data);
-	printf("path = %s\n", data->textures.e_path);
+	create_tiny_map(data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
 	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
 	mlx_loop_hook(data->mlx42.mlx_ptr, draw_player, data);
