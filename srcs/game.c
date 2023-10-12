@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/12 13:44:51 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/12 16:28:47 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 		pxl += data->mlx42.s_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 2] * 0x0000100;
 		pxl += data->mlx42.s_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 1] * 0x0010000;
 		pxl += data->mlx42.s_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 0] * 0x1000000;
-		if (top.y + i >= 50 && top.y + i < data->mlx42.mlx_ptr->height - 50)
+		if (top.y + i >= 0 && top.y + i < data->mlx42.mlx_ptr->height - 0)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
 	}
@@ -219,7 +219,7 @@ void	draw_game(void *arg)
 			ray_angle -= 2.0 * M_PI;
 		else if (ray_angle < 0)
 			ray_angle += 2.0 * M_PI;
-		vertical_line(data, i + 20, ray_angle);
+		vertical_line(data, i, ray_angle);
 		ray_angle -= 0.000875;
 		i++;
 	}

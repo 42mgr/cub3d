@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/12 14:56:18 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/12 16:28:38 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,9 +89,10 @@ void	create_image_player(t_data *data)
 {
 	data->start.x = (data->start.x - data->dim.min_x) * SPRITE_SIZE + (SPRITE_SIZE / 2);
 	data->start.y = (data->start.y - data->dim.min_y) * SPRITE_SIZE + (SPRITE_SIZE / 2);
-	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, \
-		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, \
-		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE);
+	// data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, \
+	// 	(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, \
+	// 	(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE);
+	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.mm_player_img, 0, 0);
 }
 
