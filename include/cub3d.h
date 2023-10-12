@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/12 13:26:17 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/12 18:09:29 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 # define SPRITE_SIZE 64
 # define WALL_OFFSET 5
-# define WINDOW_WIDTH 1000
+# define WINDOW_WIDTH 920
 # define WINDOW_HEIGHT 1000
 # define TINY_MAPX 100
 # define TINY_MAPY 100
