@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:08:37 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/08 15:29:41 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/11 19:47:20 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ t_int_p2	horizontal_ray_collision(t_data *data, double angle)
 	}
 	else
 	{
-		printf("angle = %f\n", angle);
-		end = (t_int_p2){1,1};
+		end = (t_int_p2){2,2};
 	}
 	return (end);
 }
@@ -142,6 +141,8 @@ t_int_p2	vertical_ray_collision(t_data *data, double angle)
 		end.y = (data->dim.dim_y - 1) * SPRITE_SIZE;
 	}
 	else
+	{
 		end = (t_int_p2){1,1};
+	}
 	return (end);
 }
