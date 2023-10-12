@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/10 19:59:40 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/11 19:48:35 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,8 @@ void	ray(t_data *data, double angle)
 	p = vertical_ray_collision(data, angle);
 	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
 	dist_to_q = dist((t_int_p2){data->start.x, data->start.y}, q);
-	if (p.x < 0 || q.x < 0)
-		printf("p = (%d, %d), q = (%d, %d) distp = %f, distq = %f\n", p.x, p.y, q.x, q.y, dist_to_p, dist_to_q);
+	// if (p.x < 0 || q.x < 0)
+	// 	printf("p = (%d, %d), q = (%d, %d) distp = %f, distq = %f\n", p.x, p.y, q.x, q.y, dist_to_p, dist_to_q);
 	if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);	
 		// draw_vertical_line(data, x, 60000.0 / (dist_to_q * \
@@ -220,7 +220,7 @@ void	fill_ceiling(t_data *data)
 	j = 0;
 	height = WINDOW_HEIGHT / 2;
 	width = WINDOW_WIDTH;
-	color = 0xFF + data->textures.ceiling_rgb[2] * 0x100 + \
+	color = TRA_Y + data->textures.ceiling_rgb[2] * 0x100 + \
 			data->textures.ceiling_rgb[1] * 0x10000 + \
 			data->textures.ceiling_rgb[0] * 0x1000000;
 	while (j < height)
@@ -247,7 +247,7 @@ void	fill_floor(t_data *data)
 	width = WINDOW_HEIGHT;
 	i = 0;
 	j = 0;
-	color = 0xFF + data->textures.floor_rgb[2] * 0x100 + \
+	color = TRA_Y + data->textures.floor_rgb[2] * 0x100 + \
 		data->textures.floor_rgb[1] * 0x10000 + \
 		data->textures.floor_rgb[0] * 0x1000000;
 	while (j < height)
@@ -321,7 +321,7 @@ int	render_map(t_data *data)
 	set_dim(data);
 	data->mlx42.mlx_ptr = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	// load_pics(data);
+	load_pics(data);
 	// check_for_tile(data, draw_floor);
 	// check_for_tile(data, which_picture);
 	create_floor_ceiling_image(data);

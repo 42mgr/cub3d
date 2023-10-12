@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/10 20:01:03 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/12 13:26:17 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,12 @@
 # define TINY_MAPX 100
 # define TINY_MAPY 100
 
+/**
+ * TRA_Y denotes the transparency of the colors and ranges from 00 to FF
+*/
+# define TRA_Y 0x000000FF
+
 // Color macros
-// TRA_Y is transparency
-# define TRA_Y 0x00000088
 # define L_BLUE 0x90EE90
 # define L_RED 0xFF3B0190
 # define L_WHITE 0xFFFFFFFF
