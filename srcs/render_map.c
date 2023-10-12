@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/12 16:28:38 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/12 17:56:47 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,7 @@ void	ray(t_data *data, double angle)
 void	clear_image(t_data *data)
 {
 	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
-		data->dim.dim_x * SPRITE_SIZE * data->dim.dim_y * SPRITE_SIZE * 4);
+		WINDOW_HEIGHT * WINDOW_WIDTH * 4);
 }
 
 // the last multipier by 4 is needed because 
