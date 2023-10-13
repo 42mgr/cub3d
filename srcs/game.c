@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/13 12:26:06 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:56:10 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	draw_vertical_line(t_data *data, int x, int height, int color)
 void	draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	uint32_t 	pxl;
+	uint32_t	pxl;
 	t_int_p2	top;
 	int			pos_in_wall;
 	int			pos_in_texture;
@@ -82,7 +82,7 @@ void	draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc)
 void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	uint32_t 	pxl;
+	uint32_t	pxl;
 	t_int_p2	top;
 	int			pos_in_texture;
 	int			pos_in_wall;
@@ -119,7 +119,7 @@ void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
 void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	uint32_t 	pxl;
+	uint32_t	pxl;
 	t_int_p2	top;
 	int			pos_in_texture;
 	int			pos_in_wall;
@@ -156,7 +156,7 @@ void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 void	draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	uint32_t 	pxl;
+	uint32_t	pxl;
 	t_int_p2	top;
 	int			pos_in_texture;
 	int			pos_in_wall;
@@ -197,7 +197,7 @@ void	vertical_line(t_data *data, int x, double angle)
 	double		dist_to_q;
 	double		dist_to_p;
 	double		fish;
-	
+
 	q = horizontal_ray_collision(data, angle);
 	p = vertical_ray_collision(data, angle);
 	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
@@ -206,7 +206,7 @@ void	vertical_line(t_data *data, int x, double angle)
 	if ((q.x == 0 && q.y == 0) || (p.x == 0 && p.y == 0))
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
 	else if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
-		if (angle < M_PI / 2.0 || angle > M_PI *3.0 / 2.0)
+		if (angle < M_PI / 2.0 || angle > M_PI * 3.0 / 2.0)
 			draw_vertical_texture_s(data, x, 60000.0 / (dist_to_q * fish), q);
 		else
 			draw_vertical_texture_n(data, x, 60000.0 / (dist_to_q * fish), q);
@@ -224,13 +224,14 @@ void	vertical_line(t_data *data, int x, double angle)
 */
 void	draw_game(void *arg)
 {
+	int			i;
 	t_data		*data;
 	double		ray_angle;
 	int			field_of_view;
-	
+
+	i = 0;
 	field_of_view = WINDOW_WIDTH / 20;
 	data = arg;
-	int i = 0;
 	ray_angle = data->start.dir * M_PI / 180.0;
 	ray_angle += field_of_view * M_PI / 360.0;
 	while (i < field_of_view * 20)

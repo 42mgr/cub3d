@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/13 15:43:50 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 16:00:38 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,13 @@ int	valid_pos(t_data *data, t_int_p2 pos)
 {
 	if ((pos.x - WALL_OFFSET) / SPRITE_SIZE >= 0 && \
 		(pos.x - WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_x && \
-		(pos.y - WALL_OFFSET) / SPRITE_SIZE >= 0 &&  \
+		(pos.y - WALL_OFFSET) / SPRITE_SIZE >= 0 && \
 		(pos.y - WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_y && \
 		(pos.x + WALL_OFFSET) / SPRITE_SIZE >= 0 && \
 		(pos.x + WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_x && \
-		(pos.y + WALL_OFFSET) / SPRITE_SIZE >= 0 &&  \
+		(pos.y + WALL_OFFSET) / SPRITE_SIZE >= 0 && \
 		(pos.y + WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_y)
-		if(data->maze_cpy[(pos.y - WALL_OFFSET) / SPRITE_SIZE] \
+		if (data->maze_cpy[(pos.y - WALL_OFFSET) / SPRITE_SIZE] \
 			[pos.x / SPRITE_SIZE] == '0' && \
 			data->maze_cpy[(pos.y + WALL_OFFSET) / SPRITE_SIZE] \
 			[pos.x / SPRITE_SIZE] == '0' && \
@@ -68,11 +68,11 @@ int	valid_pos(t_data *data, t_int_p2 pos)
 			[(pos.x - WALL_OFFSET) / SPRITE_SIZE] == '0' && \
 			data->maze_cpy[pos.y / SPRITE_SIZE] \
 			[(pos.x + WALL_OFFSET) / SPRITE_SIZE] == '0')
-			return(1);
+			return (1);
 		else
-			return(0);
+			return (0);
 	else
-		return(0);
+		return (0);
 }
 
 void	move_forward(t_data *data)
@@ -81,12 +81,11 @@ void	move_forward(t_data *data)
 
 	end_pos.x = data->start.x - (5.0 * sin(data->start.dir / 180.0 * M_PI));
 	end_pos.y = data->start.y - (5.0 * cos(data->start.dir / 180.0 * M_PI));
-
 	if (valid_pos(data, end_pos) == 1)
 	{
 		data->start.x = end_pos.x;
 		data->start.y = end_pos.y;
-	}	
+	}
 }
 
 void	move_backward(t_data *data)
@@ -95,15 +94,14 @@ void	move_backward(t_data *data)
 
 	end_pos.x = data->start.x + (5.0 * sin(data->start.dir / 180.0 * M_PI));
 	end_pos.y = data->start.y + (5.0 * cos(data->start.dir / 180.0 * M_PI));
-
 	if (valid_pos(data, end_pos) == 1)
 	{
 		data->start.x = end_pos.x;
-		data->start.y = end_pos.y;	
+		data->start.y = end_pos.y;
 	}
 }
 
-void move_player(void* arg)
+void	move_player(void *arg)
 {
 	t_data	*data;
 
@@ -125,5 +123,6 @@ void move_player(void* arg)
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_DOWN))
 		move_backward(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_H))
-		data->mlx42.mm_player_img->enabled = !data->mlx42.mm_player_img->enabled;
+		data->mlx42.mm_player_img->enabled = \
+			!data->mlx42.mm_player_img->enabled;
 }

@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 16:45:21 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/08 16:18:00 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:53:33 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	draw_line_case_a(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 		inc = -1;
 	while (abs1(i) < abs1(d.x))
 	{
-		mlx_put_pixel(data->mlx42.mm_player_img, a.x + i, a.y + (d.y * i / d.x), color);
+		mlx_put_pixel(data->mlx42.mm_player_img, a.x + i, \
+			a.y + (d.y * i / d.x), color);
 		i += inc;
 	}
 }
@@ -66,11 +67,11 @@ void	draw_line_case_b(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 
 void	truncate_coordinates2(t_data *data, t_int_p2 *a)
 {
-	if (a->x > (data->dim.max_x - data->dim.min_x)* SPRITE_SIZE)
+	if (a->x > (data->dim.max_x - data->dim.min_x) * SPRITE_SIZE)
 		a->x = (data->dim.max_x - data->dim.min_x) * SPRITE_SIZE;
 	if (a->x < 0)
 		a->x = 0;
-	if (a->y > (data->dim.max_y - data->dim.min_y)* SPRITE_SIZE)
+	if (a->y > (data->dim.max_y - data->dim.min_y) * SPRITE_SIZE)
 		a->y = (data->dim.max_y - data->dim.min_y) * SPRITE_SIZE;
 	if (a->y < 0)
 		a->y = 0;
@@ -89,8 +90,6 @@ void	truncate_coordinates(t_data *data, t_int_p2 *p)
 {
 	if (point_in_window(data, p) == 0)
 	{
-		// printf("*p = %d, %d (width = %d, height = %d)\n", p->x, p->y, data->mlx42.mlx_ptr->width, data->mlx42.mlx_ptr->height);
-		// printf("	dir = %d, start x = %d, y = %d \n", data->start.dir, data->start.x, data->start.y);
 		*p = (t_int_p2){50, 50};
 	}
 }
@@ -99,7 +98,7 @@ void	truncate_coordinates(t_data *data, t_int_p2 *p)
  * draws line from point a to point b with color
  * if a or b have coordinated that are out of the image they are truncated
 */
-void draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color)
+void	draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color)
 {
 	truncate_coordinates(data, &a);
 	truncate_coordinates(data, &b);

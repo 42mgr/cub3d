@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 19:45:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/08 13:31:42 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:57:29 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,5 @@ double	dist(t_int_p2 a, t_int_p2 b)
 	ay = a.y;
 	bx = b.x;
 	by = b.y;
-	return(sqrt(((ax - bx) * (ax - bx)) + ((ay - by) * (ay - by))));
+	return (sqrt(((ax - bx) * (ax - bx)) + ((ay - by) * (ay - by))));
 }

@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/13 12:49:23 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 16:11:06 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,12 @@ void	load_texture(mlx_t *mlx, mlx_image_t **image, char *path)
 
 void	load_pics(t_data *data)
 {
-	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_black_img), "textures/minimap/mm_black_64x64.xpm42");
-	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_grey_img), "textures/minimap/mm_grey_64x64.xpm42");
-	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_white_img), "textures/minimap/mm_white_64x64.xpm42");
+	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_black_img), \
+		"textures/minimap/mm_black_64x64.xpm42");
+	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_grey_img), \
+		"textures/minimap/mm_grey_64x64.xpm42");
+	load_texture(data->mlx42.mlx_ptr, &(data->mlx42.mm_white_img), \
+		"textures/minimap/mm_white_64x64.xpm42");
 }
 
 void	draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x)
@@ -39,7 +42,8 @@ void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int))
 	int	y;
 
 	y = 0;
-	while (data->maze[y + data->dim.min_y] && y < data->dim.max_y - data->dim.min_y + 1)
+	while (data->maze[y + data->dim.min_y] && \
+		y < data->dim.max_y - data->dim.min_y + 1)
 	{
 		x = 0;
 		while (x < data->dim.max_x - data->dim.min_x + 1)
@@ -75,15 +79,18 @@ void	which_picture(t_data *data, int y, int x)
  * ensures that the window is closed when ESC is pressed
  * @param arg void pointer to the mlx_t instance
 */
-void esc_hook(void* arg)
+void	esc_hook(void *arg)
 {
-	mlx_t* mlx;
+	mlx_t	*mlx;
 
 	mlx = arg;
 	if (mlx_is_key_down(mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(mlx);
 }
 
+/*	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, 
+		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, 
+		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE); */
 /**
  * creates new image where the game is drawn on (size is given by defines)
  * sets inital position of player to be in the middle of it's starting square
@@ -92,12 +99,12 @@ void esc_hook(void* arg)
 */
 void	create_image_player(t_data *data)
 {
-	data->start.x = (data->start.x - data->dim.min_x) * SPRITE_SIZE + (SPRITE_SIZE / 2);
-	data->start.y = (data->start.y - data->dim.min_y) * SPRITE_SIZE + (SPRITE_SIZE / 2);
-	// data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, \
-	// 	(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE, \
-	// 	(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE);
-	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
+	data->start.x = \
+		(data->start.x - data->dim.min_x) * SPRITE_SIZE + (SPRITE_SIZE / 2);
+	data->start.y = \
+		(data->start.y - data->dim.min_y) * SPRITE_SIZE + (SPRITE_SIZE / 2);
+	data->mlx42.mm_player_img = \
+		mlx_new_image(data->mlx42.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.mm_player_img, 0, 0);
 }
 
@@ -112,7 +119,7 @@ void	ray(t_data *data, double angle)
 	t_int_p2	p;
 	double		dist_to_q;
 	double		dist_to_p;
-	
+
 	q = horizontal_ray_collision(data, angle);
 	p = vertical_ray_collision(data, angle);
 	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
@@ -149,21 +156,21 @@ void	clear_image(t_data *data)
  * draws in illegal places
  * @param arg the void pointer to the data pointer struct
 */
-void draw_player(void* arg)
-{
-	t_data		*data;
 	// int			ray_angle;
-	
-	data = arg;
 	// int i = 0;
 	// ray_angle = ((data->start.dir + 23) % 360) * 10;
-	clear_image(data);
 	// while (i < 460)
 	// {
 	// 	ray(data, ray_angle * M_PI / 1800.0);
 	// 	ray_angle = (ray_angle + 3599) % 3600;
 	// 	i++;
 	// }
+void	draw_player(void *arg)
+{
+	t_data		*data;
+
+	data = arg;
+	clear_image(data);
 	return ;
 }
 
@@ -173,11 +180,11 @@ void draw_player(void* arg)
 */
 void	fill_ceiling(t_data *data)
 {
-	int i;
+	int	i;
 	int	j;
 	int	height;
 	int	width;
-	int color;
+	int	color;
 
 	i = 0;
 	j = 0;
@@ -205,11 +212,11 @@ void	fill_ceiling(t_data *data)
 */
 void	fill_floor(t_data *data)
 {
-	int i;
+	int	i;
 	int	j;
 	int	height;
 	int	width;
-	int color;
+	int	color;
 
 	height = WINDOW_HEIGHT / 2;
 	width = WINDOW_WIDTH;
@@ -246,8 +253,10 @@ void	create_floor_ceiling_image(t_data *data)
 	mlx = data->mlx42.mlx_ptr;
 	height = WINDOW_HEIGHT / 2;
 	width = WINDOW_WIDTH;
-	data->mlx42.mm_floor_img = mlx_new_image(data->mlx42.mlx_ptr, width, height);
-	data->mlx42.mm_ceiling_img = mlx_new_image(data->mlx42.mlx_ptr, width, height);
+	data->mlx42.mm_floor_img = \
+		mlx_new_image(data->mlx42.mlx_ptr, width, height);
+	data->mlx42.mm_ceiling_img = \
+		mlx_new_image(data->mlx42.mlx_ptr, width, height);
 	fill_ceiling(data);
 	fill_floor(data);
 	mlx_image_to_window(mlx, data->mlx42.mm_ceiling_img, 0, 0);
@@ -296,7 +305,7 @@ void	create_wall_images(t_data *data)
 void	create_tiny_map(t_data *data)
 {
 	t_mlx42	mlx42;
-	
+
 	mlx42 = data->mlx42;
 	mlx42.tiny_map = mlx_new_image(mlx42.mlx_ptr, TINY_MAPX, TINY_MAPY);
 	ft_memset(mlx42.tiny_map->pixels, 255, 4 * TINY_MAPX * TINY_MAPX);
@@ -306,14 +315,14 @@ void	create_tiny_map(t_data *data)
 /**
  * @param data the t_data pointer
 */
+	// check_for_tile(data, draw_floor);
+	// check_for_tile(data, which_picture);
 int	render_map(t_data *data)
 {
 	set_dim(data);
 	data->mlx42.mlx_ptr = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D", true);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	load_pics(data);
-	// check_for_tile(data, draw_floor);
-	// check_for_tile(data, which_picture);
 	create_floor_ceiling_image(data);
 	create_wall_images(data);
 	create_image_player(data);

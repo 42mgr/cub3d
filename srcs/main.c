@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/11 12:39:25 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:57:05 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,10 @@ int	final_free(t_data *data)
 	return (0);
 }
 
+/*	if (ret == 0)
+		ret = raytracker(&data);
+	if (ret == 0)
+		ret = draw_game(&data); */
 int	main(int ac, char **av)
 {
 	t_data	data;
@@ -40,11 +44,7 @@ int	main(int ac, char **av)
 		ft_putstr_fd("-> SUCCESS:\n\tFile successfully parsed and valid.\n", 2);
 	else
 		ft_putstr_fd("-> ERROR:\n\tParsing aborted.\n", 2);
-/*	if (ret == 0)
-		ret = raytracker(&data);
 	if (ret == 0)
-		ret = draw_game(&data); */
- 	if (ret == 0)
 		ret = render_map(&data);
 	final_free(&data);
 	return (0);
