@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/13 15:14:20 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 18:45:54 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,6 @@
 # define GREY_D 0x484848FF
 # define SKY_BLUE 0x87CEEBAA
 # define MUD_BROWN 0x553F23AA
-
 
 /**
  * Player is intialized at starting position with view direction (N, S, E or W)
@@ -111,13 +110,13 @@ typedef struct s_dim
 
 typedef struct s_mlx42
 {
-	mlx_t	*mlx_ptr;
-	xpm_t	*mm_black;
-	xpm_t	*mm_white;
-	xpm_t	*mm_grey;
-	mlx_image_t *mm_black_img;
-	mlx_image_t *mm_white_img;
-	mlx_image_t *mm_grey_img;
+	mlx_t		*mlx_ptr;
+	xpm_t		*mm_black;
+	xpm_t		*mm_white;
+	xpm_t		*mm_grey;
+	mlx_image_t	*mm_black_img;
+	mlx_image_t	*mm_white_img;
+	mlx_image_t	*mm_grey_img;
 	mlx_image_t	*mm_player_img;
 	mlx_image_t	*mm_floor_img;
 	mlx_image_t	*mm_ceiling_img;
@@ -161,33 +160,33 @@ typedef struct s_point
 }				t_point;
 
 // check_args.c
-int		check_args(int ac, char **av);
-int		check_file(char *path);
+int			check_args(int ac, char **av);
+int			check_file(char *path);
 
 // setup_file.c
-int		setup_file(t_data *data, char **av);
+int			setup_file(t_data *data, char **av);
 
 // flood_fill.c
-int		flood_fill(t_data *data);
+int			flood_fill(t_data *data);
 
-char	*ft_strjoin_mod(char *s1, char *s2);
-int		render_map(t_data *data);
-void	free_2d_array(char **array);
-void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int));
-void	draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x);
+char		*ft_strjoin_mod(char *s1, char *s2);
+int			render_map(t_data *data);
+void		free_2d_array(char **array);
+void		check_for_tile(t_data *data, void (*f)(t_data *data, int, int));
+void		draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x);
 
 // draw map
-void	create_image_player(t_data *data);
+void		create_image_player(t_data *data);
 
 // draw line
-void 	draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color);
+void		draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color);
 
 // move_player.c
-void	move_up(t_data *data);
-void	move_down(t_data *data);
-void	move_left(t_data *data);
-void	move_right(t_data *data);
-void 	move_player(void* arg);
+void		move_up(t_data *data);
+void		move_down(t_data *data);
+void		move_left(t_data *data);
+void		move_right(t_data *data);
+void		move_player(void *arg);
 
 // ray_collision.c
 t_int_p2	hrc_up(t_data *data, double angle);
@@ -196,10 +195,10 @@ t_int_p2	horizontal_ray_collision(t_data *data, double angle);
 t_int_p2	vertical_ray_collision(t_data *data, double angle);
 
 // game.c
-void	draw_game(void *arg);
+void		draw_game(void *arg);
 
 // math_helpers.c
-double	dist(t_int_p2 a, t_int_p2 b);
-void	debug_screen(t_data* data);
+double		dist(t_int_p2 a, t_int_p2 b);
+void		debug_screen(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/13 15:56:10 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 19:02:46 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,6 +190,9 @@ void	draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc)
  * @param angle the angle in which the ray goes, 
  * measured counterclockwise in radiant with North being 0 radiant
 */
+// if ((q.x == 0 && q.y == 0) || (p.x == 0 && p.y == 0))
+// 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
+// 	else 
 void	vertical_line(t_data *data, int x, double angle)
 {
 	t_int_p2	q;
@@ -203,18 +206,20 @@ void	vertical_line(t_data *data, int x, double angle)
 	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
 	dist_to_q = dist((t_int_p2){data->start.x, data->start.y}, q);
 	fish = cos((data->start.dir * M_PI / 180.0) - angle);
-	if ((q.x == 0 && q.y == 0) || (p.x == 0 && p.y == 0))
-		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
-	else if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
+	if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
+	{
 		if (angle < M_PI / 2.0 || angle > M_PI * 3.0 / 2.0)
 			draw_vertical_texture_s(data, x, 60000.0 / (dist_to_q * fish), q);
 		else
 			draw_vertical_texture_n(data, x, 60000.0 / (dist_to_q * fish), q);
-	else
+	}
+	else if (dist_to_p < dist_to_q)
+	{
 		if (angle < M_PI)
 			draw_vertical_texture_e(data, x, 60000.0 / (dist_to_p * fish), p);
 		else
 			draw_vertical_texture_w(data, x, 60000.0 / (dist_to_p * fish), p);
+	}
 }
 
 /**

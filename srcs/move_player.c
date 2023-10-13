@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/13 16:00:38 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 18:52:25 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ int	valid_pos(t_data *data, t_int_p2 pos)
 		(pos.x + WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_x && \
 		(pos.y + WALL_OFFSET) / SPRITE_SIZE >= 0 && \
 		(pos.y + WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_y)
+	{
 		if (data->maze_cpy[(pos.y - WALL_OFFSET) / SPRITE_SIZE] \
 			[pos.x / SPRITE_SIZE] == '0' && \
 			data->maze_cpy[(pos.y + WALL_OFFSET) / SPRITE_SIZE] \
@@ -68,11 +69,11 @@ int	valid_pos(t_data *data, t_int_p2 pos)
 			[(pos.x - WALL_OFFSET) / SPRITE_SIZE] == '0' && \
 			data->maze_cpy[pos.y / SPRITE_SIZE] \
 			[(pos.x + WALL_OFFSET) / SPRITE_SIZE] == '0')
+		{
 			return (1);
-		else
-			return (0);
-	else
-		return (0);
+		}
+	}
+	return (0);
 }
 
 void	move_forward(t_data *data)

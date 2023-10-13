@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/01 10:23:20 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/13 18:48:50 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,32 +156,33 @@ void	create_dxy(int dxy[2][8])
 	dxy[1][7] = -1;
 }
 
+/* 	draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_black_img, 
+		(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 void	mm_draw_floor(t_data *data, int y, int x)
 {
 	if (x > (data->dim.max_x - data->dim.min_x + 1))
 		return ;
-/* 	draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_black_img, \
-		(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 	data->maze_cpy[y][x] = '1';
 }
 
+/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_grey_img, 
+			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
+/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_white_img, 
+			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 void	mm_draw_objects(t_data *data, int y, int x)
 {
 	if (x > (data->dim.max_x - data->dim.min_x + 1))
 		return ;
 	if (data->maze[y + data->dim.min_y][x + data->dim.min_x] == '1')
 	{
-/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_grey_img, \
-			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 		data->maze_cpy[y][x] = '1';
 	}
 	else if (data->maze[y + data->dim.min_y][x + data->dim.min_x] == '0')
 	{
-/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_white_img, \
-			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 		data->maze_cpy[y][x] = '0';
 	}
 }
+
 int	create_clean_maze(t_data *data)
 {
 	int		y;
