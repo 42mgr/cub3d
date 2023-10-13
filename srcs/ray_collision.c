@@ -6,12 +6,19 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/03 15:08:37 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/11 19:47:20 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 12:31:10 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+/**
+ * This fuction returns the position where a ray looking upwards
+ * of given angle intersects a horizontal wall the first time
+ * @param data the t_data pointer
+ * @param angle the angle in rad in which the ray is looking
+ * hrc is an acronym for horizontal ray collison
+*/
 t_int_p2	hrc_up(t_data *data, double angle)
 {
 	t_int_p2	end;
@@ -33,6 +40,13 @@ t_int_p2	hrc_up(t_data *data, double angle)
 	return (end);
 }
 
+/**
+ * This fuction returns the position where a ray looking downwards
+ * of given angle intersects a horizontal wall the first time
+ * @param data the t_data pointer
+ * @param angle the angle in rad in which the ray is looking
+ * hrc is an acronym for horizontal ray collison
+*/
 t_int_p2	hrc_down(t_data *data, double angle)
 {
 	t_int_p2	end;
@@ -54,7 +68,12 @@ t_int_p2	hrc_down(t_data *data, double angle)
 	return (end);
 }
 
-// order of calculation is important
+/**
+ * This fuction returns the position where a ray of given angle intersects
+ * a horizontal wall the first time
+ * @param data the t_data pointer
+ * @param angle the angle in rad in which the ray is looking
+*/
 t_int_p2	horizontal_ray_collision(t_data *data, double angle)
 {
 	t_int_p2	end;
@@ -80,6 +99,13 @@ t_int_p2	horizontal_ray_collision(t_data *data, double angle)
 	return (end);
 }
 
+/**
+ * This fuction returns the position where a ray looking to the left
+ * of given angle intersects a vertical wall the first time
+ * @param data the t_data pointer
+ * @param angle the angle in rad in which the ray is looking
+ * vrc is an acronym for vertical ray collison
+*/
 t_int_p2	vrc_left(t_data *data, double angle)
 {
 	t_int_p2	end;
@@ -101,6 +127,13 @@ t_int_p2	vrc_left(t_data *data, double angle)
 	return (end);
 }
 
+/**
+ * This fuction returns the position where a ray looking to the right
+ * of given angle intersects a vertical wall the first time
+ * @param data the t_data pointer
+ * @param angle the angle in rad in which the ray is looking
+ * vrc is an acronym for vertical ray collison
+*/
 t_int_p2	vrc_right(t_data *data, double angle)
 {
 	t_int_p2	end;
@@ -122,6 +155,12 @@ t_int_p2	vrc_right(t_data *data, double angle)
 	return (end);
 }
 
+/**
+ * This fuction returns the position where a ray of given angle intersects
+ * a vertical wall the first time
+ * @param data the t_data pointer
+ * @param angle the angle in rad in which the ray is looking
+*/
 t_int_p2	vertical_ray_collision(t_data *data, double angle)
 {
 	t_int_p2	end;
@@ -135,7 +174,7 @@ t_int_p2	vertical_ray_collision(t_data *data, double angle)
 		end.x = data->start.x; 
 		end.y = 0;
 	}
-	else if(data->start.dir == 180)
+	else if(data->start.dir == M_PI)
 	{
 		end.x = data->start.x; 
 		end.y = (data->dim.dim_y - 1) * SPRITE_SIZE;

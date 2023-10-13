@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/12 18:09:25 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 12:26:06 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,32 +35,36 @@ void	draw_vertical_line(t_data *data, int x, int height, int color)
 }
 
 /**
- * draws a vertical sclice through the center of the screen in case the ray goes north
+ * draws a vertical sclice through the center of the screen in 
+ * case the ray goes north
  * @param data the cub3d data pointer
  * @param x the x-coordinate on which the slice is
  * @param d the height of the slice
- * @param loc is the location where the intersection happens
+ * @param loc is the location where the intersection with the wall happens
 */
 void	draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	int			s;
 	uint32_t 	pxl;
 	t_int_p2	top;
-	int			pos_in_img;
+	int			pos_in_wall;
+	int			pos_in_texture;
 
 	i = 0;
-	pos_in_img = loc.x % SPRITE_SIZE;
+	pos_in_wall = loc.x % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	s = data->mlx42.n_wall->width * pos_in_img / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.n_wall->width * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.n_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 2] * 0x0000100;
-		pxl += data->mlx42.n_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 1] * 0x0010000;
-		pxl += data->mlx42.n_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 0] * 0x1000000;
+		pxl += data->mlx42.n_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
+		pxl += data->mlx42.n_wall->pixels[\
+		(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
+		pxl += data->mlx42.n_wall->pixels[\
+		(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
@@ -78,23 +82,26 @@ void	draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc)
 void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	int			s;
 	uint32_t 	pxl;
 	t_int_p2	top;
-	int			pos_in_img;
+	int			pos_in_texture;
+	int			pos_in_wall;
 
 	i = 0;
-	pos_in_img = loc.y % SPRITE_SIZE;
+	pos_in_wall = loc.y % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	s = data->mlx42.e_wall->width * pos_in_img / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.e_wall->width * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.e_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 2] * 0x0000100;
-		pxl += data->mlx42.e_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 1] * 0x0010000;
-		pxl += data->mlx42.e_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 0] * 0x1000000;
+		pxl += data->mlx42.e_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
+		pxl += data->mlx42.e_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
+		pxl += data->mlx42.e_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
@@ -112,23 +119,26 @@ void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
 void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	int			s;
 	uint32_t 	pxl;
 	t_int_p2	top;
-	int			pos_in_img;
+	int			pos_in_texture;
+	int			pos_in_wall;
 
 	i = 0;
-	pos_in_img = loc.x % SPRITE_SIZE;
+	pos_in_wall = loc.x % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	s = data->mlx42.s_wall->width * pos_in_img / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.s_wall->width * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.s_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 2] * 0x0000100;
-		pxl += data->mlx42.s_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 1] * 0x0010000;
-		pxl += data->mlx42.s_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 0] * 0x1000000;
+		pxl += data->mlx42.s_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
+		pxl += data->mlx42.s_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
+		pxl += data->mlx42.s_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
@@ -146,23 +156,26 @@ void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 void	draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc)
 {
 	int			i;
-	int			s;
 	uint32_t 	pxl;
 	t_int_p2	top;
-	int			pos_in_img;
+	int			pos_in_texture;
+	int			pos_in_wall;
 
 	i = 0;
-	pos_in_img = loc.y % SPRITE_SIZE;
+	pos_in_wall = loc.y % SPRITE_SIZE;
 	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	s = data->mlx42.w_wall->width * pos_in_img / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.w_wall->width * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.w_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 2] * 0x0000100;
-		pxl += data->mlx42.w_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 1] * 0x0010000;
-		pxl += data->mlx42.w_wall->pixels[(4 * 32 * s) + 4*(i*32/d) + 0] * 0x1000000;
+		pxl += data->mlx42.w_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
+		pxl += data->mlx42.w_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
+		pxl += data->mlx42.w_wall->pixels[\
+			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
@@ -204,16 +217,23 @@ void	vertical_line(t_data *data, int x, double angle)
 			draw_vertical_texture_w(data, x, 60000.0 / (dist_to_p * fish), p);
 }
 
+/**
+ * function that is hooked in the mlx loop and draws the textured walls
+ * (but not the monocolored background)
+ * @param arg void pointer to the t_data data struct
+*/
 void	draw_game(void *arg)
 {
 	t_data		*data;
-	double			ray_angle;
+	double		ray_angle;
+	int			field_of_view;
 	
+	field_of_view = WINDOW_WIDTH / 20;
 	data = arg;
 	int i = 0;
 	ray_angle = data->start.dir * M_PI / 180.0;
-	ray_angle += 0.401; 
-	while (i < 920)
+	ray_angle += field_of_view * M_PI / 360.0;
+	while (i < field_of_view * 20)
 	{
 		if (ray_angle >= 2.0 * M_PI)
 			ray_angle -= 2.0 * M_PI;
@@ -223,6 +243,5 @@ void	draw_game(void *arg)
 		ray_angle -= 0.000875;
 		i++;
 	}
-	//debug_screen(data);
 	return ;
 }

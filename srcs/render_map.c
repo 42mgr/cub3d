@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/12 17:56:47 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 12:49:23 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,10 @@ void	which_picture(t_data *data, int y, int x)
 	}
 }
 
+/**
+ * ensures that the window is closed when ESC is pressed
+ * @param arg void pointer to the mlx_t instance
+*/
 void esc_hook(void* arg)
 {
 	mlx_t* mlx;
@@ -81,9 +85,10 @@ void esc_hook(void* arg)
 }
 
 /**
- * creates new image
- * sets inital position of player
+ * creates new image where the game is drawn on (size is given by defines)
+ * sets inital position of player to be in the middle of it's starting square
  * puts image to window
+ * @param data t_data pointer
 */
 void	create_image_player(t_data *data)
 {
@@ -96,6 +101,11 @@ void	create_image_player(t_data *data)
 	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.mm_player_img, 0, 0);
 }
 
+/**
+ * in the top down view it draws the red and blue lines that intersect the wall
+ * @param data t_data pointer
+ * @param angle angle in radiant
+*/
 void	ray(t_data *data, double angle)
 {
 	t_int_p2	q;
@@ -108,7 +118,7 @@ void	ray(t_data *data, double angle)
 	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
 	dist_to_q = dist((t_int_p2){data->start.x, data->start.y}, q);
 	if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
-		draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);	
+		draw_line(data, (t_int_p2){data->start.x, data->start.y}, q, L_BLUE);
 	else if (dist_to_p < dist_to_q || isnan(dist_to_q) == 1)
 	{
 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
@@ -121,14 +131,24 @@ void	ray(t_data *data, double angle)
 		draw_line(data, (t_int_p2){100, 100}, (t_int_p2){400, 400}, YELLOW);
 }
 
+/**
+ * sets all pixels in the mm_player_img to zero (clears image of all 
+ * previously written pixels)
+ * @param data the t_data pointer
+*/
 void	clear_image(t_data *data)
 {
 	ft_memset(data->mlx42.mm_player_img->pixels, 0x00, sizeof(uint8_t) * \
 		WINDOW_HEIGHT * WINDOW_WIDTH * 4);
 }
 
-// the last multipier by 4 is needed because 
-//every pixel consists of 4 consecutive uint_8 s
+/**
+ * gets hooked into the mlx loop and draws the top down view of rays
+ * hitting walls. (expects that the player image size is 
+ * at least (SPRITE_SIZE * dim_x) by (SPRITE_SIZE * dim_y) big, otherwise it
+ * draws in illegal places
+ * @param arg the void pointer to the data pointer struct
+*/
 void draw_player(void* arg)
 {
 	t_data		*data;
@@ -147,6 +167,10 @@ void draw_player(void* arg)
 	return ;
 }
 
+/**
+ * fills the ceiling image with the ceiling color
+ * @param data the t_data pointer
+*/
 void	fill_ceiling(t_data *data)
 {
 	int i;
@@ -159,9 +183,10 @@ void	fill_ceiling(t_data *data)
 	j = 0;
 	height = WINDOW_HEIGHT / 2;
 	width = WINDOW_WIDTH;
-	color = TRA_Y + data->textures.ceiling_rgb[2] * 0x100 + \
-			data->textures.ceiling_rgb[1] * 0x10000 + \
-			data->textures.ceiling_rgb[0] * 0x1000000;
+	color = TRA_Y + \
+		data->textures.ceiling_rgb[2] * 0x100 + \
+		data->textures.ceiling_rgb[1] * 0x10000 + \
+		data->textures.ceiling_rgb[0] * 0x1000000;
 	while (j < height)
 	{
 		i = 0;
@@ -174,6 +199,10 @@ void	fill_ceiling(t_data *data)
 	}
 }
 
+/**
+ * fills the floor image with the floor color
+ * @param data the t_data pointer
+*/
 void	fill_floor(t_data *data)
 {
 	int i;
@@ -183,10 +212,11 @@ void	fill_floor(t_data *data)
 	int color;
 
 	height = WINDOW_HEIGHT / 2;
-	width = WINDOW_HEIGHT;
+	width = WINDOW_WIDTH;
 	i = 0;
 	j = 0;
-	color = TRA_Y + data->textures.floor_rgb[2] * 0x100 + \
+	color = TRA_Y + \
+		data->textures.floor_rgb[2] * 0x100 + \
 		data->textures.floor_rgb[1] * 0x10000 + \
 		data->textures.floor_rgb[0] * 0x1000000;
 	while (j < height)
@@ -201,6 +231,12 @@ void	fill_floor(t_data *data)
 	}
 }
 
+/**
+ * created two images and fills them with the respective solid color that is
+ * given in the data struct. These images are then in the background and 
+ * act as floor and ceiling
+ * @param data the t_data pointer
+*/
 void	create_floor_ceiling_image(t_data *data)
 {
 	mlx_t	*mlx;
@@ -217,13 +253,21 @@ void	create_floor_ceiling_image(t_data *data)
 	mlx_image_to_window(mlx, data->mlx42.mm_ceiling_img, 0, 0);
 	mlx_image_to_window(mlx, data->mlx42.mm_floor_img, 0, height);
 }
-	
+
+/**
+ * sets the values of data->dim.dim_x and data->dim.dim_y
+ * @param data the t_data pointer
+*/
 void	set_dim(t_data *data)
 {
 	data->dim.dim_x = data->dim.max_x - data->dim.min_x + 1;
 	data->dim.dim_y = data->dim.max_y - data->dim.min_y + 1;
 }
 
+/**
+ * loads the four wall textures and makes mlx_image_t's out of them
+ * @param data the t_data pointer
+*/
 void	create_wall_images(t_data *data)
 {
 	mlx_texture_t	*north;
@@ -245,6 +289,10 @@ void	create_wall_images(t_data *data)
 	mlx_delete_texture(west);
 }
 
+/**
+ * in progress mini map shown on the top left
+ * @param data the t_data pointer
+*/
 void	create_tiny_map(t_data *data)
 {
 	t_mlx42	mlx42;
@@ -255,6 +303,9 @@ void	create_tiny_map(t_data *data)
 	mlx_image_to_window(mlx42.mlx_ptr, mlx42.tiny_map, 10, 10);
 }
 
+/**
+ * @param data the t_data pointer
+*/
 int	render_map(t_data *data)
 {
 	set_dim(data);
