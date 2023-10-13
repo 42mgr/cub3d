@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/08 12:13:45 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/13 15:43:50 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,38 @@ void	move_right(t_data *data)
 		data->start.x++;
 }
 
-// todo: factor out the long if condition
+/**
+ * checks for a given position if in all four directions there is 
+ * WALL_SIZE amount of space left
+ * returns 1 if the position is valid 0 if not
+ * @param data the t_data pointer
+ * @param pos the position to be checked for it's validity
+*/
+int	valid_pos(t_data *data, t_int_p2 pos)
+{
+	if ((pos.x - WALL_OFFSET) / SPRITE_SIZE >= 0 && \
+		(pos.x - WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_x && \
+		(pos.y - WALL_OFFSET) / SPRITE_SIZE >= 0 &&  \
+		(pos.y - WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_y && \
+		(pos.x + WALL_OFFSET) / SPRITE_SIZE >= 0 && \
+		(pos.x + WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_x && \
+		(pos.y + WALL_OFFSET) / SPRITE_SIZE >= 0 &&  \
+		(pos.y + WALL_OFFSET) / SPRITE_SIZE < data->dim.dim_y)
+		if(data->maze_cpy[(pos.y - WALL_OFFSET) / SPRITE_SIZE] \
+			[pos.x / SPRITE_SIZE] == '0' && \
+			data->maze_cpy[(pos.y + WALL_OFFSET) / SPRITE_SIZE] \
+			[pos.x / SPRITE_SIZE] == '0' && \
+			data->maze_cpy[pos.y / SPRITE_SIZE] \
+			[(pos.x - WALL_OFFSET) / SPRITE_SIZE] == '0' && \
+			data->maze_cpy[pos.y / SPRITE_SIZE] \
+			[(pos.x + WALL_OFFSET) / SPRITE_SIZE] == '0')
+			return(1);
+		else
+			return(0);
+	else
+		return(0);
+}
+
 void	move_forward(t_data *data)
 {
 	t_int_p2	end_pos;
@@ -51,16 +82,11 @@ void	move_forward(t_data *data)
 	end_pos.x = data->start.x - (5.0 * sin(data->start.dir / 180.0 * M_PI));
 	end_pos.y = data->start.y - (5.0 * cos(data->start.dir / 180.0 * M_PI));
 
-	if (end_pos.x / SPRITE_SIZE >= 0 && \
-		end_pos.x / SPRITE_SIZE < data->dim.dim_x && \
-		end_pos.y / SPRITE_SIZE >= 0 &&  \
-		end_pos.y / SPRITE_SIZE < data->dim.dim_y)
-		if (data->maze_cpy[end_pos.y / SPRITE_SIZE] \
-			[end_pos.x / SPRITE_SIZE] == '0')
-		{
-			data->start.x = end_pos.x;
-			data->start.y = end_pos.y;
-		}
+	if (valid_pos(data, end_pos) == 1)
+	{
+		data->start.x = end_pos.x;
+		data->start.y = end_pos.y;
+	}	
 }
 
 void	move_backward(t_data *data)
@@ -70,16 +96,11 @@ void	move_backward(t_data *data)
 	end_pos.x = data->start.x + (5.0 * sin(data->start.dir / 180.0 * M_PI));
 	end_pos.y = data->start.y + (5.0 * cos(data->start.dir / 180.0 * M_PI));
 
-	if (end_pos.x / SPRITE_SIZE >= 0 && \
-		end_pos.x / SPRITE_SIZE < data->dim.dim_x && \
-		end_pos.y / SPRITE_SIZE >= 0 &&  \
-		end_pos.y / SPRITE_SIZE < data->dim.dim_y)
-		if (data->maze_cpy[end_pos.y / SPRITE_SIZE] \
-			[end_pos.x / SPRITE_SIZE] == '0')
-		{
-			data->start.x = end_pos.x;
-			data->start.y = end_pos.y;
-		}
+	if (valid_pos(data, end_pos) == 1)
+	{
+		data->start.x = end_pos.x;
+		data->start.y = end_pos.y;	
+	}
 }
 
 void move_player(void* arg)
