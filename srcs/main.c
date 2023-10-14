@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/13 15:57:05 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 14:15:35 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,9 @@ int	main(int ac, char **av)
 	if (ret == 0)
 		ret = setup_file(&data, av);
 	if (ret == 0)
-		ft_putstr_fd("-> SUCCESS:\n\tFile successfully parsed and valid.\n", 2);
+		ft_putstr_fd("\e[1;42mSUCCESS:\e[0m\n\tFile parsed and valid.\n", 2);
 	else
-		ft_putstr_fd("-> ERROR:\n\tParsing aborted.\n", 2);
+		ft_putstr_fd("\e[1;41mERROR:\e[0m\n\tParsing aborted.\n", 2);
 	if (ret == 0)
 		ret = render_map(&data);
 	final_free(&data);

@@ -1,0 +1,8 @@
+{
+	<MLX42>
+	Memcheck:Leak
+   obj:/usr/lib/x86_64-linux-gnu/libLLVM-15.so.1
+   obj:/usr/lib/x86_64-linux-gnu/libX11.so.6.4.0
+   obj:/usr/lib/x86_64-linux-gnu/libglfw.so.3.3
+
+}

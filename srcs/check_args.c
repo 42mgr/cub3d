@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:29:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/24 03:23:04 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 15:05:14 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ int	check_file(char *path)
 	if (fd == -1)
 	{
 		if (errno == ENOENT)
-			ft_putstr("-> Error:\n", "\tFile path is invalid or does not exist.");
+			ft_putstr("\e[1;41mError\e[0m\n", "\tFile path is invalid.");
 		else
-			ft_putstr("-> Error opening the the file:\t", strerror(errno));
+			ft_putstr("\e[1;41mError\e[0m\n opening file:\t", strerror(errno));
 		close(fd);
 		ft_putstr("\t", path);
 		return (1);
@@ -44,7 +44,7 @@ int	check_file(char *path)
 	{
 		if (read(fd, NULL, 0) == -1)
 		{
-			ft_putstr("-> Error:\n\t", path);
+			ft_putstr("\e[1;41mError\e[0m\n\t", path);
 			ft_putstr("\tFile is valid, but no read permissions.", NULL);
 			close(fd);
 			return (1);
