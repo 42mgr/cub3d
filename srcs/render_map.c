@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 14:38:43 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 15:32:45 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -372,6 +372,8 @@ int	start_mlx(t_data *data)
 	// check_for_tile(data, draw_floor);
 	// check_for_tile(data, which_picture);
 	// load_pics(data); // can fail
+	// if (!ret)
+	// 	ret = create_tiny_map(data);
 int	render_map(t_data *data)
 {
 	int	ret;
@@ -383,8 +385,6 @@ int	render_map(t_data *data)
 		ret = create_floor_ceiling_image(data);
 	if (!ret)
 		ret = create_image_player(data);
-	if (!ret)
-		ret = create_tiny_map(data);
 	if (!ret)
 	{
 		add_hooks(data);
