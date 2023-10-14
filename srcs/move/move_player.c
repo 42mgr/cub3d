@@ -3,48 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/14 13:17:20 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 16:45:45 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
 /**
- * checks if moving up would collide with the wall, if not moves one step
-*/
-void	move_up(t_data *data)
-{
-	if (data->maze_cpy[(data->start.y - WALL_OFFSET) / SPRITE_SIZE] \
-		[data->start.x / SPRITE_SIZE] == '0')
-		data->start.y--;
-}
-
-void	move_down(t_data *data)
-{
-	if (data->maze_cpy[(data->start.y + WALL_OFFSET) / SPRITE_SIZE] \
-		[data->start.x / SPRITE_SIZE] == '0')
-		data->start.y++;
-}
-
-void	move_left(t_data *data)
-{
-	if (data->maze_cpy[data->start.y / SPRITE_SIZE] \
-		[(data->start.x - WALL_OFFSET) / SPRITE_SIZE] == '0')
-		data->start.x--;
-}
-
-void	move_right(t_data *data)
-{
-	if (data->maze_cpy[data->start.y / SPRITE_SIZE] \
-		[(data->start.x + WALL_OFFSET) / SPRITE_SIZE] == '0')
-		data->start.x++;
-}
-
-/**
- * checks for a given position if in all four directions there is 
+ * checks for a given position if in all four directions there is
  * WALL_SIZE amount of space left
  * returns 1 if the position is valid 0 if not
  * @param data the t_data pointer

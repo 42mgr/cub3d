@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 14:10:33 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 17:56:16 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -163,42 +163,120 @@ typedef struct s_point
 int			check_args(int ac, char **av);
 int			check_file(char *path);
 
-// setup_file.c
-int			setup_file(t_data *data, char **av);
+// math_helpers.c
+double		dist(t_int_p2 a, t_int_p2 b);
 
-// flood_fill.c
-int			flood_fill(t_data *data);
+// ray_collision.c
+t_int_p2	horizontal_ray_collision(t_data *data, double angle);
+t_int_p2	vertical_ray_collision(t_data *data, double angle);
 
-char		*ft_strjoin_mod(char *s1, char *s2);
-int			render_map(t_data *data);
-void		free_2d_array(char **array);
-void		check_for_tile(t_data *data, void (*f)(t_data *data, int, int));
-void		draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x);
+// wall_collision.c
+t_int_p2	hrc_up(t_data *data, double angle);
+t_int_p2	hrc_down(t_data *data, double angle);
+t_int_p2	vrc_left(t_data *data, double angle);
+t_int_p2	vrc_right(t_data *data, double angle);
 
-// draw map
-int			create_image_player(t_data *data);
+// draw_line_helper.c
+void		truncate_coordinates2(t_data *data, t_int_p2 *a);
+int			point_in_window(t_data *data, t_int_p2 *a);
+void		truncate_coordinates(t_data *data, t_int_p2 *p);
+int			abs1(int x);
 
-// draw line
+// draw_line.c
+void		draw_line_case_a(t_data *data, t_int_p2 a, t_int_p2 b, int color);
+void		draw_line_case_b(t_data *data, t_int_p2 a, t_int_p2 b, int color);
 void		draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color);
 
-// move_player.c
+// draw_vertical.c
+void		draw_vertical_line(t_data *data, int x, int height, int color);
+void		draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc);
+void		draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc);
+void		draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc);
+void		draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc);
+
+// game.c
+void		vertical_line(t_data *data, int x, double angle);
+void		draw_game(void *arg);
+
+// move_directions.c
 void		move_up(t_data *data);
 void		move_down(t_data *data);
 void		move_left(t_data *data);
 void		move_right(t_data *data);
+
+// move_player.c
+int			valid_pos(t_data *data, t_int_p2 pos);
+void		move_forward(t_data *data);
+void		move_backward(t_data *data);
 void		move_player(void *arg);
 
-// ray_collision.c
-t_int_p2	hrc_up(t_data *data, double angle);
-t_int_p2	hrc_down(t_data *data, double angle);
-t_int_p2	horizontal_ray_collision(t_data *data, double angle);
-t_int_p2	vertical_ray_collision(t_data *data, double angle);
+// flood_fill_helper.c
+void		print_all(char **maze, int lines);
+char		**duplicate_maze(int lines, char **maze);
+void		box_min_max(t_data *data, int x, int y);
+void		create_dxy(int dxy[2][8]);
+int			create_clean_maze(t_data *data);
 
-// game.c
-void		draw_game(void *arg);
+// flood_fill.c
+int			check_around(t_data *data, int dxy[2][8], int x, int y);
+int			run_fill(t_data *data, int dxy[2][8], int x, int y);
+void		mm_draw_floor(t_data *data, int y, int x);
+void		mm_draw_objects(t_data *data, int y, int x);
+int			flood_fill(t_data *data);
 
-// math_helpers.c
-double		dist(t_int_p2 a, t_int_p2 b);
-void		debug_screen(t_data *data);
+// ft_strjoin_mod.c
+char		*ft_strjoin_mod(char *s1, char *s2);
+
+// setup_detect.c
+int			detect_colors(t_data *data, char *line, int *error);
+int			detect_char(char c);
+int			detect_textures(t_data *data, char *line, int *error);
+int			check_for_start(t_data *data, char *buffer, int line);
+
+// setup_file.c
+char		*read_file(t_data *data, char *path);
+int			parse_path(t_data *data, char *line, int len, int offset);
+int			parse_colors(t_data *data, char *line, int len, int offset);
+int			read_line(t_data *data, char *line);
+int			setup_file(t_data *data, char **av);
+
+// setup_helper.c
+void		free_2d_array(char **array);
+int			cont_str_len(char *line, int offset);
+int			write_rgb(int *rgb, int red, int green, int blue);
+void		replace_nl(char **buffer);
+int			init_data(t_data *data);
+
+// render_create.c
+int			create_wall_images(t_data *data);
+int			create_tiny_map(t_data *data);
+int			create_floor_ceiling_image(t_data *data);
+int			create_image_player(t_data *data);
+
+// render_draw.c
+void		draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x);
+void		check_for_tile(t_data *data, void (*f)(t_data *data, int, int));
+void		draw_floor(t_data *data, int y, int x);
+void		which_picture(t_data *data, int y, int x);
+void		draw_player(void *arg);
+
+// render_hooks.c
+void		esc_hook(void *arg);
+void		add_hooks(t_data *data);
+
+// render_load_fill.c
+void		load_texture(mlx_t *mlx, mlx_image_t **image, char *path);
+void		load_pics(t_data *data);
+void		fill_ceiling(t_data *data);
+void		fill_floor(t_data *data);
+void		set_dim(t_data *data);
+
+// render_map.c
+void		ray(t_data *data, double angle);
+void		clear_image(t_data *data);
+int			start_mlx(t_data *data);
+int			render_map(t_data *data);
+void		delete_four_textures(mlx_texture_t *north, mlx_texture_t *east, \
+				mlx_texture_t *south, mlx_texture_t *west);
 
 #endif

@@ -6,58 +6,13 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 15:08:38 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 16:37:45 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-/**
- * Writes the RGB values to the array and checks range 0-255
-*/
-int	write_rgb(int *rgb, int red, int green, int blue)
-{
-	if ((red > 255 || green > 255 || blue > 255)
-		|| (red < 0 || green < 0 || blue < 0))
-	{
-		ft_putstr_fd("\e[1;41mError\e[0m\n\tInvalid RGB value provided.\n", 2);
-		return (1);
-	}
-	rgb[0] = red;
-	rgb[1] = green;
-	rgb[2] = blue;
-	return (0);
-}
-
-/**
- * Initializes the data struct with default values
- * !!! fd not necessary? llen_head not necessary?
-*/
-int	init_data(t_data *data)
-{
-	data->mlx = NULL;
-	data->start.dir = NORTH;
-	data->start.x = -1;
-	data->start.y = -1;
-	data->maze = NULL;
-	data->maze_cpy = NULL;
-	data->textures.n_path = ft_strdup(DEFAULT_NORTH_TEXTURE);
-	data->textures.e_path = ft_strdup(DEFAULT_EAST_TEXTURE);
-	data->textures.s_path = ft_strdup(DEFAULT_SOUTH_TEXTURE);
-	data->textures.w_path = ft_strdup(DEFAULT_WEST_TEXTURE);
-	write_rgb(data->textures.ceiling_rgb, 0, 0, 255);
-	write_rgb(data->textures.floor_rgb, 0, 255, 0);
-	data->dim.lines = 0;
-	data->dim.min_x = -1;
-	data->dim.min_y = -1;
-	data->dim.max_x = -1;
-	data->dim.max_y = -1;
-	return (0);
-}
-
-/**
- * Returns an intialised node for the linked list
-*/
+/*
 t_llen	*create_length_node(int line, int length)
 {
 	t_llen	*node;
@@ -69,9 +24,6 @@ t_llen	*create_length_node(int line, int length)
 	return (node);
 }
 
-/**
- * Adds a node to the end of linked list
-*/
 void	add_length_list(t_llen **head, int line, int length)
 {
 	t_llen	*current;
@@ -85,49 +37,7 @@ void	add_length_list(t_llen **head, int line, int length)
 			current = current->next;
 		current->next = create_length_node(line, length);
 	}
-}
-
-/**
- * Identifies a (valid) starting position and direction of the player
- * and sets it to '0'
-*/
-int	check_for_start(t_data *data, char *buffer, int line)
-{
-	int	i;
-
-	i = 0;
-	while (buffer[i])
-	{
-		if ((buffer[i] == 'N' || buffer[i] == 'S' || buffer[i] == 'E'
-				|| buffer[i] == 'W') && (buffer[i + 1] == '1'
-				|| buffer[i + 1] == '0') && (buffer[i - 1] == '1'
-				|| buffer[i - 1] == '0'))
-		{
-			data->start.y = line;
-			data->start.x = i;
-			if (buffer[i] == 'N')
-				data->start.dir = NORTH;
-			else if (buffer[i] == 'E')
-				data->start.dir = EAST;
-			else if (buffer[i] == 'S')
-				data->start.dir = SOUTH;
-			else if (buffer[i] == 'W')
-				data->start.dir = WEST;
-			buffer[i] = '0';
-		}
-		i++;
-	}
-	return (0);
-}
-
-void	replace_nl(char **buffer)
-{
-	if (*buffer[0] == '\n')
-	{
-		free(*buffer);
-		*buffer = ft_strdup(" \n");
-	}
-}
+} */
 
 /**
  * Reads the file and saves the lines in a char *line
@@ -178,20 +88,6 @@ void	print_ll(t_llen **head)
 } */
 
 /**
- * Counts the length of a continous string until a space, tab or newline
-*/
-int	cont_str_len(char *line, int offset)
-{
-	int	i;
-
-	i = offset;
-	while (!(line[i] == ' ' || line[i] == '\n' || line[i] == '\t')
-		|| line[i] == '\0')
-		i++;
-	return (i);
-}
-
-/**
  * Copies the color path to the data struct and checks if the file exists
 */
 int	parse_path(t_data *data, char *line, int len, int offset)
@@ -219,39 +115,6 @@ int	parse_path(t_data *data, char *line, int len, int offset)
 	free(*color);
 	*color = path;
 	return (ret);
-}
-
-/**
- * Checks for 'NO ', 'SO ', 'WE ' or 'EA ' and then tries to parse the path
-*/
-int	detect_textures(t_data *data, char *line, int *error)
-{
-	int	len;
-	int	offset;
-
-	offset = 3;
-	if (!ft_strncmp(line, "NO ", offset) || !ft_strncmp(line, "SO ", offset)
-		|| !ft_strncmp(line, "WE ", offset)
-		|| !ft_strncmp(line, "EA ", offset))
-	{
-		len = (cont_str_len(line, offset));
-		if (parse_path(data, line, len, offset))
-			*error = 1;
-		return (len);
-	}
-	return (0);
-}
-
-void	free_2d_array(char **array)
-{
-	int	i;
-
-	i = 0;
-	if (!array)
-		return ;
-	while (array[i])
-		free(array[i++]);
-	free(array);
 }
 
 /**
@@ -284,52 +147,6 @@ int	parse_colors(t_data *data, char *line, int len, int offset)
 	free(temp);
 	free_2d_array(rgb);
 	return (err);
-}
-
-/**
- * Checks for 'C ' or 'F ' and then tries to parse the colors
-*/
-int	detect_colors(t_data *data, char *line, int *error)
-{
-	int	len;
-	int	offset;
-
-	offset = 2;
-	if (!ft_strncmp(line, "C ", offset) || !ft_strncmp(line, "F ", offset))
-	{
-		len = (cont_str_len(line, offset));
-		if (parse_colors(data, line, len, offset))
-			*error = 1;
-		return (len);
-	}
-	return (0);
-}
-
-/**
- * Checks for invalid characters in the map and multiple starting positions
-*/
-int	detect_char(char c)
-{
-	static int	start = 0;
-
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
-	{
-		if (start == 0)
-			start++;
-		else
-		{
-			ft_putstr_fd("\e[1;41mError\e[0m\n\tMultiple starting positions.\n", 2);
-			return (1);
-		}
-	}
-	else if (!(c == '1' || c == '0' || c == '\n' || c == ' ' || c == 'x'))
-	{
-		ft_putstr_fd("\e[1;41mError\e[0m\n\tInvalid character in map: ", 2);
-		ft_putchar_fd(c, 2);
-		ft_putchar_fd('\n', 2);
-		return (1);
-	}
-	return (0);
 }
 
 /**

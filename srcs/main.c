@@ -6,13 +6,13 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 14:15:35 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 17:03:40 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	final_free(t_data *data)
+static int	final_free(t_data *data)
 {
 	free_2d_array(data->maze);
 	free_2d_array(data->maze_cpy);

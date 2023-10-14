@@ -8,7 +8,7 @@ INCL_DIR ?= ./include
 LIB = libft-42
 LIBMLX = MLX42
 LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build) -lglfw -lm
-# added -lm (math lib), macos might need "-lmx" 
+# added -lm (math lib), macos might need "-lmx"
 # LIBS = $(addprefix -L ,$(LIB) $(LIBMLX)/build) -L /opt/homebrew/lib -lglfw -framework OpenGL
 
 SRCS := $(filter-out %_bonus.c, $(shell find $(SRC_DIRS) -name *.c))
@@ -35,7 +35,6 @@ $(NAME): $(OBJS)
 	@echo "\nLinking:"
 	$(LD) $(LIBS) -o $@ $(OBJS) -lft -lmlx42
 	@echo "..\n"
-	chmod -r maps/bad_rights/norights.cub
 
 $(BUILD_DIR)/%.o: $(SRC_DIRS)/%.c
 	mkdir -p $(@D)
@@ -77,7 +76,7 @@ init_submodules:
 	@git submodule update --init
 
 valgrind: all
-	valgrind --leak-check=full --show-leak-kinds=all ./$(NAME)
+	valgrind --leak-check=full --show-leak-kinds=all --suppressions=valgrind.supp ./$(NAME) maps/map00.cub
 
 valtest: all
 	-valgrind ./$(NAME) maps/bad_file_path/map03.cub
@@ -95,7 +94,6 @@ valtest: all
 	-valgrind ./$(NAME) maps/map00.cub
 
 commit: fclean
-	chmod +r maps/bad_rights/norights.cub
 	git add .
 	git commit -m "$(m)"
 	git push origin main

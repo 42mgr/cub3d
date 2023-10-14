@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game.c                                             :+:      :+:    :+:   */
+/*   draw_vertical.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/14 15:10:25 by fheld            ###   ########.fr       */
+/*   Created: 2023/10/14 16:40:15 by mgraf             #+#    #+#             */
+/*   Updated: 2023/10/14 16:40:49 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include <cub3d.h>
 
 /**
  * draws a vertical line through the center of the screen
@@ -35,7 +35,7 @@ void	draw_vertical_line(t_data *data, int x, int height, int color)
 }
 
 /**
- * draws a vertical sclice through the center of the screen in 
+ * draws a vertical sclice through the center of the screen in
  * case the ray goes north
  * @param data the cub3d data pointer
  * @param x the x-coordinate on which the slice is
@@ -55,7 +55,7 @@ void	draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc)
 	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.n_wall->height * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.n_wall->height * pos_in_wall / SPRITE_SIZE;
 	while (i < d)
 	{
 		pxl = TRA_Y;
@@ -76,7 +76,7 @@ pos_in_texture) + 4 * (i * data->mlx42.n_wall->height / d) + 0] * 0x1000000;
  * @param data cub3d data pointer
  * @param x x coodinate on image where the line is drawn
  * @param d height in pixels of the vertical line
- * @param loc the location where the ray hit the wall 
+ * @param loc the location where the ray hit the wall
  * (needed to determine where in the texure we are, e.g. in the middle of it)
 */
 void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
@@ -92,7 +92,7 @@ void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
 	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.e_wall->height * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.e_wall->height * pos_in_wall / SPRITE_SIZE;
 	while (i < d)
 	{
 		pxl = TRA_Y;
@@ -113,7 +113,7 @@ pos_in_texture) + 4 * (i * data->mlx42.e_wall->height / d) + 0] * 0x1000000;
  * @param data cub3d data pointer
  * @param x x coodinate on image where the line is drawn
  * @param d height in pixels of the vertical line
- * @param loc the location where the ray hit the wall 
+ * @param loc the location where the ray hit the wall
  * (needed to determine where in the texure we are, e.g. in the middle of it)
 */
 void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
@@ -129,7 +129,7 @@ void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.s_wall->height * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.s_wall->height * pos_in_wall / SPRITE_SIZE;
 	while (i < d)
 	{
 		pxl = TRA_Y;
@@ -150,7 +150,7 @@ pos_in_texture) + 4 * (i * data->mlx42.s_wall->height / d) + 0] * 0x1000000;
  * @param data cub3d data pointer
  * @param x x coodinate on image where the line is drawn
  * @param d height in pixels of the vertical line
- * @param loc the location where the ray hit the wall 
+ * @param loc the location where the ray hit the wall
  * (needed to determine where in the texure we are, e.g. in the middle of it)
 */
 void	draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc)
@@ -166,7 +166,7 @@ void	draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc)
 	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.w_wall->height * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.w_wall->height * pos_in_wall / SPRITE_SIZE;
 	while (i < d)
 	{
 		pxl = TRA_Y;
@@ -180,74 +180,4 @@ pos_in_texture) + 4 * (i * data->mlx42.w_wall->height / d) + 0] * 0x1000000;
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
 	}
-}
-
-/**
- * draws a vertical textured line on the image with given x coordinate, 
- * where the corresponding ray has absolute angle 'angle" 
- * @param data cub3d data pointer
- * @param x x coodinate on image where the line is drawn
- * @param angle the angle in which the ray goes, 
- * measured counterclockwise in radiant with North being 0 radiant
-*/
-// if ((q.x == 0 && q.y == 0) || (p.x == 0 && p.y == 0))
-// 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
-// 	else 
-void	vertical_line(t_data *data, int x, double angle)
-{
-	t_int_p2	q;
-	t_int_p2	p;
-	double		dist_to_q;
-	double		dist_to_p;
-	double		fish;
-
-	q = horizontal_ray_collision(data, angle);
-	p = vertical_ray_collision(data, angle);
-	dist_to_p = dist((t_int_p2){data->start.x, data->start.y}, p);
-	dist_to_q = dist((t_int_p2){data->start.x, data->start.y}, q);
-	fish = cos((data->start.dir * M_PI / 180.0) - angle);
-	if (dist_to_p >= dist_to_q || isnan(dist_to_p) == 1)
-	{
-		if (angle < M_PI / 2.0 || angle > M_PI * 3.0 / 2.0)
-			draw_vertical_texture_s(data, x, 60000.0 / (dist_to_q * fish), q);
-		else
-			draw_vertical_texture_n(data, x, 60000.0 / (dist_to_q * fish), q);
-	}
-	else if (dist_to_p < dist_to_q)
-	{
-		if (angle < M_PI)
-			draw_vertical_texture_e(data, x, 60000.0 / (dist_to_p * fish), p);
-		else
-			draw_vertical_texture_w(data, x, 60000.0 / (dist_to_p * fish), p);
-	}
-}
-
-/**
- * function that is hooked in the mlx loop and draws the textured walls
- * (but not the monocolored background)
- * @param arg void pointer to the t_data data struct
-*/
-void	draw_game(void *arg)
-{
-	int			i;
-	t_data		*data;
-	double		ray_angle;
-	int			field_of_view;
-
-	i = 0;
-	field_of_view = WINDOW_WIDTH / 20;
-	data = arg;
-	ray_angle = data->start.dir * M_PI / 180.0;
-	ray_angle += field_of_view * M_PI / 360.0;
-	while (i < field_of_view * 20)
-	{
-		if (ray_angle >= 2.0 * M_PI)
-			ray_angle -= 2.0 * M_PI;
-		else if (ray_angle < 0)
-			ray_angle += 2.0 * M_PI;
-		vertical_line(data, i, ray_angle);
-		ray_angle -= 0.000875;
-		i++;
-	}
-	return ;
 }

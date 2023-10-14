@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:29:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 15:05:14 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 17:48:54 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,18 +63,18 @@ int	check_args(int ac, char **av)
 
 	if (ac == 1 || ac != 2)
 	{
-		ft_putstr("Wrong number of arguments. Only one .cub file.", NULL);
+		ft_putstr("Error\n\tWrong number of arguments.", NULL);
 		return (1);
 	}
 	len = ft_strlen(av[1]);
 	if (len < 5)
 	{
-		ft_putstr("Invalid name for .cub file.", NULL);
+		ft_putstr("Error\n\tInvalid name for .cub file.", NULL);
 		return (1);
 	}
 	if (ft_strncmp(av[1] + len - 4, ".cub", 4))
 	{
-		ft_putstr("Invalid type. Please use .cub extension.", NULL);
+		ft_putstr("Error\n\tInvalid type. Please use .cub extension.", NULL);
 		return (1);
 	}
 	return (check_file(av[1]));
