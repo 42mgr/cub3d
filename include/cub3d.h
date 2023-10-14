@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/13 18:45:54 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 14:10:33 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,7 +176,7 @@ void		check_for_tile(t_data *data, void (*f)(t_data *data, int, int));
 void		draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x);
 
 // draw map
-void		create_image_player(t_data *data);
+int			create_image_player(t_data *data);
 
 // draw line
 void		draw_line(t_data *data, t_int_p2 a, t_int_p2 b, int color);

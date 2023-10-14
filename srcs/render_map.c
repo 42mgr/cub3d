@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/13 16:11:06 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 14:38:43 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,9 @@ void	esc_hook(void *arg)
  * sets inital position of player to be in the middle of it's starting square
  * puts image to window
  * @param data t_data pointer
+ * @return 0 on success 1 on fail
 */
-void	create_image_player(t_data *data)
+int	create_image_player(t_data *data)
 {
 	data->start.x = \
 		(data->start.x - data->dim.min_x) * SPRITE_SIZE + (SPRITE_SIZE / 2);
@@ -105,7 +106,12 @@ void	create_image_player(t_data *data)
 		(data->start.y - data->dim.min_y) * SPRITE_SIZE + (SPRITE_SIZE / 2);
 	data->mlx42.mm_player_img = \
 		mlx_new_image(data->mlx42.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
-	mlx_image_to_window(data->mlx42.mlx_ptr, data->mlx42.mm_player_img, 0, 0);
+	if (data->mlx42.mm_player_img == NULL)
+		return (1);
+	if (mlx_image_to_window(data->mlx42.mlx_ptr, \
+		data->mlx42.mm_player_img, 0, 0) == -1)
+		return (1);
+	return (0);
 }
 
 /**
@@ -243,8 +249,9 @@ void	fill_floor(t_data *data)
  * given in the data struct. These images are then in the background and 
  * act as floor and ceiling
  * @param data the t_data pointer
+ * @return 0 on sucess, 1 on failiure
 */
-void	create_floor_ceiling_image(t_data *data)
+int	create_floor_ceiling_image(t_data *data)
 {
 	mlx_t	*mlx;
 	int		height;
@@ -257,10 +264,15 @@ void	create_floor_ceiling_image(t_data *data)
 		mlx_new_image(data->mlx42.mlx_ptr, width, height);
 	data->mlx42.mm_ceiling_img = \
 		mlx_new_image(data->mlx42.mlx_ptr, width, height);
+	if (data->mlx42.mm_floor_img == NULL || data->mlx42.mm_ceiling_img == NULL)
+		return (1);
 	fill_ceiling(data);
 	fill_floor(data);
-	mlx_image_to_window(mlx, data->mlx42.mm_ceiling_img, 0, 0);
-	mlx_image_to_window(mlx, data->mlx42.mm_floor_img, 0, height);
+	if (mlx_image_to_window(mlx, data->mlx42.mm_ceiling_img, 0, 0) == -1)
+		return (1);
+	if (mlx_image_to_window(mlx, data->mlx42.mm_floor_img, 0, height) == -1)
+		return (1);
+	return (0);
 }
 
 /**
@@ -274,10 +286,22 @@ void	set_dim(t_data *data)
 }
 
 /**
+ * deletes four mlx textures
+*/
+void	delete_four_textures(mlx_texture_t *north, mlx_texture_t *east, \
+	mlx_texture_t *south, mlx_texture_t *west)
+{
+	mlx_delete_texture(north);
+	mlx_delete_texture(east);
+	mlx_delete_texture(south);
+	mlx_delete_texture(west);
+}
+
+/**
  * loads the four wall textures and makes mlx_image_t's out of them
  * @param data the t_data pointer
 */
-void	create_wall_images(t_data *data)
+int	create_wall_images(t_data *data)
 {
 	mlx_texture_t	*north;
 	mlx_texture_t	*east;
@@ -288,28 +312,58 @@ void	create_wall_images(t_data *data)
 	east = mlx_load_png(data->textures.e_path);
 	south = mlx_load_png(data->textures.s_path);
 	west = mlx_load_png(data->textures.w_path);
+	if ((north && east && south && west) == 0)
+	{
+		delete_four_textures(north, east, south, west);
+		return (1);
+	}
 	data->mlx42.n_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, north);
 	data->mlx42.e_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, east);
 	data->mlx42.s_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, south);
 	data->mlx42.w_wall = mlx_texture_to_image(data->mlx42.mlx_ptr, west);
-	mlx_delete_texture(north);
-	mlx_delete_texture(east);
-	mlx_delete_texture(south);
-	mlx_delete_texture(west);
-}
+	delete_four_textures(north, east, south, west);
+	return (0);
+ }
 
 /**
  * in progress mini map shown on the top left
  * @param data the t_data pointer
+ * @return 0 if everything is sucessful, 1 on error 
 */
-void	create_tiny_map(t_data *data)
+int	create_tiny_map(t_data *data)
 {
 	t_mlx42	mlx42;
 
 	mlx42 = data->mlx42;
 	mlx42.tiny_map = mlx_new_image(mlx42.mlx_ptr, TINY_MAPX, TINY_MAPY);
+	if (mlx42.tiny_map == NULL)
+		return (1);
 	ft_memset(mlx42.tiny_map->pixels, 255, 4 * TINY_MAPX * TINY_MAPX);
-	mlx_image_to_window(mlx42.mlx_ptr, mlx42.tiny_map, 10, 10);
+	if (mlx_image_to_window(mlx42.mlx_ptr, mlx42.tiny_map, 10, 10) == -1)
+		return (1);
+	return (0);
+}
+
+void	add_hooks(t_data *data)
+{
+	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
+	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
+	mlx_loop_hook(data->mlx42.mlx_ptr, draw_player, data);
+	mlx_loop_hook(data->mlx42.mlx_ptr, draw_game, data);
+}
+
+/**
+ * sets dim_x dim_y, sets mlx settings and calls mlx_init
+ @param data the t_data pointer
+*/
+int	start_mlx(t_data *data)
+{
+	set_dim(data);
+	mlx_set_setting(MLX_STRETCH_IMAGE, true);
+	data->mlx42.mlx_ptr = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D", true);
+	if (data->mlx42.mm_floor_img == NULL)
+		return (1);
+	return (0);
 }
 
 /**
@@ -317,21 +371,25 @@ void	create_tiny_map(t_data *data)
 */
 	// check_for_tile(data, draw_floor);
 	// check_for_tile(data, which_picture);
+	// load_pics(data); // can fail
 int	render_map(t_data *data)
 {
-	set_dim(data);
-	data->mlx42.mlx_ptr = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D", true);
-	mlx_set_setting(MLX_STRETCH_IMAGE, true);
-	load_pics(data);
-	create_floor_ceiling_image(data);
-	create_wall_images(data);
-	create_image_player(data);
-	create_tiny_map(data);
-	mlx_loop_hook(data->mlx42.mlx_ptr, esc_hook, data->mlx42.mlx_ptr);
-	mlx_loop_hook(data->mlx42.mlx_ptr, move_player, data);
-	mlx_loop_hook(data->mlx42.mlx_ptr, draw_player, data);
-	mlx_loop_hook(data->mlx42.mlx_ptr, draw_game, data);
-	mlx_loop(data->mlx42.mlx_ptr);
+	int	ret;
+
+	ret = start_mlx(data);
+	if (!ret)
+		ret = create_wall_images(data);
+	if (!ret)
+		ret = create_floor_ceiling_image(data);
+	if (!ret)
+		ret = create_image_player(data);
+	if (!ret)
+		ret = create_tiny_map(data);
+	if (!ret)
+	{
+		add_hooks(data);
+		mlx_loop(data->mlx42.mlx_ptr);
+	}
 	mlx_close_window(data->mlx42.mlx_ptr);
 	mlx_terminate(data->mlx42.mlx_ptr);
 	return (0);
