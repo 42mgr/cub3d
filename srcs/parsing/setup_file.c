@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/09/28 22:18:35 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 15:08:38 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	write_rgb(int *rgb, int red, int green, int blue)
 	if ((red > 255 || green > 255 || blue > 255)
 		|| (red < 0 || green < 0 || blue < 0))
 	{
-		ft_putstr_fd("-> Error:\n\tInvalid value for RGB color provided.\n", 2);
+		ft_putstr_fd("\e[1;41mError\e[0m\n\tInvalid RGB value provided.\n", 2);
 		return (1);
 	}
 	rgb[0] = red;
@@ -278,7 +278,7 @@ int	parse_colors(t_data *data, char *line, int len, int offset)
 		err = write_rgb(loc, ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	else
 	{
-		ft_putstr_fd("->Error:\n\tInvalid RGB color format.\n", 2);
+		ft_putstr_fd("\e[1;41mError\e[0m\n\tInvalid RGB color format.\n", 2);
 		return (err);
 	}
 	free(temp);
@@ -318,13 +318,13 @@ int	detect_char(char c)
 			start++;
 		else
 		{
-			ft_putstr_fd("-> Error:\n\tMultiple starting positions.\n", 2);
+			ft_putstr_fd("\e[1;41mError\e[0m\n\tMultiple starting positions.\n", 2);
 			return (1);
 		}
 	}
 	else if (!(c == '1' || c == '0' || c == '\n' || c == ' ' || c == 'x'))
 	{
-		ft_putstr_fd("-> Error:\n\tInvalid character in map: ", 2);
+		ft_putstr_fd("\e[1;41mError\e[0m\n\tInvalid character in map: ", 2);
 		ft_putchar_fd(c, 2);
 		ft_putchar_fd('\n', 2);
 		return (1);

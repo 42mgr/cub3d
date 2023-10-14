@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   flood_fill.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/13 18:48:50 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 15:07:56 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,7 +156,7 @@ void	create_dxy(int dxy[2][8])
 	dxy[1][7] = -1;
 }
 
-/* 	draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_black_img, 
+/* 	draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_black_img,
 		(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 void	mm_draw_floor(t_data *data, int y, int x)
 {
@@ -165,9 +165,9 @@ void	mm_draw_floor(t_data *data, int y, int x)
 	data->maze_cpy[y][x] = '1';
 }
 
-/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_grey_img, 
+/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_grey_img,
 			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
-/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_white_img, 
+/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_white_img,
 			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 void	mm_draw_objects(t_data *data, int y, int x)
 {
@@ -222,18 +222,22 @@ int	flood_fill(t_data *data)
 	data->maze_cpy = duplicate_maze(data->dim.lines, data->maze);
 	if (!data->maze_cpy)
 	{
-		ft_putstr_fd("-> Error:\n\tMalloc failed for maze copy\n", 2);
+		ft_putstr_fd("\e[1;41mError\e[0m\n\tMalloc failed for maze copy\n", 2);
 		ret = 1;
+	}
+	if (data->start.x == -1 || data->start.y == -1)
+	{
+		ret = 1;
+		ft_putstr_fd("\e[1;41mError\e[0m\n\tNo start position detected.\n", 2);
 	}
 	if (ret == 0)
 	{
 		ret = run_fill(data, dxy, data->start.x, data->start.y);
 		if (ret != 0)
-			ft_putstr_fd("-> Error:\n\tMaze is not closed\n", 2);
+			ft_putstr_fd("\e[1;41mError\e[0m\n\tMaze is not closed\n", 2);
 		free_2d_array(data->maze_cpy);
+		create_clean_maze(data);
 	}
-	create_clean_maze(data);
-	print_all(data->maze_cpy, data->dim.max_y - data->dim.min_y + 1);
 	return (ret);
 }
 
