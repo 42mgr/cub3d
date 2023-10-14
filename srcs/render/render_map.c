@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 17:00:01 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:14:05 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	start_mlx(t_data *data)
 	set_dim(data);
 	mlx_set_setting(MLX_STRETCH_IMAGE, true);
 	data->mlx42.mlx_ptr = mlx_init(WINDOW_WIDTH, WINDOW_HEIGHT, "Cub3D", true);
-	if (data->mlx42.mm_floor_img == NULL)
+	if (data->mlx42.mlx_ptr == NULL)
 		return (1);
 	return (0);
 }

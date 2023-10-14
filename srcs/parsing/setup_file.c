@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 16:37:45 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:10:32 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,10 +140,7 @@ int	parse_colors(t_data *data, char *line, int len, int offset)
 	if (rgb[0] != 0 && rgb[1] != 0 && rgb[2] != 0)
 		err = write_rgb(loc, ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
 	else
-	{
 		ft_putstr_fd("\e[1;41mError\e[0m\n\tInvalid RGB color format.\n", 2);
-		return (err);
-	}
 	free(temp);
 	free_2d_array(rgb);
 	return (err);
