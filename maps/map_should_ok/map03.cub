@@ -1,17 +1,14 @@
-NO ./textures/hieroglyph_sprites_by_asalga1.png
-EA ./textures/hieroglyph_sprites_by_asalga2.png
-SO ./textures/hieroglyph_sprites_by_asalga3.png
-WE ./textures/hieroglyph_sprites_by_asalga4.png
-F 85, 63,  35
-C 135,   206,    235
+WE ./textures/default_n_wall
+EA ./textures/default_n_wall
+C 225,30,0
 
                                         1111111111111111111111111
-                                        1000000000110000000000001
+                                        100000S000110000000000001
                                         1011000001110000000000001
-                                        1001000N00000000000000001
+                                        1001000000000000000000001
                                 111111111011000001110000000000001
                                 100000000011000001110111111111111
-                                11110111110111011100000010001    
+                                11110111111111011100000010001    
                                 11110111111111011101010010001    
                                 11000000110101011100000010001    
                                 10000000000000001100000010001    

@@ -1,0 +1,9 @@
+NO ./textures/default_n_wall
+SO ./textures/default_s_wall
+WE ./textures/default_w_wall
+EA ./textures/default_e_wall
+C 225,30,0
+
+111
+1N1
+111
