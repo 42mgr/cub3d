@@ -6,7 +6,7 @@
 /*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/13 19:02:46 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 15:10:25 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,19 @@ void	draw_vertical_texture_n(t_data *data, int x, int d, t_int_p2 loc)
 
 	i = 0;
 	pos_in_wall = loc.x % SPRITE_SIZE;
-	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
+	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.n_wall->width * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.n_wall->height * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.n_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
-		pxl += data->mlx42.n_wall->pixels[\
-		(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
-		pxl += data->mlx42.n_wall->pixels[\
-		(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
+		pxl += data->mlx42.n_wall->pixels[(4 * data->mlx42.n_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.n_wall->height / d) + 2] * 0x0000100;
+		pxl += data->mlx42.n_wall->pixels[(4 * data->mlx42.n_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.n_wall->height / d) + 1] * 0x0010000;
+		pxl += data->mlx42.n_wall->pixels[(4 * data->mlx42.n_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.n_wall->height / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
@@ -89,19 +89,19 @@ void	draw_vertical_texture_e(t_data *data, int x, int d, t_int_p2 loc)
 
 	i = 0;
 	pos_in_wall = loc.y % SPRITE_SIZE;
-	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
+	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.e_wall->width * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.e_wall->height * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.e_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
-		pxl += data->mlx42.e_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
-		pxl += data->mlx42.e_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
+		pxl += data->mlx42.e_wall->pixels[(4 * data->mlx42.e_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.e_wall->height / d) + 2] * 0x0000100;
+		pxl += data->mlx42.e_wall->pixels[(4 * data->mlx42.e_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.e_wall->height / d) + 1] * 0x0010000;
+		pxl += data->mlx42.e_wall->pixels[(4 * data->mlx42.e_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.e_wall->height / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
@@ -126,19 +126,19 @@ void	draw_vertical_texture_s(t_data *data, int x, int d, t_int_p2 loc)
 
 	i = 0;
 	pos_in_wall = loc.x % SPRITE_SIZE;
-	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
+	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.s_wall->width * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.s_wall->height * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.s_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
-		pxl += data->mlx42.s_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
-		pxl += data->mlx42.s_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
+		pxl += data->mlx42.s_wall->pixels[(4 * data->mlx42.s_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.s_wall->height / d) + 2] * 0x0000100;
+		pxl += data->mlx42.s_wall->pixels[(4 * data->mlx42.s_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.s_wall->height / d) + 1] * 0x0010000;
+		pxl += data->mlx42.s_wall->pixels[(4 * data->mlx42.s_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.s_wall->height / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
@@ -163,19 +163,19 @@ void	draw_vertical_texture_w(t_data *data, int x, int d, t_int_p2 loc)
 
 	i = 0;
 	pos_in_wall = loc.y % SPRITE_SIZE;
-	if (d < 0 || x < 0 || x > data->mlx42.mlx_ptr->width)
+	if (d < 0 || x < 0 || x > (int)data->mlx42.mm_player_img->width)
 		return ;
 	top.y = (WINDOW_HEIGHT / 2) - (d / 2);
-	pos_in_texture = data->mlx42.w_wall->width * pos_in_wall / SPRITE_SIZE; 
+	pos_in_texture = data->mlx42.w_wall->height * pos_in_wall / SPRITE_SIZE; 
 	while (i < d)
 	{
 		pxl = TRA_Y;
-		pxl += data->mlx42.w_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 2] * 0x0000100;
-		pxl += data->mlx42.w_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 1] * 0x0010000;
-		pxl += data->mlx42.w_wall->pixels[\
-			(4 * 32 * pos_in_texture) + 4 * (i * 32 / d) + 0] * 0x1000000;
+		pxl += data->mlx42.w_wall->pixels[(4 * data->mlx42.w_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.w_wall->height / d) + 2] * 0x0000100;
+		pxl += data->mlx42.w_wall->pixels[(4 * data->mlx42.w_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.w_wall->height / d) + 1] * 0x0010000;
+		pxl += data->mlx42.w_wall->pixels[(4 * data->mlx42.w_wall->width * \
+pos_in_texture) + 4 * (i * data->mlx42.w_wall->height / d) + 0] * 0x1000000;
 		if (top.y + i >= 0 && top.y + i < WINDOW_HEIGHT)
 			mlx_put_pixel(data->mlx42.mm_player_img, x, top.y + i, pxl);
 		i++;
