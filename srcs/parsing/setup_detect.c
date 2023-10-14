@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:31:54 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 16:33:38 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:59:06 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	detect_colors(t_data *data, char *line, int *error)
 	offset = 2;
 	if (!ft_strncmp(line, "C ", offset) || !ft_strncmp(line, "F ", offset))
 	{
+		while (line[offset] == ' ')
+			offset++;
 		len = (cont_str_len(line, offset));
 		if (parse_colors(data, line, len, offset))
 			*error = 1;
@@ -71,6 +73,8 @@ int	detect_textures(t_data *data, char *line, int *error)
 		|| !ft_strncmp(line, "WE ", offset)
 		|| !ft_strncmp(line, "EA ", offset))
 	{
+		while (line[offset] == ' ')
+			offset++;
 		len = (cont_str_len(line, offset));
 		if (parse_path(data, line, len, offset))
 			*error = 1;
