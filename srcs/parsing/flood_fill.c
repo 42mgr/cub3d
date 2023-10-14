@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:36:57 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:49:28 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,6 @@ int	run_fill(t_data *data, int dxy[2][8], int x, int y)
 	return (error);
 }
 
-/* 	draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_black_img,
-		(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 void	mm_draw_floor(t_data *data, int y, int x)
 {
 	if (x > (data->dim.max_x - data->dim.min_x + 1))
@@ -78,10 +76,6 @@ void	mm_draw_floor(t_data *data, int y, int x)
 	data->maze_cpy[y][x] = '1';
 }
 
-/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_grey_img,
-			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
-/* 		draw_picture(data->mlx42.mlx_ptr, data->mlx42.mm_white_img,
-			(y * SPRITE_SIZE), (x * SPRITE_SIZE)); */
 void	mm_draw_objects(t_data *data, int y, int x)
 {
 	if (x > (data->dim.max_x - data->dim.min_x + 1))
@@ -127,112 +121,3 @@ int	flood_fill(t_data *data)
 	}
 	return (ret);
 }
-
-/* int	run_fill(t_data *data, char **maze, int x, int y)
-{
-	static int error = 0;
-	int dx[] = {1, -1, 0, 0, 1, 1, -1, -1};
-	int dy[] = {0, 0, 1, -1, 1, -1, 1, -1};
-	//int nx;
-	//int	ny;
-
-	if (maze[y][x] == '1' || maze[y][x] == '\0' || maze[y][x] == '\n')
-	{
-		if (maze[y][x] != '1')
-			error++;
-		return 0;
-	}
-	maze[y][x] = '1';
-	for (int i = 0; i < 8; i++)
-//	int i;
-//	/i = 0;
-//	while (i < 8)
-	{
-		int nx = x + dx[i];
-		int ny = y + dy[i];
-
-		if (!maze[ny][nx] || maze[ny][nx] == '\0' || maze[ny][nx] == '\n')
-		{
-			error++;
-			continue ;
-		}
-		if (maze[ny][nx] != '0' && maze[ny][nx] != '1')
-		{
-			error++;
-			continue ;
-		}
-		run_fill(data, maze, nx, ny);
-//		i++;
-	}
-	return  (error);
-} */
-
-/* int	run_fill2(char **maze, int dxy[2][8], int x, int y)
-{
-	static int	error = 0;
-	int			i;
-	int			nx;
-	int			ny;
-
-	if (maze[y][x] == '1' || maze[y][x] == '\0' || maze[y][x] == '\n')
-	{
-		if (maze[y][x] != '1')
-			error++;
-		return (0);
-	}
-	maze[y][x] = '1';
-	i = 0;
-	while (i < 8)
-	{
-		nx = x + dxy[0][i];
-		ny = y + dxy[1][i];
-		if ((!maze[ny][nx] || maze[ny][nx] == '\0' || maze[ny][nx] == '\n') ||
-			(maze[ny][nx] != '0' && maze[ny][nx] != '1'))
-		{
-			error++;
-			continue ;
-		}
-		run_fill2(maze, dxy, nx, ny);
-		i++;
-	}
-	return (error);
-} */
-
-/* int run_fill2(char **maze, int dxy[2][8], int startX, int startY) {
-    int error = 0;
-    int stackX[1000];  // Adjust the size as needed
-    int stackY[1000];  // Adjust the size as needed
-    int top = -1;
-
-    stackX[++top] = startX;
-    stackY[top] = startY;
-
-    while (top >= 0) {
-        int x = stackX[top];
-        int y = stackY[top--];
-
-        if (maze[y][x] == '1' || maze[y][x] == '\0' || maze[y][x] == '\n') {
-            if (maze[y][x] != '1') {
-                error++;
-            }
-            continue;
-        }
-
-        maze[y][x] = '1';
-int i = 0;
-while (i < 8) {
-    int nx = x + dxy[0][i];
-    int ny = y + dxy[1][i];
-
-    if ((!maze[ny][nx] || maze[ny][nx] == '\0' || maze[ny][nx] == '\n') ||
-        (maze[ny][nx] != '0' && maze[ny][nx] != '1')) {
-        error++;
-    } else {
-        stackX[++top] = nx;
-        stackY[top] = ny;
-    }
-    i++; // Increment i to check the next direction
-}
-    }
-    return error;
-} */

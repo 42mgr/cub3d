@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:50:19 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 17:00:59 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:51:13 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,9 +90,6 @@ int	create_floor_ceiling_image(t_data *data)
 	return (0);
 }
 
-/*	data->mlx42.mm_player_img = mlx_new_image(data->mlx42.mlx_ptr,
-		(data->dim.max_x - data->dim.min_x + 1) * SPRITE_SIZE,
-		(data->dim.max_y - data->dim.min_y + 1) * SPRITE_SIZE); */
 /**
  * creates new image where the game is drawn on (size is given by defines)
  * sets inital position of player to be in the middle of it's starting square

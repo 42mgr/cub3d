@@ -3,16 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strjoin_mod.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/26 16:44:41 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/13 18:47:02 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:49:47 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-//	if (*s1 != '\0')
 char	*ft_strjoin_mod(char *s1, char *s2)
 {
 	char	*joined;

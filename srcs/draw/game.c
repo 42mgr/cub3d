@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/04 17:06:52 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/14 16:40:42 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:48:21 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,6 @@
  * @param angle the angle in which the ray goes,
  * measured counterclockwise in radiant with North being 0 radiant
 */
-// if ((q.x == 0 && q.y == 0) || (p.x == 0 && p.y == 0))
-// 		draw_line(data, (t_int_p2){data->start.x, data->start.y}, p, L_RED);
-// 	else
 void	vertical_line(t_data *data, int x, double angle)
 {
 	t_int_p2	q;

@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:34:25 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 16:37:03 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:50:32 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,6 @@ void	replace_nl(char **buffer)
 
 /**
  * Initializes the data struct with default values
- * !!! fd not necessary? llen_head not necessary?
 */
 int	init_data(t_data *data)
 {

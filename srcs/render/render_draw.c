@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:51:58 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:38:27 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:51:22 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int))
 {
 	int	x;
 	int	y;
-
 
 	y = 0;
 	while (data->maze[y + data->dim.min_y] && \
@@ -66,15 +65,6 @@ void	which_picture(t_data *data, int y, int x)
  * draws in illegal places
  * @param arg the void pointer to the data pointer struct
 */
-	// int			ray_angle;
-	// int i = 0;
-	// ray_angle = ((data->start.dir + 23) % 360) * 10;
-	// while (i < 460)
-	// {
-	// 	ray(data, ray_angle * M_PI / 1800.0);
-	// 	ray_angle = (ray_angle + 3599) % 3600;
-	// 	i++;
-	// }
 void	draw_player(void *arg)
 {
 	t_data		*data;

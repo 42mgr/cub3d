@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/27 12:10:50 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:14:05 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:51:35 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,11 +82,6 @@ int	start_mlx(t_data *data)
 /**
  * @param data the t_data pointer
 */
-	// check_for_tile(data, draw_floor);
-	// check_for_tile(data, which_picture);
-	// load_pics(data); // can fail
-	// if (!ret)
-	// 	ret = create_tiny_map(data);
 int	render_map(t_data *data)
 {
 	int	ret;

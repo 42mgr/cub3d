@@ -6,38 +6,11 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:10:32 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/14 18:50:08 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-/*
-t_llen	*create_length_node(int line, int length)
-{
-	t_llen	*node;
-
-	node = (t_llen *)malloc(sizeof(t_llen));
-	node->llen = length;
-	node->lno = line;
-	node->next = NULL;
-	return (node);
-}
-
-void	add_length_list(t_llen **head, int line, int length)
-{
-	t_llen	*current;
-
-	if (*head == NULL)
-		*head = create_length_node(line, length);
-	else
-	{
-		current = *head;
-		while (current != NULL && current->next != NULL)
-			current = current->next;
-		current->next = create_length_node(line, length);
-	}
-} */
 
 /**
  * Reads the file and saves the lines in a char *line
@@ -70,22 +43,6 @@ char	*read_file(t_data *data, char *path)
 	close(fd);
 	return (line);
 }
-
-/**
- * Helper function to print the linked list
-*/
-/*
-void	print_ll(t_llen **head)
-{
-	t_llen	*current;
-
-	current = *head;
-	while (current)
-	{
-		printf("line: %i\tlength: %i\n", current->lno, current->llen);
-		current = current->next;
-	}
-} */
 
 /**
  * Copies the color path to the data struct and checks if the file exists
