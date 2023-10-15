@@ -1,0 +1,7 @@
+<map id="s_data" name="s_data">
+<area shape="rect" id="node1" title=" " alt="" coords="169,93,234,119"/>
+<area shape="rect" id="node2" href="$structs__player.html" title=" " alt="" coords="5,5,83,31"/>
+<area shape="rect" id="node3" href="$structs__textures.html" title=" " alt="" coords="107,5,197,31"/>
+<area shape="rect" id="node4" href="$structs__dim.html" title=" " alt="" coords="221,5,283,31"/>
+<area shape="rect" id="node5" href="$structs__mlx42.html" title=" " alt="" coords="307,5,384,31"/>
+</map>
