@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/21 14:47:34 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:49:28 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/15 19:00:58 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,14 @@ int	check_around(t_data *data, int dxy[2][8], int x, int y)
 		nx = x + dxy[0][i];
 		ny = y + dxy[1][i];
 		box_min_max(data, nx, ny);
-		if (data->maze_cpy[ny][nx] != '0' && data->maze_cpy[ny][nx] != '1')
-			return (1);
+		//printf("dim.max_y: %i\n", data->dim.max_y);
+		if (data->dim.max_y > ny)
+		{
+			if (data->maze_cpy[ny][nx] != '0' && data->maze_cpy[ny][nx] != '1')
+				return (1);
+			else
+				i++;
+		}
 		else
 			i++;
 	}
@@ -47,22 +53,25 @@ int	run_fill(t_data *data, int dxy[2][8], int x, int y)
 	int			nx;
 	int			ny;
 
-	if (data->maze_cpy[y][x] == '1')
+ 	printf("[y][x]: %c, y: %i, x: %i maxy: %i, max_x: %i\n", data->maze_cpy[y][x], y, x, data->dim.max_y, data->dim.max_x);
+	print_all(data->maze_cpy, 21);
+	if ((data->dim.max_y < y && data->dim.max_y >= 0) || (data->dim.max_x < x && data->dim.max_x >= 0))
+		return (++error);
+	else if (data->maze_cpy[y][x] == '1')
 		return (0);
 	else if (data->maze_cpy[y][x] == '0')
 	{
 		data->maze_cpy[y][x] = '1';
 		if (check_around(data, dxy, x, y))
-		{
-			error = error + 1;
-			return (1);
-		}
+			return (++error);
 	}
 	i = 0;
 	while (i < 8)
 	{
 		nx = x + dxy[0][i];
 		ny = y + dxy[1][i];
+		if (data->dim.max_y < ny || data->dim.max_x < nx || ny < 0 || nx < 0)
+			return (++error);
 		run_fill(data, dxy, nx, ny);
 		i++;
 	}
@@ -90,6 +99,12 @@ void	mm_draw_objects(t_data *data, int y, int x)
 	}
 }
 
+int	put_err(char *msg)
+{
+	ft_putstr_fd(msg, 2);
+	return (1);
+}
+
 /**
  * The main function to check if the maze is closed
 */
@@ -102,22 +117,19 @@ int	flood_fill(t_data *data)
 	ret = 0;
 	data->maze_cpy = duplicate_maze(data->dim.lines, data->maze);
 	if (!data->maze_cpy)
-	{
-		ft_putstr_fd("\e[1;41mError\e[0m\n\tMalloc failed for maze copy\n", 2);
-		ret = 1;
-	}
+		ret = put_err("\e[1;41mError\e[0m\n\tMalloc failed for maze copy\n");
 	if (data->start.x == -1 || data->start.y == -1)
-	{
-		ret = 1;
-		ft_putstr_fd("\e[1;41mError\e[0m\n\tNo start position detected.\n", 2);
-	}
+		ret = put_err("\e[1;41mError\e[0m\n\tNo start position detected.\n");
 	if (ret == 0)
 	{
 		ret = run_fill(data, dxy, data->start.x, data->start.y);
 		if (ret != 0)
 			ft_putstr_fd("\e[1;41mError\e[0m\n\tMaze is not closed\n", 2);
-		free_2d_array(data->maze_cpy);
-		create_clean_maze(data);
+		if (ret == 0)
+		{
+			free_2d_array(data->maze_cpy);
+			create_clean_maze(data);
+		}
 	}
 	return (ret);
 }
