@@ -131,4 +131,56 @@ maptest: all
 	./$(NAME) maps/simple_fail/no_closing_top.cub
 	./$(NAME) maps/simple_fail/no_closing_left.cub
 
+valmaptest: all
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_file_path/map03.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_left_top_space.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_left_top_zero.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_right_btm_0.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_right_btm_eof.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_right_btm_nl.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_right_top_nl.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_right_top_space.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map00_right_top_zero.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_open/map01.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/a.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/asciiart_dot_eu2.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/bad_color.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/codepen_io_MittenedWatchmaker.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/extension_missing
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/map04small_space_in_col.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/map08missing_start.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/map09.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/map_missing_texture.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/map_nl.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/map_pdf_missing_wall.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/map_wikipedia.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/no_space_path.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/open_two_n.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/single_n.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/small_open.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/wall_hole.cubb
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/S.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/nothing.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/no_closing_right.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/no_closing_bottom.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/0.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/no_closing_top.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/no_closing_left.cub
+
+okmaptest: all
+	-./$(NAME) maps/map_should_ok/asciiart_dot_eu.cub
+	-./$(NAME) maps/map_should_ok/l.cub
+	-./$(NAME) maps/map_should_ok/map02.cub
+	-./$(NAME) maps/map_should_ok/map03.cub
+	-./$(NAME) maps/map_should_ok/map04small2.cub
+	-./$(NAME) maps/map_should_ok/map04small.cub
+	-./$(NAME) maps/map_should_ok/map04small_space_in_path.cub
+	-./$(NAME) maps/map_should_ok/map05medium.cub
+	-./$(NAME) maps/map_should_ok/map06big.cub
+	-./$(NAME) maps/map_should_ok/map07S.cub
+	-./$(NAME) maps/map_should_ok/map09.cub
+	-./$(NAME) maps/map_should_ok/map10stairs.cub
+	-./$(NAME) maps/map_should_ok/map_pdf.cub
+	-./$(NAME) maps/map_should_ok/n.cub
+
 .PHONY: clean fclean re all bonus init_submodules libmlx commit maptest
