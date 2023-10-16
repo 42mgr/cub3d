@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:29:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/16 16:22:51 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 17:06:32 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	check_file(char *path)
 			ft_putstr("\e[1;41mError\e[0m\n opening file:\t", strerror(errno));
 		close(fd);
 		ft_putstr("\t", path);
-		return (1);
+		return (-1);
 	}
 	else
 	{
@@ -47,7 +47,7 @@ int	check_file(char *path)
 			ft_putstr("\e[1;41mError\e[0m\n\t", path);
 			ft_putstr("\tFile is valid, but no read permissions.", NULL);
 			close(fd);
-			return (1);
+			return (-1);
 		}
 	}
 	close(fd);
@@ -64,18 +64,19 @@ int	check_args(int ac, char **av)
 	if (ac == 1 || ac != 2)
 	{
 		ft_putstr("Error\n\tWrong number of arguments.", NULL);
-		return (1);
+		return (-1);
 	}
 	len = ft_strlen(av[1]);
 	if (len < 5)
 	{
 		ft_putstr("\e[1;41mError\e[0m\n\tInvalid name for .cub file.", NULL);
-		return (1);
+		return (-1);
 	}
 	if (ft_strncmp(av[1] + len - 4, ".cub", 4))
 	{
-		ft_putstr("\e[1;41mError\e[0m\n\tInvalid type. Please use .cub extension.", NULL);
-		return (1);
+		ft_putstr(\
+			"\e[1;41mError\e[0m\n\tInvalid type. Please use .cub extension.", NULL);
+		return (-1);
 	}
 	return (0);
 }

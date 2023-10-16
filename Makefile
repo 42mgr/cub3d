@@ -183,4 +183,4 @@ okmaptest: all
 	-./$(NAME) maps/map_should_ok/map_pdf.cub
 	-./$(NAME) maps/map_should_ok/n.cub
 
-.PHONY: clean fclean re all bonus init_submodules libmlx commit maptest
+.PHONY: clean fclean re all bonus init_submodules libmlx commit maptest valmaptest okmaptest

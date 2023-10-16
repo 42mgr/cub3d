@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/16 14:39:11 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/16 16:39:38 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -282,7 +282,7 @@ void		delete_four_textures(mlx_texture_t *north, mlx_texture_t *east, \
 				mlx_texture_t *south, mlx_texture_t *west);
 
 // new protection functions in flood_fill.c
-int	valid_index(t_data *data, int x, int y);
-int	set_maze_cpy_dim(t_data *data);
+int			valid_i(t_data *data, int x, int y);
+int			set_maze_cpy_dim(t_data *data);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/16 16:05:39 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 17:05:58 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,13 @@ int	main(int ac, char **av)
 	ret = check_args(ac, av);
 	if (ret == 0)
 		ret = check_file(av[1]);
-	if (ret != 0)
-		return (1);
 	if (ret == 0)
 		ret = setup_file(&data, av);
 	if (ret == 0)
 		ft_putstr_fd("\e[1;42mSUCCESS:\e[0m\n\tFile parsed and valid.\n", 2);
 	if (ret == 0)
 		ret = render_map(&data);
-	final_free(&data);
+	if (ret >= 0)
+		final_free(&data);
 	return (0);
 }
