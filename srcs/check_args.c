@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:29:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 17:48:54 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 16:22:51 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@ int	check_args(int ac, char **av)
 	len = ft_strlen(av[1]);
 	if (len < 5)
 	{
-		ft_putstr("Error\n\tInvalid name for .cub file.", NULL);
+		ft_putstr("\e[1;41mError\e[0m\n\tInvalid name for .cub file.", NULL);
 		return (1);
 	}
 	if (ft_strncmp(av[1] + len - 4, ".cub", 4))
 	{
-		ft_putstr("Error\n\tInvalid type. Please use .cub extension.", NULL);
+		ft_putstr("\e[1;41mError\e[0m\n\tInvalid type. Please use .cub extension.", NULL);
 		return (1);
 	}
-	return (check_file(av[1]));
+	return (0);
 }
