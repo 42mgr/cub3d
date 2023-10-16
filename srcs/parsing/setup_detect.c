@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_detect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:31:54 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:59:06 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 15:15:45 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,8 +91,8 @@ int	check_for_start(t_data *data, char *buffer, int line)
 {
 	int	i;
 
-	i = 0;
-	while (buffer[i])
+	i = 1;
+	while (buffer[i] && buffer[i + 1])
 	{
 		if ((buffer[i] == 'N' || buffer[i] == 'S' || buffer[i] == 'E'
 				|| buffer[i] == 'W') && (buffer[i + 1] == '1'

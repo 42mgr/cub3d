@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 17:56:16 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 14:39:11 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,8 @@ typedef struct s_data
 	t_textures	textures;
 	char		**maze;
 	char		**maze_cpy;
+	int			maze_number_of_lines;
+	int			*maze_cpy_dim;
 	t_dim		dim;
 	t_mlx42		mlx42;
 }				t_data;
@@ -278,5 +280,9 @@ int			start_mlx(t_data *data);
 int			render_map(t_data *data);
 void		delete_four_textures(mlx_texture_t *north, mlx_texture_t *east, \
 				mlx_texture_t *south, mlx_texture_t *west);
+
+// new protection functions in flood_fill.c
+int	valid_index(t_data *data, int x, int y);
+int	set_maze_cpy_dim(t_data *data);
 
 #endif

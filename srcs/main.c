@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 16:09:28 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:51:54 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 15:17:48 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ static int	final_free(t_data *data)
 {
 	free_2d_array(data->maze);
 	free_2d_array(data->maze_cpy);
+	free(data->maze_cpy_dim);
 	free(data->textures.n_path);
 	free(data->textures.e_path);
 	free(data->textures.s_path);

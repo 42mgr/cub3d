@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_helper.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:34:25 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:50:32 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 15:17:38 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,7 @@ int	init_data(t_data *data)
 	data->start.y = -1;
 	data->maze = NULL;
 	data->maze_cpy = NULL;
+	data->maze_cpy_dim = NULL;
 	data->textures.n_path = ft_strdup(DEFAULT_NORTH_TEXTURE);
 	data->textures.e_path = ft_strdup(DEFAULT_EAST_TEXTURE);
 	data->textures.s_path = ft_strdup(DEFAULT_SOUTH_TEXTURE);

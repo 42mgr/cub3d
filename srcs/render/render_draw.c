@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_draw.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:51:58 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:51:22 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/16 15:33:18 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	check_for_tile(t_data *data, void (*f)(t_data *data, int, int))
 	int	y;
 
 	y = 0;
-	while (data->maze[y + data->dim.min_y] && \
-		y < data->dim.max_y - data->dim.min_y + 1)
+	if (data->dim.min_y < 0)
+		return ;
+	while (y < data->dim.max_y - data->dim.min_y + 1 && \
+		data->maze[y + data->dim.min_y])
 	{
 		x = 0;
 		while (x < data->dim.max_x - data->dim.min_x + 1)
