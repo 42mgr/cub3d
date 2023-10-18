@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_file.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/16 13:58:29 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/18 17:50:55 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,16 @@ int	parse_path(t_data *data, char *line, int len, int offset)
 	ft_strlcpy(path, line + offset, len - offset + 1);
 	ret = check_file(path);
 	color = &data->textures.n_path;
-	if (line[0] == 'N')
+	if (line[0] == 'N' && !ft_strncmp(data->textures.n_path, DEFAULT_NORTH_TEXTURE, 25))
 		color = &data->textures.n_path;
-	else if (line[0] == 'S')
+	else if (line[0] == 'S' && !ft_strncmp(data->textures.s_path, DEFAULT_SOUTH_TEXTURE, 25))
 		color = &data->textures.s_path;
-	else if (line[0] == 'E')
+	else if (line[0] == 'E' && !ft_strncmp(data->textures.e_path, DEFAULT_EAST_TEXTURE, 25))
 		color = &data->textures.e_path;
-	else if (line[0] == 'W')
+	else if (line[0] == 'W' && !ft_strncmp(data->textures.w_path, DEFAULT_WEST_TEXTURE, 25))
 		color = &data->textures.w_path;
+	else
+		ret = 1;
 	free(*color);
 	*color = path;
 	return (ret);
