@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_create.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:50:19 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/14 18:51:13 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/18 22:38:32 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,8 @@ int	create_image_player(t_data *data)
 		(data->start.x - data->dim.min_x) * SPRITE_SIZE + (SPRITE_SIZE / 2);
 	data->start.y = \
 		(data->start.y - data->dim.min_y) * SPRITE_SIZE + (SPRITE_SIZE / 2);
+	data->start.double_pos = \
+		(t_p2){(double)data->start.x, (double)data->start.y};
 	data->mlx42.mm_player_img = \
 		mlx_new_image(data->mlx42.mlx_ptr, WINDOW_WIDTH, WINDOW_HEIGHT);
 	if (data->mlx42.mm_player_img == NULL)

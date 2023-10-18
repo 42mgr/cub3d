@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/14 16:45:45 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/18 22:37:43 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,26 +48,38 @@ int	valid_pos(t_data *data, t_int_p2 pos)
 void	move_forward(t_data *data)
 {
 	t_int_p2	end_pos;
+	t_p2		end_pos_d;
 
-	end_pos.x = data->start.x - (5.0 * sin(data->start.dir / 180.0 * M_PI));
-	end_pos.y = data->start.y - (5.0 * cos(data->start.dir / 180.0 * M_PI));
+	end_pos_d.x = data->start.double_pos.x - (5.0 * \
+		sin(data->start.dir / 180.0 * M_PI));
+	end_pos_d.y = data->start.double_pos.y - (5.0 * \
+		cos(data->start.dir / 180.0 * M_PI));
+	end_pos.x = (int)end_pos_d.x;
+	end_pos.y = (int)end_pos_d.y;
 	if (valid_pos(data, end_pos) == 1)
 	{
 		data->start.x = end_pos.x;
 		data->start.y = end_pos.y;
+		data->start.double_pos = end_pos_d;
 	}
 }
 
 void	move_backward(t_data *data)
 {
 	t_int_p2	end_pos;
+	t_p2		end_pos_d;
 
-	end_pos.x = data->start.x + (5.0 * sin(data->start.dir / 180.0 * M_PI));
-	end_pos.y = data->start.y + (5.0 * cos(data->start.dir / 180.0 * M_PI));
+	end_pos_d.x = data->start.double_pos.x + (5.0 * \
+		sin(data->start.dir / 180.0 * M_PI));
+	end_pos_d.y = data->start.double_pos.y + (5.0 * \
+		cos(data->start.dir / 180.0 * M_PI));
+	end_pos.x = (int)end_pos_d.x;
+	end_pos.y = (int)end_pos_d.y;
 	if (valid_pos(data, end_pos) == 1)
 	{
 		data->start.x = end_pos.x;
 		data->start.y = end_pos.y;
+		data->start.double_pos = end_pos_d;
 	}
 }
 
@@ -76,14 +88,10 @@ void	move_player(void *arg)
 	t_data	*data;
 
 	data = arg;
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_D))
-		move_right(data);
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_A))
-		move_left(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_W))
-		move_up(data);
+		move_forward(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_S))
-		move_down(data);
+		move_backward(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_LEFT))
 		data->start.dir = (data->start.dir + 2) % 360;
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_RIGHT))

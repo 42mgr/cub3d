@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/16 16:39:38 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/18 22:26:40 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,34 @@
 # define MUD_BROWN 0x553F23AA
 
 /**
+ * The struct contains two ints that mean the x/y position on a plane
+*/
+typedef struct s_int_p2
+{
+	int	x;
+	int	y;
+}				t_int_p2;
+
+/**
+ * The struct contains two doubles that mean the x/y position on a plane
+*/
+typedef struct s_p2
+{
+	double	x;
+	double	y;
+}				t_p2;
+
+/**
  * Player is intialized at starting position with view direction (N, S, E or W)
  * TBD: in degrees or radians ???
  * later these values update to the current position and view direction
 */
 typedef struct s_player
 {
-	int	x;
-	int	y;
-	int	dir;
+	int		x;
+	int		y;
+	int		dir;
+	t_p2	double_pos;
 }				t_player;
 
 /**
@@ -142,15 +161,6 @@ typedef struct s_data
 	t_dim		dim;
 	t_mlx42		mlx42;
 }				t_data;
-
-/**
- * The struct contains two ints that mean the x/y position on a plane
-*/
-typedef struct s_int_p2
-{
-	int	x;
-	int	y;
-}				t_int_p2;
 
 /**
  * holds two doubles repesenting x and y coorinates
