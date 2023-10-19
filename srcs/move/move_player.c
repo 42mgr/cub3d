@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/18 22:37:43 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/19 16:17:30 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	move_forward(t_data *data)
 	t_int_p2	end_pos;
 	t_p2		end_pos_d;
 
-	end_pos_d.x = data->start.double_pos.x - (5.0 * \
+	end_pos_d.x = data->start.double_pos.x - (JUMP_SIZE * \
 		sin(data->start.dir / 180.0 * M_PI));
-	end_pos_d.y = data->start.double_pos.y - (5.0 * \
+	end_pos_d.y = data->start.double_pos.y - (JUMP_SIZE * \
 		cos(data->start.dir / 180.0 * M_PI));
 	end_pos.x = (int)end_pos_d.x;
 	end_pos.y = (int)end_pos_d.y;
@@ -69,9 +69,9 @@ void	move_backward(t_data *data)
 	t_int_p2	end_pos;
 	t_p2		end_pos_d;
 
-	end_pos_d.x = data->start.double_pos.x + (5.0 * \
+	end_pos_d.x = data->start.double_pos.x + (JUMP_SIZE * \
 		sin(data->start.dir / 180.0 * M_PI));
-	end_pos_d.y = data->start.double_pos.y + (5.0 * \
+	end_pos_d.y = data->start.double_pos.y + (JUMP_SIZE * \
 		cos(data->start.dir / 180.0 * M_PI));
 	end_pos.x = (int)end_pos_d.x;
 	end_pos.y = (int)end_pos_d.y;

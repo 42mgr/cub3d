@@ -96,7 +96,7 @@ maptest: all
 	./$(NAME) maps/map_should_error/asciiart_dot_eu2.cub
 	./$(NAME) maps/map_should_error/bad_color.cub
 	./$(NAME) maps/map_should_error/codepen_io_MittenedWatchmaker.cub
-	-./$(NAME) maps/map_should_error/extension_missing
+	./$(NAME) maps/map_should_error/extension_missing
 	./$(NAME) maps/map_should_error/map04small_space_in_col.cub
 	./$(NAME) maps/map_should_error/map08missing_start.cub
 	./$(NAME) maps/map_should_error/map09.cub
@@ -108,7 +108,7 @@ maptest: all
 	./$(NAME) maps/map_should_error/open_two_n.cub
 	./$(NAME) maps/map_should_error/single_n.cub
 	./$(NAME) maps/map_should_error/small_open.cub
-	- ./$(NAME) maps/map_should_error/wall_hole.cubb
+	./$(NAME) maps/map_should_error/wall_hole.cubb
 	./$(NAME) maps/map_should_ok/asciiart_dot_eu.cub
 	./$(NAME) maps/simple_fail/S.cub
 	./$(NAME) maps/simple_fail/nothing.cub

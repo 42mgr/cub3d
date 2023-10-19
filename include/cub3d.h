@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 15:48:35 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/19 15:42:27 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/19 16:28:46 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@
 # define DEFAULT_WEST_TEXTURE "./textures/default_w_wall"
 # define DEFAULT_EAST_TEXTURE "./textures/default_e_wall"
 # define SPRITE_SIZE 64
-# define WALL_OFFSET 5
+# define WALL_OFFSET 8
+# define JUMP_SIZE 15.0
 # define WINDOW_WIDTH 1000
 # define WINDOW_HEIGHT 1000
 # define TINY_MAPX 100
