@@ -165,41 +165,41 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Identifies a (valid) starting position and direction of the player and sets it to '0' </p>
-<div class="fragment"><div class="line"><span class="lineno">   91</span>{</div>
-<div class="line"><span class="lineno">   92</span>    <span class="keywordtype">int</span> i;</div>
-<div class="line"><span class="lineno">   93</span> </div>
-<div class="line"><span class="lineno">   94</span>    i = 0;</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">while</span> (buffer[i])</div>
-<div class="line"><span class="lineno">   96</span>    {</div>
-<div class="line"><span class="lineno">   97</span>        <span class="keywordflow">if</span> ((buffer[i] == <span class="charliteral">&#39;N&#39;</span> || buffer[i] == <span class="charliteral">&#39;S&#39;</span> || buffer[i] == <span class="charliteral">&#39;E&#39;</span></div>
-<div class="line"><span class="lineno">   98</span>                || buffer[i] == <span class="charliteral">&#39;W&#39;</span>) &amp;&amp; (buffer[i + 1] == <span class="charliteral">&#39;1&#39;</span></div>
-<div class="line"><span class="lineno">   99</span>                || buffer[i + 1] == <span class="charliteral">&#39;0&#39;</span>) &amp;&amp; (buffer[i - 1] == <span class="charliteral">&#39;1&#39;</span></div>
-<div class="line"><span class="lineno">  100</span>                || buffer[i - 1] == <span class="charliteral">&#39;0&#39;</span>))</div>
-<div class="line"><span class="lineno">  101</span>        {</div>
-<div class="line"><span class="lineno">  102</span>            data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">y</a> = line;</div>
-<div class="line"><span class="lineno">  103</span>            data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">x</a> = i;</div>
-<div class="line"><span class="lineno">  104</span>            <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;N&#39;</span>)</div>
-<div class="line"><span class="lineno">  105</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#a1711232abf72723b5216c206e6bbb175">NORTH</a>;</div>
-<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;E&#39;</span>)</div>
-<div class="line"><span class="lineno">  107</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#a072a1ef1143314441742097b799be322">EAST</a>;</div>
-<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;S&#39;</span>)</div>
-<div class="line"><span class="lineno">  109</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#af3830320fe6287f717dca9669f417950">SOUTH</a>;</div>
-<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;W&#39;</span>)</div>
-<div class="line"><span class="lineno">  111</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#a755da365a2f771fdb9e15af22fee7d74">WEST</a>;</div>
-<div class="line"><span class="lineno">  112</span>            buffer[i] = <span class="charliteral">&#39;0&#39;</span>;</div>
-<div class="line"><span class="lineno">  113</span>        }</div>
-<div class="line"><span class="lineno">  114</span>        i++;</div>
-<div class="line"><span class="lineno">  115</span>    }</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">return</span> (0);</div>
-<div class="line"><span class="lineno">  117</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   93</span>{</div>
+<div class="line"><span class="lineno">   94</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">   95</span> </div>
+<div class="line"><span class="lineno">   96</span>    i = 1;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">while</span> (buffer[i] &amp;&amp; buffer[i + 1])</div>
+<div class="line"><span class="lineno">   98</span>    {</div>
+<div class="line"><span class="lineno">   99</span>        <span class="keywordflow">if</span> ((buffer[i] == <span class="charliteral">&#39;N&#39;</span> || buffer[i] == <span class="charliteral">&#39;S&#39;</span> || buffer[i] == <span class="charliteral">&#39;E&#39;</span></div>
+<div class="line"><span class="lineno">  100</span>                || buffer[i] == <span class="charliteral">&#39;W&#39;</span>) &amp;&amp; (buffer[i + 1] == <span class="charliteral">&#39;1&#39;</span></div>
+<div class="line"><span class="lineno">  101</span>                || buffer[i + 1] == <span class="charliteral">&#39;0&#39;</span>) &amp;&amp; (buffer[i - 1] == <span class="charliteral">&#39;1&#39;</span></div>
+<div class="line"><span class="lineno">  102</span>                || buffer[i - 1] == <span class="charliteral">&#39;0&#39;</span>))</div>
+<div class="line"><span class="lineno">  103</span>        {</div>
+<div class="line"><span class="lineno">  104</span>            data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">y</a> = line;</div>
+<div class="line"><span class="lineno">  105</span>            data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">x</a> = i;</div>
+<div class="line"><span class="lineno">  106</span>            <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;N&#39;</span>)</div>
+<div class="line"><span class="lineno">  107</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#a1711232abf72723b5216c206e6bbb175">NORTH</a>;</div>
+<div class="line"><span class="lineno">  108</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;E&#39;</span>)</div>
+<div class="line"><span class="lineno">  109</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#a072a1ef1143314441742097b799be322">EAST</a>;</div>
+<div class="line"><span class="lineno">  110</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;S&#39;</span>)</div>
+<div class="line"><span class="lineno">  111</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#af3830320fe6287f717dca9669f417950">SOUTH</a>;</div>
+<div class="line"><span class="lineno">  112</span>            <span class="keywordflow">else</span> <span class="keywordflow">if</span> (buffer[i] == <span class="charliteral">&#39;W&#39;</span>)</div>
+<div class="line"><span class="lineno">  113</span>                data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">dir</a> = <a class="code hl_define" href="cub3d_8h.html#a755da365a2f771fdb9e15af22fee7d74">WEST</a>;</div>
+<div class="line"><span class="lineno">  114</span>            buffer[i] = <span class="charliteral">&#39;0&#39;</span>;</div>
+<div class="line"><span class="lineno">  115</span>        }</div>
+<div class="line"><span class="lineno">  116</span>        i++;</div>
+<div class="line"><span class="lineno">  117</span>    }</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">  119</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a072a1ef1143314441742097b799be322"><div class="ttname"><a href="cub3d_8h.html#a072a1ef1143314441742097b799be322">EAST</a></div><div class="ttdeci">#define EAST</div><div class="ttdef"><b>Definition:</b> cub3d.h:27</div></div>
 <div class="ttc" id="acub3d_8h_html_a1711232abf72723b5216c206e6bbb175"><div class="ttname"><a href="cub3d_8h.html#a1711232abf72723b5216c206e6bbb175">NORTH</a></div><div class="ttdeci">#define NORTH</div><div class="ttdef"><b>Definition:</b> cub3d.h:26</div></div>
 <div class="ttc" id="acub3d_8h_html_a755da365a2f771fdb9e15af22fee7d74"><div class="ttname"><a href="cub3d_8h.html#a755da365a2f771fdb9e15af22fee7d74">WEST</a></div><div class="ttdeci">#define WEST</div><div class="ttdef"><b>Definition:</b> cub3d.h:29</div></div>
 <div class="ttc" id="acub3d_8h_html_af3830320fe6287f717dca9669f417950"><div class="ttname"><a href="cub3d_8h.html#af3830320fe6287f717dca9669f417950">SOUTH</a></div><div class="ttdeci">#define SOUTH</div><div class="ttdef"><b>Definition:</b> cub3d.h:28</div></div>
-<div class="ttc" id="astructt__data_html_a118df3a3a79e240bb9e6b9992b6a023c"><div class="ttname"><a href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">t_data::start</a></div><div class="ttdeci">t_player start</div><div class="ttdef"><b>Definition:</b> cub3d.h:136</div></div>
-<div class="ttc" id="astructt__player_html_a0bb4ef941b9751e6e932a52bb8524d6f"><div class="ttname"><a href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">t_player::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> cub3d.h:65</div></div>
-<div class="ttc" id="astructt__player_html_a81675872f88bf9575fc9658ec9518dfd"><div class="ttname"><a href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">t_player::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> cub3d.h:66</div></div>
-<div class="ttc" id="astructt__player_html_af060bc7809fbb5b792e692fc2c722a34"><div class="ttname"><a href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">t_player::dir</a></div><div class="ttdeci">int dir</div><div class="ttdef"><b>Definition:</b> cub3d.h:67</div></div>
+<div class="ttc" id="astructt__data_html_a118df3a3a79e240bb9e6b9992b6a023c"><div class="ttname"><a href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">t_data::start</a></div><div class="ttdeci">t_player start</div><div class="ttdef"><b>Definition:</b> cub3d.h:156</div></div>
+<div class="ttc" id="astructt__player_html_a0bb4ef941b9751e6e932a52bb8524d6f"><div class="ttname"><a href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">t_player::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> cub3d.h:84</div></div>
+<div class="ttc" id="astructt__player_html_a81675872f88bf9575fc9658ec9518dfd"><div class="ttname"><a href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">t_player::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> cub3d.h:85</div></div>
+<div class="ttc" id="astructt__player_html_af060bc7809fbb5b792e692fc2c722a34"><div class="ttname"><a href="structt__player.html#af060bc7809fbb5b792e692fc2c722a34">t_player::dir</a></div><div class="ttdeci">int dir</div><div class="ttdef"><b>Definition:</b> cub3d.h:86</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
@@ -315,7 +315,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   33</span>    <span class="keywordflow">return</span> (0);</div>
 <div class="line"><span class="lineno">   34</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a2440cb9ed115389c79ce2f55237b5865"><div class="ttname"><a href="cub3d_8h.html#a2440cb9ed115389c79ce2f55237b5865">cont_str_len</a></div><div class="ttdeci">int cont_str_len(char *line, int offset)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:30</div></div>
-<div class="ttc" id="acub3d_8h_html_a5ea934efc5bc3b5bcb884cba51917c80"><div class="ttname"><a href="cub3d_8h.html#a5ea934efc5bc3b5bcb884cba51917c80">parse_colors</a></div><div class="ttdeci">int parse_colors(t_data *data, char *line, int len, int offset)</div><div class="ttdef"><b>Definition:</b> setup_file.c:80</div></div>
+<div class="ttc" id="acub3d_8h_html_a5ea934efc5bc3b5bcb884cba51917c80"><div class="ttname"><a href="cub3d_8h.html#a5ea934efc5bc3b5bcb884cba51917c80">parse_colors</a></div><div class="ttdeci">int parse_colors(t_data *data, char *line, int len, int offset)</div><div class="ttdef"><b>Definition:</b> setup_file.c:82</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -324,8 +324,9 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,31,115,56"/>
 <area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="164,5,265,31"/>
 <area shape="rect" href="setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80" title=" " alt="" coords="163,55,267,80"/>
-<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="315,29,427,55"/>
-<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="329,79,412,104"/>
+<area shape="rect" href="setup__check__double_8c.html#a5106b87d455a275de62f11b5d54a1922" title=" " alt="" coords="315,5,453,31"/>
+<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="328,55,440,80"/>
+<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="343,104,425,129"/>
 </map>
 </div>
 <div class="dynheader">
@@ -387,11 +388,13 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   77</span>            offset++;</div>
 <div class="line"><span class="lineno">   78</span>        len = (<a class="code hl_function" href="cub3d_8h.html#a2440cb9ed115389c79ce2f55237b5865">cont_str_len</a>(line, offset));</div>
 <div class="line"><span class="lineno">   79</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="cub3d_8h.html#a8050db57d3e433a4c325989a8bbec4ee">parse_path</a>(data, line, len, offset))</div>
-<div class="line"><span class="lineno">   80</span>            *error = 1;</div>
-<div class="line"><span class="lineno">   81</span>        <span class="keywordflow">return</span> (len);</div>
-<div class="line"><span class="lineno">   82</span>    }</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> (0);</div>
-<div class="line"><span class="lineno">   84</span>}</div>
+<div class="line"><span class="lineno">   80</span>        {</div>
+<div class="line"><span class="lineno">   81</span>            *error = 1;</div>
+<div class="line"><span class="lineno">   82</span>        }</div>
+<div class="line"><span class="lineno">   83</span>        <span class="keywordflow">return</span> (len);</div>
+<div class="line"><span class="lineno">   84</span>    }</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">   86</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a8050db57d3e433a4c325989a8bbec4ee"><div class="ttname"><a href="cub3d_8h.html#a8050db57d3e433a4c325989a8bbec4ee">parse_path</a></div><div class="ttdeci">int parse_path(t_data *data, char *line, int len, int offset)</div><div class="ttdef"><b>Definition:</b> setup_file.c:50</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
@@ -401,8 +404,9 @@ Here is the call graph for this function:</div>
 <area shape="rect" title=" " alt="" coords="5,31,129,56"/>
 <area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="177,5,279,31"/>
 <area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="181,55,275,80"/>
-<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="327,55,413,80"/>
-<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="461,55,537,80"/>
+<area shape="rect" href="setup__check__double_8c.html#a937291645521af79f2820ed9215eb790" title=" " alt="" coords="327,29,492,55"/>
+<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="366,79,453,104"/>
+<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="540,79,616,104"/>
 </map>
 </div>
 <div class="dynheader">

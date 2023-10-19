@@ -1,15 +1,7 @@
 var searchData=
 [
-  ['ray_0',['ray',['../cub3d_8h.html#a12bf296812c2441b54d9e9cec35cf827',1,'ray(t_data *data, double angle):&#160;render_map.c'],['../render__map_8c.html#a12bf296812c2441b54d9e9cec35cf827',1,'ray(t_data *data, double angle):&#160;render_map.c']]],
-  ['ray_5fcollision_2ec_1',['ray_collision.c',['../ray__collision_8c.html',1,'']]],
-  ['read_5ffile_2',['read_file',['../setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b',1,'read_file(t_data *data, char *path):&#160;setup_file.c'],['../cub3d_8h.html#ad49f158217775efefcae9b1cac9dd63b',1,'read_file(t_data *data, char *path):&#160;setup_file.c']]],
-  ['read_5fline_3',['read_line',['../setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e',1,'read_line(t_data *data, char *line):&#160;setup_file.c'],['../cub3d_8h.html#aa77f727e42ab94e2266322fe0809ea9e',1,'read_line(t_data *data, char *line):&#160;setup_file.c']]],
-  ['render_5fcreate_2ec_4',['render_create.c',['../render__create_8c.html',1,'']]],
-  ['render_5fdraw_2ec_5',['render_draw.c',['../render__draw_8c.html',1,'']]],
-  ['render_5fhooks_2ec_6',['render_hooks.c',['../render__hooks_8c.html',1,'']]],
-  ['render_5fload_5ffill_2ec_7',['render_load_fill.c',['../render__load__fill_8c.html',1,'']]],
-  ['render_5fmap_8',['render_map',['../cub3d_8h.html#a013ba6e421d1016fc1c149d3a8529fa3',1,'render_map(t_data *data):&#160;render_map.c'],['../render__map_8c.html#a013ba6e421d1016fc1c149d3a8529fa3',1,'render_map(t_data *data):&#160;render_map.c']]],
-  ['render_5fmap_2ec_9',['render_map.c',['../render__map_8c.html',1,'']]],
-  ['replace_5fnl_10',['replace_nl',['../cub3d_8h.html#a32422169502ce6894e31045b6db12305',1,'replace_nl(char **buffer):&#160;setup_helper.c'],['../setup__helper_8c.html#a32422169502ce6894e31045b6db12305',1,'replace_nl(char **buffer):&#160;setup_helper.c']]],
-  ['run_5ffill_11',['run_fill',['../cub3d_8h.html#a52958bcb8c22a547e94e217cd74be8c2',1,'run_fill(t_data *data, int dxy[2][8], int x, int y):&#160;flood_fill.c'],['../flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2',1,'run_fill(t_data *data, int dxy[2][8], int x, int y):&#160;flood_fill.c']]]
+  ['parse_5fcolors_0',['parse_colors',['../cub3d_8h.html#a5ea934efc5bc3b5bcb884cba51917c80',1,'parse_colors(t_data *data, char *line, int len, int offset):&#160;setup_file.c'],['../setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80',1,'parse_colors(t_data *data, char *line, int len, int offset):&#160;setup_file.c']]],
+  ['parse_5fpath_1',['parse_path',['../cub3d_8h.html#a8050db57d3e433a4c325989a8bbec4ee',1,'parse_path(t_data *data, char *line, int len, int offset):&#160;setup_file.c'],['../setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee',1,'parse_path(t_data *data, char *line, int len, int offset):&#160;setup_file.c']]],
+  ['point_5fin_5fwindow_2',['point_in_window',['../cub3d_8h.html#a4a8b6bbf2cb2afaef0189e3b7fc84c52',1,'point_in_window(t_data *data, t_int_p2 *a):&#160;draw_line_helper.c'],['../draw__line__helper_8c.html#a4a8b6bbf2cb2afaef0189e3b7fc84c52',1,'point_in_window(t_data *data, t_int_p2 *a):&#160;draw_line_helper.c']]],
+  ['print_5fall_3',['print_all',['../cub3d_8h.html#a12ebcbf9d33a61f0092ba6d7e54a6de8',1,'print_all(char **maze, int lines):&#160;flood_fill_helper.c'],['../flood__fill__helper_8c.html#a12ebcbf9d33a61f0092ba6d7e54a6de8',1,'print_all(char **maze, int lines):&#160;flood_fill_helper.c']]]
 ];

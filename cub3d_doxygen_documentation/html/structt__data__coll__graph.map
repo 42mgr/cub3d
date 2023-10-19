@@ -1,7 +1,8 @@
 <map id="t_data" name="t_data">
-<area shape="rect" id="node1" title=" " alt="" coords="165,93,227,119"/>
-<area shape="rect" id="node2" href="$structt__player.html" title=" " alt="" coords="5,5,80,31"/>
-<area shape="rect" id="node3" href="$structt__textures.html" title=" " alt="" coords="104,5,192,31"/>
-<area shape="rect" id="node4" href="$structt__dim.html" title=" " alt="" coords="216,5,275,31"/>
-<area shape="rect" id="node5" href="$structt__mlx42.html" title=" " alt="" coords="299,5,373,31"/>
+<area shape="rect" id="node1" title=" " alt="" coords="165,181,227,207"/>
+<area shape="rect" id="node2" href="$structt__player.html" title=" " alt="" coords="5,93,80,119"/>
+<area shape="rect" id="node3" href="$structt__p2.html" title=" " alt="" coords="17,5,68,31"/>
+<area shape="rect" id="node4" href="$structt__textures.html" title=" " alt="" coords="104,93,192,119"/>
+<area shape="rect" id="node5" href="$structt__dim.html" title=" " alt="" coords="216,93,275,119"/>
+<area shape="rect" id="node6" href="$structt__mlx42.html" title=" " alt="" coords="299,93,373,119"/>
 </map>

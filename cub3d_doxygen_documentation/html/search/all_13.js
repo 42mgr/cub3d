@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['y_0',['y',['../structt__player.html#a81675872f88bf9575fc9658ec9518dfd',1,'t_player::y()'],['../structt__int__p2.html#a6edeb8658dc6c0dc597988ff2458e1d8',1,'t_int_p2::y()'],['../structt__point.html#a3dff7b3d22a8d59ab00753173194d0ee',1,'t_point::y()']]],
-  ['yellow_1',['YELLOW',['../cub3d_8h.html#abf681265909adf3d3e8116c93c0ba179',1,'cub3d.h']]]
+  ['x_0',['x',['../structt__int__p2.html#add158a5fc14c548c94ece870a2be120c',1,'t_int_p2::x()'],['../structt__p2.html#a064dec785f4919084cf62c35763a53e0',1,'t_p2::x()'],['../structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f',1,'t_player::x()'],['../structt__point.html#ae3b5d9134efdb7e0b2b41d8d03ff946f',1,'t_point::x()']]]
 ];

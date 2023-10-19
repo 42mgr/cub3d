@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['wall_5foffset_0',['WALL_OFFSET',['../cub3d_8h.html#ae0f4ef9b8e2642febe756a8ffea0c0fb',1,'cub3d.h']]],
-  ['west_1',['WEST',['../cub3d_8h.html#a755da365a2f771fdb9e15af22fee7d74',1,'cub3d.h']]],
-  ['window_5fheight_2',['WINDOW_HEIGHT',['../cub3d_8h.html#a5473cf64fa979b48335079c99532e243',1,'cub3d.h']]],
-  ['window_5fwidth_3',['WINDOW_WIDTH',['../cub3d_8h.html#a498d9f026138406895e9a34b504ac6a6',1,'cub3d.h']]]
+  ['tiny_5fmapx_0',['TINY_MAPX',['../cub3d_8h.html#a9c362684431e82ad6056134b0f7a5fe3',1,'cub3d.h']]],
+  ['tiny_5fmapy_1',['TINY_MAPY',['../cub3d_8h.html#ae4fd1e307de2a39868a9827efd621332',1,'cub3d.h']]],
+  ['tra_5fy_2',['TRA_Y',['../cub3d_8h.html#a24a1291f51a8c218acd8fb2f755f152e',1,'cub3d.h']]]
 ];

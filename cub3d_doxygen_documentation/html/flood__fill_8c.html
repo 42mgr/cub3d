@@ -123,100 +123,18 @@ Include dependency graph for flood_fill.c:</div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a500bfd096fe7f5cc955e3c81f12a105d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#a500bfd096fe7f5cc955e3c81f12a105d">check_around</a> (<a class="el" href="structt__data.html">t_data</a> *data, int dxy[2][8], int x, int y)</td></tr>
-<tr class="separator:a500bfd096fe7f5cc955e3c81f12a105d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52958bcb8c22a547e94e217cd74be8c2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2">run_fill</a> (<a class="el" href="structt__data.html">t_data</a> *data, int dxy[2][8], int x, int y)</td></tr>
 <tr class="separator:a52958bcb8c22a547e94e217cd74be8c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b508e5e1394dcb779bb0d648364da57"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#a0b508e5e1394dcb779bb0d648364da57">mm_draw_floor</a> (<a class="el" href="structt__data.html">t_data</a> *data, int y, int x)</td></tr>
-<tr class="separator:a0b508e5e1394dcb779bb0d648364da57"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc0e8777f304873cf63853227d64f053"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#afc0e8777f304873cf63853227d64f053">mm_draw_objects</a> (<a class="el" href="structt__data.html">t_data</a> *data, int y, int x)</td></tr>
-<tr class="separator:afc0e8777f304873cf63853227d64f053"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7414e7997775ef5e4f38a4b2023bc5e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e">valid_i</a> (<a class="el" href="structt__data.html">t_data</a> *data, int x, int y)</td></tr>
+<tr class="separator:ab7414e7997775ef5e4f38a4b2023bc5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af041b712005663cd76b994cf9d12babb"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#af041b712005663cd76b994cf9d12babb">set_maze_cpy_dim</a> (<a class="el" href="structt__data.html">t_data</a> *data)</td></tr>
+<tr class="separator:af041b712005663cd76b994cf9d12babb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a33088d55ae5fea8e6c1f07d65bff2aa2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2">start_fill</a> (<a class="el" href="structt__data.html">t_data</a> *data, int dxy[2][8])</td></tr>
+<tr class="separator:a33088d55ae5fea8e6c1f07d65bff2aa2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2c253ed201a20c0702857d82d926e1c3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3">flood_fill</a> (<a class="el" href="structt__data.html">t_data</a> *data)</td></tr>
 <tr class="separator:a2c253ed201a20c0702857d82d926e1c3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a id="a500bfd096fe7f5cc955e3c81f12a105d" name="a500bfd096fe7f5cc955e3c81f12a105d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a500bfd096fe7f5cc955e3c81f12a105d">&#9670;&#160;</a></span>check_around()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int check_around </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structt__data.html">t_data</a> *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>dxy</em>[2][8], </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>x</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>y</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p >Checks if only 1 or 0 can be found around the current positon ('1') If not, the maze is not closed and the flood fill algorithm will fail </p>
-<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
-<div class="line"><span class="lineno">   21</span>    <span class="keywordtype">int</span>             i;</div>
-<div class="line"><span class="lineno">   22</span>    <span class="keywordtype">int</span>             nx;</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordtype">int</span>             ny;</div>
-<div class="line"><span class="lineno">   24</span> </div>
-<div class="line"><span class="lineno">   25</span>    i = 0;</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">while</span> (i &lt; 8)</div>
-<div class="line"><span class="lineno">   27</span>    {</div>
-<div class="line"><span class="lineno">   28</span>        nx = x + dxy[0][i];</div>
-<div class="line"><span class="lineno">   29</span>        ny = y + dxy[1][i];</div>
-<div class="line"><span class="lineno">   30</span>        <a class="code hl_function" href="cub3d_8h.html#a023e6a40dc1de476216ff0333fa73d1a">box_min_max</a>(data, nx, ny);</div>
-<div class="line"><span class="lineno">   31</span>        <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[ny][nx] != <span class="charliteral">&#39;0&#39;</span> &amp;&amp; data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[ny][nx] != <span class="charliteral">&#39;1&#39;</span>)</div>
-<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">return</span> (1);</div>
-<div class="line"><span class="lineno">   33</span>        <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   34</span>            i++;</div>
-<div class="line"><span class="lineno">   35</span>    }</div>
-<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">return</span> (0);</div>
-<div class="line"><span class="lineno">   37</span>}</div>
-<div class="ttc" id="acub3d_8h_html_a023e6a40dc1de476216ff0333fa73d1a"><div class="ttname"><a href="cub3d_8h.html#a023e6a40dc1de476216ff0333fa73d1a">box_min_max</a></div><div class="ttdeci">void box_min_max(t_data *data, int x, int y)</div><div class="ttdef"><b>Definition:</b> flood_fill_helper.c:66</div></div>
-<div class="ttc" id="astructt__data_html_af1ae248416fd1e695c5ed850f7fbaf42"><div class="ttname"><a href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">t_data::maze_cpy</a></div><div class="ttdeci">char ** maze_cpy</div><div class="ttdef"><b>Definition:</b> cub3d.h:139</div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the call graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="flood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_cgraph.png" border="0" usemap="#aflood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_cgraph" alt=""/></div>
-<map name="aflood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_cgraph" id="aflood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,117,31"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="165,5,280,31"/>
-</map>
-</div>
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="flood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_icgraph.png" border="0" usemap="#aflood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_icgraph" alt=""/></div>
-<map name="aflood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_icgraph" id="aflood__fill_8c_a500bfd096fe7f5cc955e3c81f12a105d_icgraph">
-<area shape="rect" title=" " alt="" coords="481,29,593,55"/>
-<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="367,29,433,55"/>
-<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,29,319,55"/>
-<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,29,193,55"/>
-<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,29,60,55"/>
-</map>
-</div>
-
-</div>
-</div>
 <a id="a2c253ed201a20c0702857d82d926e1c3" name="a2c253ed201a20c0702857d82d926e1c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a2c253ed201a20c0702857d82d926e1c3">&#9670;&#160;</a></span>flood_fill()</h2>
 
@@ -233,60 +151,59 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p >The main function to check if the maze is closed </p>
-<div class="fragment"><div class="line"><span class="lineno">   97</span>{</div>
-<div class="line"><span class="lineno">   98</span>    <span class="keywordtype">int</span>     ret;</div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordtype">int</span>     dxy[2][8];</div>
-<div class="line"><span class="lineno">  100</span> </div>
-<div class="line"><span class="lineno">  101</span>    <a class="code hl_function" href="cub3d_8h.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb">create_dxy</a>(dxy);</div>
-<div class="line"><span class="lineno">  102</span>    ret = 0;</div>
-<div class="line"><span class="lineno">  103</span>    data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a> = <a class="code hl_function" href="cub3d_8h.html#a81495a9553ad1a1cacfaebcb999820bd">duplicate_maze</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a1091396bbee3ef8159e5f91a305b97da">lines</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>);</div>
-<div class="line"><span class="lineno">  104</span>    <span class="keywordflow">if</span> (!data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>)</div>
-<div class="line"><span class="lineno">  105</span>    {</div>
-<div class="line"><span class="lineno">  106</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tMalloc failed for maze copy\n&quot;</span>, 2);</div>
-<div class="line"><span class="lineno">  107</span>        ret = 1;</div>
-<div class="line"><span class="lineno">  108</span>    }</div>
-<div class="line"><span class="lineno">  109</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">x</a> == -1 || data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">y</a> == -1)</div>
-<div class="line"><span class="lineno">  110</span>    {</div>
-<div class="line"><span class="lineno">  111</span>        ret = 1;</div>
-<div class="line"><span class="lineno">  112</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tNo start position detected.\n&quot;</span>, 2);</div>
-<div class="line"><span class="lineno">  113</span>    }</div>
-<div class="line"><span class="lineno">  114</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">  115</span>    {</div>
-<div class="line"><span class="lineno">  116</span>        ret = <a class="code hl_function" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2">run_fill</a>(data, dxy, data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">x</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">y</a>);</div>
-<div class="line"><span class="lineno">  117</span>        <span class="keywordflow">if</span> (ret != 0)</div>
-<div class="line"><span class="lineno">  118</span>            ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tMaze is not closed\n&quot;</span>, 2);</div>
-<div class="line"><span class="lineno">  119</span>        <a class="code hl_function" href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>);</div>
-<div class="line"><span class="lineno">  120</span>        <a class="code hl_function" href="cub3d_8h.html#a0931f636a2e08ee72ffdcb4afe04c803">create_clean_maze</a>(data);</div>
-<div class="line"><span class="lineno">  121</span>    }</div>
-<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">return</span> (ret);</div>
-<div class="line"><span class="lineno">  123</span>}</div>
-<div class="ttc" id="acub3d_8h_html_a0931f636a2e08ee72ffdcb4afe04c803"><div class="ttname"><a href="cub3d_8h.html#a0931f636a2e08ee72ffdcb4afe04c803">create_clean_maze</a></div><div class="ttdeci">int create_clean_maze(t_data *data)</div><div class="ttdef"><b>Definition:</b> flood_fill_helper.c:102</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  103</span>{</div>
+<div class="line"><span class="lineno">  104</span>    <span class="keywordtype">int</span>     ret;</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordtype">int</span>     dxy[2][8];</div>
+<div class="line"><span class="lineno">  106</span> </div>
+<div class="line"><span class="lineno">  107</span>    <a class="code hl_function" href="cub3d_8h.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb">create_dxy</a>(dxy);</div>
+<div class="line"><span class="lineno">  108</span>    ret = 0;</div>
+<div class="line"><span class="lineno">  109</span>    data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a> = <a class="code hl_function" href="cub3d_8h.html#a81495a9553ad1a1cacfaebcb999820bd">duplicate_maze</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a1091396bbee3ef8159e5f91a305b97da">lines</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>);</div>
+<div class="line"><span class="lineno">  110</span>    <span class="keywordflow">if</span> (!data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>)</div>
+<div class="line"><span class="lineno">  111</span>    {</div>
+<div class="line"><span class="lineno">  112</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tMalloc failed for maze copy\n&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  113</span>        ret = 1;</div>
+<div class="line"><span class="lineno">  114</span>    }</div>
+<div class="line"><span class="lineno">  115</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">x</a> == -1 || data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">y</a> == -1)</div>
+<div class="line"><span class="lineno">  116</span>    {</div>
+<div class="line"><span class="lineno">  117</span>        ret = 1;</div>
+<div class="line"><span class="lineno">  118</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tNo start position detected.\n&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  119</span>    }</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">  121</span>        ret = <a class="code hl_function" href="flood__fill_8c.html#af041b712005663cd76b994cf9d12babb">set_maze_cpy_dim</a>(data);</div>
+<div class="line"><span class="lineno">  122</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">  123</span>        ret = <a class="code hl_function" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2">start_fill</a>(data, dxy);</div>
+<div class="line"><span class="lineno">  124</span>    <span class="keywordflow">return</span> (ret);</div>
+<div class="line"><span class="lineno">  125</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a3fb23b5d4b5d8075fb9d6155bb3cecdb"><div class="ttname"><a href="cub3d_8h.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb">create_dxy</a></div><div class="ttdeci">void create_dxy(int dxy[2][8])</div><div class="ttdef"><b>Definition:</b> flood_fill_helper.c:82</div></div>
 <div class="ttc" id="acub3d_8h_html_a81495a9553ad1a1cacfaebcb999820bd"><div class="ttname"><a href="cub3d_8h.html#a81495a9553ad1a1cacfaebcb999820bd">duplicate_maze</a></div><div class="ttdeci">char ** duplicate_maze(int lines, char **maze)</div><div class="ttdef"><b>Definition:</b> flood_fill_helper.c:40</div></div>
-<div class="ttc" id="acub3d_8h_html_aea09d8cffa70aee143955f37d75b26b7"><div class="ttname"><a href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a></div><div class="ttdeci">void free_2d_array(char **array)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:15</div></div>
-<div class="ttc" id="aflood__fill_8c_html_a52958bcb8c22a547e94e217cd74be8c2"><div class="ttname"><a href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2">run_fill</a></div><div class="ttdeci">int run_fill(t_data *data, int dxy[2][8], int x, int y)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:43</div></div>
-<div class="ttc" id="astructt__data_html_a118df3a3a79e240bb9e6b9992b6a023c"><div class="ttname"><a href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">t_data::start</a></div><div class="ttdeci">t_player start</div><div class="ttdef"><b>Definition:</b> cub3d.h:136</div></div>
-<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:138</div></div>
-<div class="ttc" id="astructt__data_html_aa76d070e407d91845c7233af845089ab"><div class="ttname"><a href="structt__data.html#aa76d070e407d91845c7233af845089ab">t_data::dim</a></div><div class="ttdeci">t_dim dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:140</div></div>
-<div class="ttc" id="astructt__dim_html_a1091396bbee3ef8159e5f91a305b97da"><div class="ttname"><a href="structt__dim.html#a1091396bbee3ef8159e5f91a305b97da">t_dim::lines</a></div><div class="ttdeci">int lines</div><div class="ttdef"><b>Definition:</b> cub3d.h:102</div></div>
-<div class="ttc" id="astructt__player_html_a0bb4ef941b9751e6e932a52bb8524d6f"><div class="ttname"><a href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">t_player::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> cub3d.h:65</div></div>
-<div class="ttc" id="astructt__player_html_a81675872f88bf9575fc9658ec9518dfd"><div class="ttname"><a href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">t_player::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> cub3d.h:66</div></div>
+<div class="ttc" id="aflood__fill_8c_html_a33088d55ae5fea8e6c1f07d65bff2aa2"><div class="ttname"><a href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2">start_fill</a></div><div class="ttdeci">int start_fill(t_data *data, int dxy[2][8])</div><div class="ttdef"><b>Definition:</b> flood_fill.c:86</div></div>
+<div class="ttc" id="aflood__fill_8c_html_af041b712005663cd76b994cf9d12babb"><div class="ttname"><a href="flood__fill_8c.html#af041b712005663cd76b994cf9d12babb">set_maze_cpy_dim</a></div><div class="ttdeci">int set_maze_cpy_dim(t_data *data)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:63</div></div>
+<div class="ttc" id="astructt__data_html_a118df3a3a79e240bb9e6b9992b6a023c"><div class="ttname"><a href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">t_data::start</a></div><div class="ttdeci">t_player start</div><div class="ttdef"><b>Definition:</b> cub3d.h:156</div></div>
+<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:158</div></div>
+<div class="ttc" id="astructt__data_html_aa76d070e407d91845c7233af845089ab"><div class="ttname"><a href="structt__data.html#aa76d070e407d91845c7233af845089ab">t_data::dim</a></div><div class="ttdeci">t_dim dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:162</div></div>
+<div class="ttc" id="astructt__data_html_af1ae248416fd1e695c5ed850f7fbaf42"><div class="ttname"><a href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">t_data::maze_cpy</a></div><div class="ttdeci">char ** maze_cpy</div><div class="ttdef"><b>Definition:</b> cub3d.h:159</div></div>
+<div class="ttc" id="astructt__dim_html_a1091396bbee3ef8159e5f91a305b97da"><div class="ttname"><a href="structt__dim.html#a1091396bbee3ef8159e5f91a305b97da">t_dim::lines</a></div><div class="ttdeci">int lines</div><div class="ttdef"><b>Definition:</b> cub3d.h:122</div></div>
+<div class="ttc" id="astructt__player_html_a0bb4ef941b9751e6e932a52bb8524d6f"><div class="ttname"><a href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">t_player::x</a></div><div class="ttdeci">int x</div><div class="ttdef"><b>Definition:</b> cub3d.h:84</div></div>
+<div class="ttc" id="astructt__player_html_a81675872f88bf9575fc9658ec9518dfd"><div class="ttname"><a href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">t_player::y</a></div><div class="ttdeci">int y</div><div class="ttdef"><b>Definition:</b> cub3d.h:85</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="flood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_cgraph.png" border="0" usemap="#aflood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_cgraph" alt=""/></div>
 <map name="aflood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_cgraph" id="aflood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_cgraph">
-<area shape="rect" title=" " alt="" coords="5,153,83,179"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="131,55,279,80"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb" title=" " alt="" coords="157,104,252,129"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a81495a9553ad1a1cacfaebcb999820bd" title=" " alt="" coords="142,153,267,179"/>
-<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="149,203,261,228"/>
-<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="171,276,238,301"/>
-<area shape="rect" href="render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="341,5,454,31"/>
-<area shape="rect" href="flood__fill_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="336,55,459,80"/>
-<area shape="rect" href="flood__fill_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="327,104,468,129"/>
-<area shape="rect" href="flood__fill_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="341,276,453,301"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="516,276,631,301"/>
+<area shape="rect" title=" " alt="" coords="5,80,83,105"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb" title=" " alt="" coords="157,5,251,31"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a81495a9553ad1a1cacfaebcb999820bd" title=" " alt="" coords="141,55,267,80"/>
+<area shape="rect" href="flood__fill_8c.html#af041b712005663cd76b994cf9d12babb" title=" " alt="" coords="131,104,277,129"/>
+<area shape="rect" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2" title=" " alt="" coords="167,153,241,179"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="325,104,473,129"/>
+<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="343,153,455,179"/>
+<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="366,227,433,252"/>
+<area shape="rect" href="render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="535,55,649,80"/>
+<area shape="rect" href="check__around_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="531,104,653,129"/>
+<area shape="rect" href="check__around_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="521,153,663,179"/>
+<area shape="rect" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e" title=" " alt="" coords="735,204,801,229"/>
+<area shape="rect" href="check__around_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="536,255,648,280"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="711,255,825,280"/>
 </map>
 </div>
 <div class="dynheader">
@@ -295,118 +212,6 @@ Here is the caller graph for this function:</div>
 <div class="center"><img src="flood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_icgraph.png" border="0" usemap="#aflood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_icgraph" alt=""/></div>
 <map name="aflood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_icgraph" id="aflood__fill_8c_a2c253ed201a20c0702857d82d926e1c3_icgraph">
 <area shape="rect" title=" " alt="" coords="241,5,319,31"/>
-<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,5,193,31"/>
-<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,5,60,31"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="a0b508e5e1394dcb779bb0d648364da57" name="a0b508e5e1394dcb779bb0d648364da57"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0b508e5e1394dcb779bb0d648364da57">&#9670;&#160;</a></span>mm_draw_floor()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mm_draw_floor </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structt__data.html">t_data</a> *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>x</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   73</span>{</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">if</span> (x &gt; (data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#ac8fcce79ec86af818180ab9e7fe3c3b3">max_x</a> - data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a> + 1))</div>
-<div class="line"><span class="lineno">   75</span>        return ;</div>
-<div class="line"><span class="lineno">   76</span>    data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] = <span class="charliteral">&#39;1&#39;</span>;</div>
-<div class="line"><span class="lineno">   77</span>}</div>
-<div class="ttc" id="astructt__dim_html_a41a774ab17dd743d338d5ac645c95d6a"><div class="ttname"><a href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">t_dim::min_x</a></div><div class="ttdeci">int min_x</div><div class="ttdef"><b>Definition:</b> cub3d.h:103</div></div>
-<div class="ttc" id="astructt__dim_html_ac8fcce79ec86af818180ab9e7fe3c3b3"><div class="ttname"><a href="structt__dim.html#ac8fcce79ec86af818180ab9e7fe3c3b3">t_dim::max_x</a></div><div class="ttdeci">int max_x</div><div class="ttdef"><b>Definition:</b> cub3d.h:105</div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="flood__fill_8c_a0b508e5e1394dcb779bb0d648364da57_icgraph.png" border="0" usemap="#aflood__fill_8c_a0b508e5e1394dcb779bb0d648364da57_icgraph" alt=""/></div>
-<map name="aflood__fill_8c_a0b508e5e1394dcb779bb0d648364da57_icgraph" id="aflood__fill_8c_a0b508e5e1394dcb779bb0d648364da57_icgraph">
-<area shape="rect" title=" " alt="" coords="563,5,685,31"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="367,5,515,31"/>
-<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,5,319,31"/>
-<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,5,193,31"/>
-<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,5,60,31"/>
-</map>
-</div>
-
-</div>
-</div>
-<a id="afc0e8777f304873cf63853227d64f053" name="afc0e8777f304873cf63853227d64f053"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afc0e8777f304873cf63853227d64f053">&#9670;&#160;</a></span>mm_draw_objects()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void mm_draw_objects </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="structt__data.html">t_data</a> *&#160;</td>
-          <td class="paramname"><em>data</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>y</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>x</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   80</span>{</div>
-<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">if</span> (x &gt; (data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#ac8fcce79ec86af818180ab9e7fe3c3b3">max_x</a> - data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a> + 1))</div>
-<div class="line"><span class="lineno">   82</span>        return ;</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>] == <span class="charliteral">&#39;1&#39;</span>)</div>
-<div class="line"><span class="lineno">   84</span>    {</div>
-<div class="line"><span class="lineno">   85</span>        data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] = <span class="charliteral">&#39;1&#39;</span>;</div>
-<div class="line"><span class="lineno">   86</span>    }</div>
-<div class="line"><span class="lineno">   87</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>] == <span class="charliteral">&#39;0&#39;</span>)</div>
-<div class="line"><span class="lineno">   88</span>    {</div>
-<div class="line"><span class="lineno">   89</span>        data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] = <span class="charliteral">&#39;0&#39;</span>;</div>
-<div class="line"><span class="lineno">   90</span>    }</div>
-<div class="line"><span class="lineno">   91</span>}</div>
-<div class="ttc" id="astructt__dim_html_a2b12aab6bc323b7c6d415cae4ece9569"><div class="ttname"><a href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">t_dim::min_y</a></div><div class="ttdeci">int min_y</div><div class="ttdef"><b>Definition:</b> cub3d.h:104</div></div>
-</div><!-- fragment --><div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><img src="flood__fill_8c_afc0e8777f304873cf63853227d64f053_icgraph.png" border="0" usemap="#aflood__fill_8c_afc0e8777f304873cf63853227d64f053_icgraph" alt=""/></div>
-<map name="aflood__fill_8c_afc0e8777f304873cf63853227d64f053_icgraph" id="aflood__fill_8c_afc0e8777f304873cf63853227d64f053_icgraph">
-<area shape="rect" title=" " alt="" coords="563,5,704,31"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="367,5,515,31"/>
-<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,5,319,31"/>
 <area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,5,193,31"/>
 <area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,5,60,31"/>
 </map>
@@ -452,42 +257,45 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p >Recursive flood fill algorithm Fills in all 8 directions, to even fill a 0 in an exposed corner </p>
-<div class="fragment"><div class="line"><span class="lineno">   44</span>{</div>
-<div class="line"><span class="lineno">   45</span>    <span class="keyword">static</span> <span class="keywordtype">int</span>  error = 0;</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordtype">int</span>         i;</div>
-<div class="line"><span class="lineno">   47</span>    <span class="keywordtype">int</span>         nx;</div>
-<div class="line"><span class="lineno">   48</span>    <span class="keywordtype">int</span>         ny;</div>
-<div class="line"><span class="lineno">   49</span> </div>
-<div class="line"><span class="lineno">   50</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] == <span class="charliteral">&#39;1&#39;</span>)</div>
-<div class="line"><span class="lineno">   51</span>        <span class="keywordflow">return</span> (0);</div>
-<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] == <span class="charliteral">&#39;0&#39;</span>)</div>
-<div class="line"><span class="lineno">   53</span>    {</div>
-<div class="line"><span class="lineno">   54</span>        data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] = <span class="charliteral">&#39;1&#39;</span>;</div>
-<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="flood__fill_8c.html#a500bfd096fe7f5cc955e3c81f12a105d">check_around</a>(data, dxy, x, y))</div>
-<div class="line"><span class="lineno">   56</span>        {</div>
-<div class="line"><span class="lineno">   57</span>            error = error + 1;</div>
-<div class="line"><span class="lineno">   58</span>            <span class="keywordflow">return</span> (1);</div>
-<div class="line"><span class="lineno">   59</span>        }</div>
-<div class="line"><span class="lineno">   60</span>    }</div>
-<div class="line"><span class="lineno">   61</span>    i = 0;</div>
-<div class="line"><span class="lineno">   62</span>    <span class="keywordflow">while</span> (i &lt; 8)</div>
-<div class="line"><span class="lineno">   63</span>    {</div>
-<div class="line"><span class="lineno">   64</span>        nx = x + dxy[0][i];</div>
-<div class="line"><span class="lineno">   65</span>        ny = y + dxy[1][i];</div>
-<div class="line"><span class="lineno">   66</span>        <a class="code hl_function" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2">run_fill</a>(data, dxy, nx, ny);</div>
-<div class="line"><span class="lineno">   67</span>        i++;</div>
-<div class="line"><span class="lineno">   68</span>    }</div>
-<div class="line"><span class="lineno">   69</span>    <span class="keywordflow">return</span> (error);</div>
-<div class="line"><span class="lineno">   70</span>}</div>
-<div class="ttc" id="aflood__fill_8c_html_a500bfd096fe7f5cc955e3c81f12a105d"><div class="ttname"><a href="flood__fill_8c.html#a500bfd096fe7f5cc955e3c81f12a105d">check_around</a></div><div class="ttdeci">int check_around(t_data *data, int dxy[2][8], int x, int y)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:19</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   20</span>{</div>
+<div class="line"><span class="lineno">   21</span>    <span class="keyword">static</span> <span class="keywordtype">int</span>  error = 0;</div>
+<div class="line"><span class="lineno">   22</span>    <span class="keywordtype">int</span>         i;</div>
+<div class="line"><span class="lineno">   23</span>    <span class="keywordtype">int</span>         nx;</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordtype">int</span>         ny;</div>
+<div class="line"><span class="lineno">   25</span> </div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">if</span> (<a class="code hl_function" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e">valid_i</a>(data, x, y) != 0)</div>
+<div class="line"><span class="lineno">   27</span>        <span class="keywordflow">return</span> (++error);</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] == <span class="charliteral">&#39;1&#39;</span>)</div>
+<div class="line"><span class="lineno">   29</span>        <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[y][x] == <span class="charliteral">&#39;0&#39;</span>)</div>
+<div class="line"><span class="lineno">   31</span>    {</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="cub3d_8h.html#a500bfd096fe7f5cc955e3c81f12a105d">check_around</a>(data, dxy, x, y))</div>
+<div class="line"><span class="lineno">   33</span>            <span class="keywordflow">return</span> (++error);</div>
+<div class="line"><span class="lineno">   34</span>    }</div>
+<div class="line"><span class="lineno">   35</span>    i = 0;</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">while</span> (i &lt; 8)</div>
+<div class="line"><span class="lineno">   37</span>    {</div>
+<div class="line"><span class="lineno">   38</span>        nx = x + dxy[0][i];</div>
+<div class="line"><span class="lineno">   39</span>        ny = y + dxy[1][i];</div>
+<div class="line"><span class="lineno">   40</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e">valid_i</a>(data, nx, ny) != 0)</div>
+<div class="line"><span class="lineno">   41</span>            <span class="keywordflow">return</span> (++error);</div>
+<div class="line"><span class="lineno">   42</span>        <a class="code hl_function" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2">run_fill</a>(data, dxy, nx, ny);</div>
+<div class="line"><span class="lineno">   43</span>        i++;</div>
+<div class="line"><span class="lineno">   44</span>    }</div>
+<div class="line"><span class="lineno">   45</span>    <span class="keywordflow">return</span> (error);</div>
+<div class="line"><span class="lineno">   46</span>}</div>
+<div class="ttc" id="acub3d_8h_html_a500bfd096fe7f5cc955e3c81f12a105d"><div class="ttname"><a href="cub3d_8h.html#a500bfd096fe7f5cc955e3c81f12a105d">check_around</a></div><div class="ttdeci">int check_around(t_data *data, int dxy[2][8], int x, int y)</div><div class="ttdef"><b>Definition:</b> check_around.c:19</div></div>
+<div class="ttc" id="aflood__fill_8c_html_a52958bcb8c22a547e94e217cd74be8c2"><div class="ttname"><a href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2">run_fill</a></div><div class="ttdeci">int run_fill(t_data *data, int dxy[2][8], int x, int y)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:19</div></div>
+<div class="ttc" id="aflood__fill_8c_html_ab7414e7997775ef5e4f38a4b2023bc5e"><div class="ttname"><a href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e">valid_i</a></div><div class="ttdeci">int valid_i(t_data *data, int x, int y)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:52</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="flood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_cgraph.png" border="0" usemap="#aflood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_cgraph" alt=""/></div>
 <map name="aflood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_cgraph" id="aflood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_cgraph">
-<area shape="rect" title=" " alt="" coords="5,29,72,55"/>
-<area shape="rect" href="flood__fill_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="120,29,232,55"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="280,29,395,55"/>
+<area shape="rect" title=" " alt="" coords="5,31,72,56"/>
+<area shape="rect" href="check__around_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="120,5,232,31"/>
+<area shape="rect" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e" title=" " alt="" coords="305,55,370,80"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="280,5,395,31"/>
 </map>
 </div>
 <div class="dynheader">
@@ -495,10 +303,192 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="flood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_icgraph.png" border="0" usemap="#aflood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_icgraph" alt=""/></div>
 <map name="aflood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_icgraph" id="aflood__fill_8c_a52958bcb8c22a547e94e217cd74be8c2_icgraph">
-<area shape="rect" title=" " alt="" coords="367,29,433,55"/>
+<area shape="rect" title=" " alt="" coords="489,29,556,55"/>
+<area shape="rect" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2" title=" " alt="" coords="367,29,441,55"/>
 <area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,29,319,55"/>
 <area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,29,193,55"/>
 <area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,29,60,55"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="af041b712005663cd76b994cf9d12babb" name="af041b712005663cd76b994cf9d12babb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af041b712005663cd76b994cf9d12babb">&#9670;&#160;</a></span>set_maze_cpy_dim()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int set_maze_cpy_dim </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__data.html">t_data</a> *&#160;</td>
+          <td class="paramname"><em>data</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   64</span>{</div>
+<div class="line"><span class="lineno">   65</span>    <span class="keywordtype">int</span> i;</div>
+<div class="line"><span class="lineno">   66</span> </div>
+<div class="line"><span class="lineno">   67</span>    i = 0;</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">while</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[i])</div>
+<div class="line"><span class="lineno">   69</span>        i++;</div>
+<div class="line"><span class="lineno">   70</span>    data-&gt;<a class="code hl_variable" href="structt__data.html#ae01cac6323d2f4e1f5672f71d51a8175">maze_number_of_lines</a> = i;</div>
+<div class="line"><span class="lineno">   71</span>    data-&gt;<a class="code hl_variable" href="structt__data.html#a1b51386bf8088a1972a8b6fdf48685d4">maze_cpy_dim</a> = malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">int</span>) * i);</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a1b51386bf8088a1972a8b6fdf48685d4">maze_cpy_dim</a> == NULL)</div>
+<div class="line"><span class="lineno">   73</span>    {</div>
+<div class="line"><span class="lineno">   74</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tmaze cpy dim alloc failed\n&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">   75</span>        <span class="keywordflow">return</span> (1);</div>
+<div class="line"><span class="lineno">   76</span>    }</div>
+<div class="line"><span class="lineno">   77</span>    i = 0;</div>
+<div class="line"><span class="lineno">   78</span>    <span class="keywordflow">while</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[i])</div>
+<div class="line"><span class="lineno">   79</span>    {</div>
+<div class="line"><span class="lineno">   80</span>        data-&gt;<a class="code hl_variable" href="structt__data.html#a1b51386bf8088a1972a8b6fdf48685d4">maze_cpy_dim</a>[i] = ft_strlen(data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>[i]);</div>
+<div class="line"><span class="lineno">   81</span>        i++;</div>
+<div class="line"><span class="lineno">   82</span>    }</div>
+<div class="line"><span class="lineno">   83</span>    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">   84</span>}</div>
+<div class="ttc" id="astructt__data_html_a1b51386bf8088a1972a8b6fdf48685d4"><div class="ttname"><a href="structt__data.html#a1b51386bf8088a1972a8b6fdf48685d4">t_data::maze_cpy_dim</a></div><div class="ttdeci">int * maze_cpy_dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:161</div></div>
+<div class="ttc" id="astructt__data_html_ae01cac6323d2f4e1f5672f71d51a8175"><div class="ttname"><a href="structt__data.html#ae01cac6323d2f4e1f5672f71d51a8175">t_data::maze_number_of_lines</a></div><div class="ttdeci">int maze_number_of_lines</div><div class="ttdef"><b>Definition:</b> cub3d.h:160</div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="flood__fill_8c_af041b712005663cd76b994cf9d12babb_icgraph.png" border="0" usemap="#aflood__fill_8c_af041b712005663cd76b994cf9d12babb_icgraph" alt=""/></div>
+<map name="aflood__fill_8c_af041b712005663cd76b994cf9d12babb_icgraph" id="aflood__fill_8c_af041b712005663cd76b994cf9d12babb_icgraph">
+<area shape="rect" title=" " alt="" coords="367,5,513,31"/>
+<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,5,319,31"/>
+<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,5,193,31"/>
+<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,5,60,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a33088d55ae5fea8e6c1f07d65bff2aa2" name="a33088d55ae5fea8e6c1f07d65bff2aa2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a33088d55ae5fea8e6c1f07d65bff2aa2">&#9670;&#160;</a></span>start_fill()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int start_fill </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__data.html">t_data</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>dxy</em>[2][8]&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<div class="fragment"><div class="line"><span class="lineno">   87</span>{</div>
+<div class="line"><span class="lineno">   88</span>    <span class="keywordtype">int</span> ret;</div>
+<div class="line"><span class="lineno">   89</span> </div>
+<div class="line"><span class="lineno">   90</span>    ret = 0;</div>
+<div class="line"><span class="lineno">   91</span>    ret = <a class="code hl_function" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2">run_fill</a>(data, dxy, data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a0bb4ef941b9751e6e932a52bb8524d6f">x</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a118df3a3a79e240bb9e6b9992b6a023c">start</a>.<a class="code hl_variable" href="structt__player.html#a81675872f88bf9575fc9658ec9518dfd">y</a>);</div>
+<div class="line"><span class="lineno">   92</span>    <span class="keywordflow">if</span> (ret != 0)</div>
+<div class="line"><span class="lineno">   93</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tMaze is not closed\n&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">   94</span>    <a class="code hl_function" href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>);</div>
+<div class="line"><span class="lineno">   95</span>    <a class="code hl_function" href="cub3d_8h.html#a0931f636a2e08ee72ffdcb4afe04c803">create_clean_maze</a>(data);</div>
+<div class="line"><span class="lineno">   96</span>    <span class="keywordflow">return</span> (ret);</div>
+<div class="line"><span class="lineno">   97</span>}</div>
+<div class="ttc" id="acub3d_8h_html_a0931f636a2e08ee72ffdcb4afe04c803"><div class="ttname"><a href="cub3d_8h.html#a0931f636a2e08ee72ffdcb4afe04c803">create_clean_maze</a></div><div class="ttdeci">int create_clean_maze(t_data *data)</div><div class="ttdef"><b>Definition:</b> flood_fill_helper.c:102</div></div>
+<div class="ttc" id="acub3d_8h_html_aea09d8cffa70aee143955f37d75b26b7"><div class="ttname"><a href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a></div><div class="ttdeci">void free_2d_array(char **array)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:15</div></div>
+</div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="flood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_cgraph.png" border="0" usemap="#aflood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_cgraph" alt=""/></div>
+<map name="aflood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_cgraph" id="aflood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_cgraph">
+<area shape="rect" title=" " alt="" coords="5,104,80,129"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="128,55,276,80"/>
+<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="146,104,258,129"/>
+<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="169,177,235,203"/>
+<area shape="rect" href="render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="338,5,451,31"/>
+<area shape="rect" href="check__around_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="333,55,456,80"/>
+<area shape="rect" href="check__around_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="324,104,465,129"/>
+<area shape="rect" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e" title=" " alt="" coords="538,155,603,180"/>
+<area shape="rect" href="check__around_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="339,205,451,231"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="513,205,628,231"/>
+</map>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="flood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_icgraph.png" border="0" usemap="#aflood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_icgraph" alt=""/></div>
+<map name="aflood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_icgraph" id="aflood__fill_8c_a33088d55ae5fea8e6c1f07d65bff2aa2_icgraph">
+<area shape="rect" title=" " alt="" coords="367,5,441,31"/>
+<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,5,319,31"/>
+<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,5,193,31"/>
+<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,5,60,31"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="ab7414e7997775ef5e4f38a4b2023bc5e" name="ab7414e7997775ef5e4f38a4b2023bc5e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7414e7997775ef5e4f38a4b2023bc5e">&#9670;&#160;</a></span>valid_i()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int valid_i </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structt__data.html">t_data</a> *&#160;</td>
+          <td class="paramname"><em>data</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>x</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>y</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >returns 0 if the index is valid (meaning it's in the allocated area) returns 1 or 2 on error </p>
+<div class="fragment"><div class="line"><span class="lineno">   53</span>{</div>
+<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">if</span> (y &lt; 0 || x &lt; 0)</div>
+<div class="line"><span class="lineno">   55</span>        <span class="keywordflow">return</span> (1);</div>
+<div class="line"><span class="lineno">   56</span>    <span class="keywordflow">if</span> (y &gt;= data-&gt;<a class="code hl_variable" href="structt__data.html#ae01cac6323d2f4e1f5672f71d51a8175">maze_number_of_lines</a>)</div>
+<div class="line"><span class="lineno">   57</span>        <span class="keywordflow">return</span> (2);</div>
+<div class="line"><span class="lineno">   58</span>    <span class="keywordflow">if</span> (x &gt;= data-&gt;<a class="code hl_variable" href="structt__data.html#a1b51386bf8088a1972a8b6fdf48685d4">maze_cpy_dim</a>[y])</div>
+<div class="line"><span class="lineno">   59</span>        <span class="keywordflow">return</span> (3);</div>
+<div class="line"><span class="lineno">   60</span>    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">   61</span>}</div>
+</div><!-- fragment --><div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="flood__fill_8c_ab7414e7997775ef5e4f38a4b2023bc5e_icgraph.png" border="0" usemap="#aflood__fill_8c_ab7414e7997775ef5e4f38a4b2023bc5e_icgraph" alt=""/></div>
+<map name="aflood__fill_8c_ab7414e7997775ef5e4f38a4b2023bc5e_icgraph" id="aflood__fill_8c_ab7414e7997775ef5e4f38a4b2023bc5e_icgraph">
+<area shape="rect" title=" " alt="" coords="847,56,912,81"/>
+<area shape="rect" href="check__around_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="686,5,798,31"/>
+<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="530,56,597,81"/>
+<area shape="rect" href="render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="685,107,799,132"/>
+<area shape="rect" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2" title=" " alt="" coords="367,81,441,107"/>
+<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,81,319,107"/>
+<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,81,193,107"/>
+<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,81,60,107"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="489,105,637,131"/>
 </map>
 </div>
 

@@ -1,5 +1,6 @@
 <map id="parse_colors" name="parse_colors">
-<area shape="rect" id="node1" title=" " alt="" coords="5,31,109,56"/>
-<area shape="rect" id="node2" href="$setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="157,5,269,31"/>
-<area shape="rect" id="node3" href="$setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="172,55,255,80"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,55,109,80"/>
+<area shape="rect" id="node2" href="$setup__check__double_8c.html#a5106b87d455a275de62f11b5d54a1922" title=" " alt="" coords="157,5,296,31"/>
+<area shape="rect" id="node3" href="$setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="171,55,283,80"/>
+<area shape="rect" id="node4" href="$setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="185,104,268,129"/>
 </map>

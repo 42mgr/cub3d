@@ -155,20 +155,22 @@ Functions</h2></td></tr>
 <div class="fragment"><div class="line"><span class="lineno">   16</span>{</div>
 <div class="line"><span class="lineno">   17</span>    <a class="code hl_function" href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>);</div>
 <div class="line"><span class="lineno">   18</span>    <a class="code hl_function" href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">maze_cpy</a>);</div>
-<div class="line"><span class="lineno">   19</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">n_path</a>);</div>
-<div class="line"><span class="lineno">   20</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#ad0dc994a53add90ac8508534612c21a5">e_path</a>);</div>
-<div class="line"><span class="lineno">   21</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a9b197d8b49c4f4b1c6d350ba3c917453">s_path</a>);</div>
-<div class="line"><span class="lineno">   22</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a">w_path</a>);</div>
-<div class="line"><span class="lineno">   23</span>    <span class="keywordflow">return</span> (0);</div>
-<div class="line"><span class="lineno">   24</span>}</div>
+<div class="line"><span class="lineno">   19</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a1b51386bf8088a1972a8b6fdf48685d4">maze_cpy_dim</a>);</div>
+<div class="line"><span class="lineno">   20</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">n_path</a>);</div>
+<div class="line"><span class="lineno">   21</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#ad0dc994a53add90ac8508534612c21a5">e_path</a>);</div>
+<div class="line"><span class="lineno">   22</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a9b197d8b49c4f4b1c6d350ba3c917453">s_path</a>);</div>
+<div class="line"><span class="lineno">   23</span>    free(data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a">w_path</a>);</div>
+<div class="line"><span class="lineno">   24</span>    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">   25</span>}</div>
 <div class="ttc" id="acub3d_8h_html_aea09d8cffa70aee143955f37d75b26b7"><div class="ttname"><a href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a></div><div class="ttdeci">void free_2d_array(char **array)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:15</div></div>
-<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:138</div></div>
-<div class="ttc" id="astructt__data_html_a566388a3805442bb37d00ece7ffe606c"><div class="ttname"><a href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">t_data::textures</a></div><div class="ttdeci">t_textures textures</div><div class="ttdef"><b>Definition:</b> cub3d.h:137</div></div>
-<div class="ttc" id="astructt__data_html_af1ae248416fd1e695c5ed850f7fbaf42"><div class="ttname"><a href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">t_data::maze_cpy</a></div><div class="ttdeci">char ** maze_cpy</div><div class="ttdef"><b>Definition:</b> cub3d.h:139</div></div>
-<div class="ttc" id="astructt__textures_html_a2789bb70d5771cb64c4687722c0eac8a"><div class="ttname"><a href="structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a">t_textures::w_path</a></div><div class="ttdeci">char * w_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:77</div></div>
-<div class="ttc" id="astructt__textures_html_a9b197d8b49c4f4b1c6d350ba3c917453"><div class="ttname"><a href="structt__textures.html#a9b197d8b49c4f4b1c6d350ba3c917453">t_textures::s_path</a></div><div class="ttdeci">char * s_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:76</div></div>
-<div class="ttc" id="astructt__textures_html_ad0dc994a53add90ac8508534612c21a5"><div class="ttname"><a href="structt__textures.html#ad0dc994a53add90ac8508534612c21a5">t_textures::e_path</a></div><div class="ttdeci">char * e_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:78</div></div>
-<div class="ttc" id="astructt__textures_html_af7ceda440b6f0a13429f03ef5c3c0e5d"><div class="ttname"><a href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">t_textures::n_path</a></div><div class="ttdeci">char * n_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:75</div></div>
+<div class="ttc" id="astructt__data_html_a1b51386bf8088a1972a8b6fdf48685d4"><div class="ttname"><a href="structt__data.html#a1b51386bf8088a1972a8b6fdf48685d4">t_data::maze_cpy_dim</a></div><div class="ttdeci">int * maze_cpy_dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:161</div></div>
+<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:158</div></div>
+<div class="ttc" id="astructt__data_html_a566388a3805442bb37d00ece7ffe606c"><div class="ttname"><a href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">t_data::textures</a></div><div class="ttdeci">t_textures textures</div><div class="ttdef"><b>Definition:</b> cub3d.h:157</div></div>
+<div class="ttc" id="astructt__data_html_af1ae248416fd1e695c5ed850f7fbaf42"><div class="ttname"><a href="structt__data.html#af1ae248416fd1e695c5ed850f7fbaf42">t_data::maze_cpy</a></div><div class="ttdeci">char ** maze_cpy</div><div class="ttdef"><b>Definition:</b> cub3d.h:159</div></div>
+<div class="ttc" id="astructt__textures_html_a2789bb70d5771cb64c4687722c0eac8a"><div class="ttname"><a href="structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a">t_textures::w_path</a></div><div class="ttdeci">char * w_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:97</div></div>
+<div class="ttc" id="astructt__textures_html_a9b197d8b49c4f4b1c6d350ba3c917453"><div class="ttname"><a href="structt__textures.html#a9b197d8b49c4f4b1c6d350ba3c917453">t_textures::s_path</a></div><div class="ttdeci">char * s_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:96</div></div>
+<div class="ttc" id="astructt__textures_html_ad0dc994a53add90ac8508534612c21a5"><div class="ttname"><a href="structt__textures.html#ad0dc994a53add90ac8508534612c21a5">t_textures::e_path</a></div><div class="ttdeci">char * e_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:98</div></div>
+<div class="ttc" id="astructt__textures_html_af7ceda440b6f0a13429f03ef5c3c0e5d"><div class="ttname"><a href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">t_textures::n_path</a></div><div class="ttdeci">char * n_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:95</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -215,88 +217,85 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   27</span>{</div>
-<div class="line"><span class="lineno">   28</span>    <a class="code hl_struct" href="structt__data.html">t_data</a>  data;</div>
-<div class="line"><span class="lineno">   29</span>    <span class="keywordtype">int</span>     ret;</div>
-<div class="line"><span class="lineno">   30</span> </div>
-<div class="line"><span class="lineno">   31</span>    ret = 1;</div>
-<div class="line"><span class="lineno">   32</span>    ret = <a class="code hl_function" href="cub3d_8h.html#a294c80172fac1998d755bd50c4f586ca">check_args</a>(ac, av);</div>
-<div class="line"><span class="lineno">   33</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">   34</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a661671c130024f9318b2e3e7d6b14ff8">check_file</a>(av[1]);</div>
-<div class="line"><span class="lineno">   35</span>    <span class="keywordflow">if</span> (ret != 0)</div>
-<div class="line"><span class="lineno">   36</span>        <span class="keywordflow">return</span> (1);</div>
-<div class="line"><span class="lineno">   37</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">   38</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a32055777ed770ff53b837541c4e34000">setup_file</a>(&amp;data, av);</div>
-<div class="line"><span class="lineno">   39</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">   40</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;42mSUCCESS:\e[0m\n\tFile parsed and valid.\n&quot;</span>, 2);</div>
-<div class="line"><span class="lineno">   41</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   42</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mERROR:\e[0m\n\tParsing aborted.\n&quot;</span>, 2);</div>
-<div class="line"><span class="lineno">   43</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">   44</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a013ba6e421d1016fc1c149d3a8529fa3">render_map</a>(&amp;data);</div>
-<div class="line"><span class="lineno">   45</span>    <a class="code hl_function" href="main_8c.html#acf780b012da6ae7f39f3236d33c9b86e">final_free</a>(&amp;data);</div>
-<div class="line"><span class="lineno">   46</span>    <span class="keywordflow">return</span> (0);</div>
-<div class="line"><span class="lineno">   47</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   28</span>{</div>
+<div class="line"><span class="lineno">   29</span>    <a class="code hl_struct" href="structt__data.html">t_data</a>  data;</div>
+<div class="line"><span class="lineno">   30</span>    <span class="keywordtype">int</span>     ret;</div>
+<div class="line"><span class="lineno">   31</span> </div>
+<div class="line"><span class="lineno">   32</span>    ret = 1;</div>
+<div class="line"><span class="lineno">   33</span>    ret = <a class="code hl_function" href="cub3d_8h.html#a294c80172fac1998d755bd50c4f586ca">check_args</a>(ac, av);</div>
+<div class="line"><span class="lineno">   34</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">   35</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a661671c130024f9318b2e3e7d6b14ff8">check_file</a>(av[1]);</div>
+<div class="line"><span class="lineno">   36</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">   37</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a32055777ed770ff53b837541c4e34000">setup_file</a>(&amp;data, av);</div>
+<div class="line"><span class="lineno">   38</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">   39</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;42mSUCCESS:\e[0m\n\tFile parsed and valid.\n&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">   40</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">   41</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a013ba6e421d1016fc1c149d3a8529fa3">render_map</a>(&amp;data);</div>
+<div class="line"><span class="lineno">   42</span>    <span class="keywordflow">if</span> (ret &gt;= 0)</div>
+<div class="line"><span class="lineno">   43</span>        <a class="code hl_function" href="main_8c.html#acf780b012da6ae7f39f3236d33c9b86e">final_free</a>(&amp;data);</div>
+<div class="line"><span class="lineno">   44</span>    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">   45</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a013ba6e421d1016fc1c149d3a8529fa3"><div class="ttname"><a href="cub3d_8h.html#a013ba6e421d1016fc1c149d3a8529fa3">render_map</a></div><div class="ttdeci">int render_map(t_data *data)</div><div class="ttdef"><b>Definition:</b> render_map.c:85</div></div>
 <div class="ttc" id="acub3d_8h_html_a294c80172fac1998d755bd50c4f586ca"><div class="ttname"><a href="cub3d_8h.html#a294c80172fac1998d755bd50c4f586ca">check_args</a></div><div class="ttdeci">int check_args(int ac, char **av)</div><div class="ttdef"><b>Definition:</b> check_args.c:60</div></div>
-<div class="ttc" id="acub3d_8h_html_a32055777ed770ff53b837541c4e34000"><div class="ttname"><a href="cub3d_8h.html#a32055777ed770ff53b837541c4e34000">setup_file</a></div><div class="ttdeci">int setup_file(t_data *data, char **av)</div><div class="ttdef"><b>Definition:</b> setup_file.c:135</div></div>
+<div class="ttc" id="acub3d_8h_html_a32055777ed770ff53b837541c4e34000"><div class="ttname"><a href="cub3d_8h.html#a32055777ed770ff53b837541c4e34000">setup_file</a></div><div class="ttdeci">int setup_file(t_data *data, char **av)</div><div class="ttdef"><b>Definition:</b> setup_file.c:137</div></div>
 <div class="ttc" id="acub3d_8h_html_a661671c130024f9318b2e3e7d6b14ff8"><div class="ttname"><a href="cub3d_8h.html#a661671c130024f9318b2e3e7d6b14ff8">check_file</a></div><div class="ttdeci">int check_file(char *path)</div><div class="ttdef"><b>Definition:</b> check_args.c:28</div></div>
 <div class="ttc" id="amain_8c_html_acf780b012da6ae7f39f3236d33c9b86e"><div class="ttname"><a href="main_8c.html#acf780b012da6ae7f39f3236d33c9b86e">final_free</a></div><div class="ttdeci">static int final_free(t_data *data)</div><div class="ttdef"><b>Definition:</b> main.c:15</div></div>
-<div class="ttc" id="astructt__data_html"><div class="ttname"><a href="structt__data.html">t_data</a></div><div class="ttdef"><b>Definition:</b> cub3d.h:134</div></div>
+<div class="ttc" id="astructt__data_html"><div class="ttname"><a href="structt__data.html">t_data</a></div><div class="ttdef"><b>Definition:</b> cub3d.h:154</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8c_a0c99d968a34e803d378692bde2e3f18f_cgraph.png" border="0" usemap="#amain_8c_a0c99d968a34e803d378692bde2e3f18f_cgraph" alt=""/></div>
 <map name="amain_8c_a0c99d968a34e803d378692bde2e3f18f_cgraph" id="amain_8c_a0c99d968a34e803d378692bde2e3f18f_cgraph">
-<area shape="rect" title=" " alt="" coords="5,107,60,132"/>
+<area shape="rect" title=" " alt="" coords="5,404,60,429"/>
 <area shape="rect" href="check__args_8c.html#a294c80172fac1998d755bd50c4f586ca" title=" " alt="" coords="111,5,205,31"/>
-<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="292,31,379,56"/>
-<area shape="rect" href="main_8c.html#acf780b012da6ae7f39f3236d33c9b86e" title=" " alt="" coords="117,107,199,132"/>
-<area shape="rect" href="render__map_8c.html#a013ba6e421d1016fc1c149d3a8529fa3" title=" " alt="" coords="108,833,208,859"/>
-<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="115,453,201,479"/>
-<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="503,5,579,31"/>
-<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="857,132,969,157"/>
-<area shape="rect" href="render__hooks_8c.html#a12bd0fa1da5ee8701e925baefd3d837d" title=" " alt="" coords="289,1007,381,1032"/>
-<area shape="rect" href="render__create_8c.html#a57290b7a6123d20fa8d6ebec0a33e639" title=" " alt="" coords="261,745,410,785"/>
-<area shape="rect" href="render__create_8c.html#ad87e0b52fc2cad72d8dcd5c762c472f2" title=" " alt="" coords="256,809,415,835"/>
-<area shape="rect" href="render__create_8c.html#a997f56925dc5b458b055ec34261f77aa" title=" " alt="" coords="259,859,411,884"/>
-<area shape="rect" href="render__map_8c.html#ae16bed84e6e30210da401da9d420ca3d" title=" " alt="" coords="293,908,377,933"/>
-<area shape="rect" href="game_8c.html#a721db81a57fd1ab6127ab0ecf21e924b" title=" " alt="" coords="492,957,591,983"/>
-<area shape="rect" href="render__draw_8c.html#acedbde77dcf774227313fa4607784e5b" title=" " alt="" coords="490,1007,593,1032"/>
-<area shape="rect" href="render__hooks_8c.html#a951c1ca6df42f91105a890dbefc156d7" title=" " alt="" coords="500,1056,583,1081"/>
-<area shape="rect" href="move__player_8c.html#a62789f80d94954f922fb1fefd691b1f1" title=" " alt="" coords="488,1155,595,1180"/>
-<area shape="rect" href="game_8c.html#aa0cee5e5aa8c67c42ef07fb6d3b68e6f" title=" " alt="" coords="687,957,790,983"/>
-<area shape="rect" href="render__map_8c.html#a8812fdd4277c60f965d5dafaabcad78d" title=" " alt="" coords="687,1007,790,1032"/>
-<area shape="rect" href="move__player_8c.html#af05542c5456078d092e990e15bccc788" title=" " alt="" coords="674,1253,803,1279"/>
-<area shape="rect" href="move__directions_8c.html#aaf874f9c36184a5e1661e785a18ec70b" title=" " alt="" coords="688,1303,789,1328"/>
-<area shape="rect" href="move__player_8c.html#acb2635ac5d6dee4fd3573152db16f0b5" title=" " alt="" coords="681,1056,797,1081"/>
-<area shape="rect" href="move__directions_8c.html#a777b3783fb601c82e633d3dfa7aa9155" title=" " alt="" coords="695,1105,782,1131"/>
-<area shape="rect" href="move__directions_8c.html#a501a402f92dba7ae61c04e4ba515a08e" title=" " alt="" coords="691,1155,787,1180"/>
-<area shape="rect" href="move__directions_8c.html#ad3dd1d0517f6e982804425d0c13ed8ed" title=" " alt="" coords="697,1204,780,1229"/>
-<area shape="rect" href="render__load__fill_8c.html#a8e465da460d10902ecd81fb4a578de41" title=" " alt="" coords="497,752,585,777"/>
-<area shape="rect" href="render__load__fill_8c.html#a39b42b96718358b181766f3cb6bfa90f" title=" " alt="" coords="504,801,579,827"/>
-<area shape="rect" href="render__map_8c.html#a0db336c86e58239c9e863f30e214b4e9" title=" " alt="" coords="463,859,620,884"/>
-<area shape="rect" href="render__load__fill_8c.html#a35543e7b73478723545c638b68783080" title=" " alt="" coords="504,908,579,933"/>
-<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="297,257,374,283"/>
-<area shape="rect" href="setup__helper_8c.html#aa84f7ee2e4102e036c42d46b41a70e6c" title=" " alt="" coords="296,528,375,553"/>
-<area shape="rect" href="setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b" title=" " alt="" coords="296,629,375,655"/>
-<area shape="rect" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e" title=" " alt="" coords="294,453,377,479"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="467,183,615,208"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb" title=" " alt="" coords="494,232,589,257"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a81495a9553ad1a1cacfaebcb999820bd" title=" " alt="" coords="479,281,604,307"/>
-<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="508,355,575,380"/>
-<area shape="rect" href="render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="682,183,795,208"/>
-<area shape="rect" href="flood__fill_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="677,232,800,257"/>
-<area shape="rect" href="flood__fill_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="668,281,809,307"/>
-<area shape="rect" href="flood__fill_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="683,355,795,380"/>
-<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="872,479,955,504"/>
-<area shape="rect" href="setup__detect_8c.html#a3cbcfdff8927692fd076f3a5722f3cce" title=" " alt="" coords="480,703,603,728"/>
-<area shape="rect" href="ft__strjoin__mod_8c.html#a3a47097b6b2e296222e97098bb5c25ba" title=" " alt="" coords="484,604,599,629"/>
-<area shape="rect" href="setup__helper_8c.html#a32422169502ce6894e31045b6db12305" title=" " alt="" coords="497,653,586,679"/>
-<area shape="rect" href="setup__detect_8c.html#a8489f83e0d94a357d3d3f5040873cd80" title=" " alt="" coords="492,503,591,528"/>
-<area shape="rect" href="setup__detect_8c.html#aa51bf2e19aec51819267d8dc9263b076" title=" " alt="" coords="487,404,596,429"/>
-<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="479,453,603,479"/>
-<area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="688,453,789,479"/>
-<area shape="rect" href="setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80" title=" " alt="" coords="687,404,791,429"/>
+<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="912,56,999,81"/>
+<area shape="rect" href="main_8c.html#acf780b012da6ae7f39f3236d33c9b86e" title=" " alt="" coords="117,601,199,627"/>
+<area shape="rect" href="render__map_8c.html#a013ba6e421d1016fc1c149d3a8529fa3" title=" " alt="" coords="108,879,208,904"/>
+<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="115,404,201,429"/>
+<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="1095,31,1171,56"/>
+<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="899,551,1011,576"/>
+<area shape="rect" href="render__hooks_8c.html#a12bd0fa1da5ee8701e925baefd3d837d" title=" " alt="" coords="289,851,381,876"/>
+<area shape="rect" href="render__create_8c.html#a57290b7a6123d20fa8d6ebec0a33e639" title=" " alt="" coords="261,909,410,949"/>
+<area shape="rect" href="render__create_8c.html#ad87e0b52fc2cad72d8dcd5c762c472f2" title=" " alt="" coords="256,973,415,999"/>
+<area shape="rect" href="render__create_8c.html#a997f56925dc5b458b055ec34261f77aa" title=" " alt="" coords="259,1039,411,1064"/>
+<area shape="rect" href="render__map_8c.html#ae16bed84e6e30210da401da9d420ca3d" title=" " alt="" coords="293,752,377,777"/>
+<area shape="rect" href="game_8c.html#a721db81a57fd1ab6127ab0ecf21e924b" title=" " alt="" coords="492,851,591,876"/>
+<area shape="rect" href="render__draw_8c.html#acedbde77dcf774227313fa4607784e5b" title=" " alt="" coords="490,900,593,925"/>
+<area shape="rect" href="render__hooks_8c.html#a951c1ca6df42f91105a890dbefc156d7" title=" " alt="" coords="500,752,583,777"/>
+<area shape="rect" href="move__player_8c.html#a62789f80d94954f922fb1fefd691b1f1" title=" " alt="" coords="488,801,595,827"/>
+<area shape="rect" href="game_8c.html#aa0cee5e5aa8c67c42ef07fb6d3b68e6f" title=" " alt="" coords="691,851,793,876"/>
+<area shape="rect" href="math__helpers_8c.html#ae01dce99a5ef3bf7818e1b8350677a12" title=" " alt="" coords="932,851,979,876"/>
+<area shape="rect" href="draw__vertical_8c.html#af5f7be13aa2aa7bbbda1103c94d9f7f3" title=" " alt="" coords="866,900,1045,925"/>
+<area shape="rect" href="draw__vertical_8c.html#a248b5025ba46628c98c35755cb391e82" title=" " alt="" coords="866,949,1045,975"/>
+<area shape="rect" href="draw__vertical_8c.html#a0daec2b609b61d06c3a4b9cd9617b136" title=" " alt="" coords="866,752,1045,777"/>
+<area shape="rect" href="draw__vertical_8c.html#a68ed013547efd8dbc122a9e54a6c3c8d" title=" " alt="" coords="864,801,1047,827"/>
+<area shape="rect" href="render__map_8c.html#a8812fdd4277c60f965d5dafaabcad78d" title=" " alt="" coords="691,900,793,925"/>
+<area shape="rect" href="move__player_8c.html#af05542c5456078d092e990e15bccc788" title=" " alt="" coords="677,752,807,777"/>
+<area shape="rect" href="move__player_8c.html#acb2635ac5d6dee4fd3573152db16f0b5" title=" " alt="" coords="684,801,800,827"/>
+<area shape="rect" href="render__load__fill_8c.html#a8e465da460d10902ecd81fb4a578de41" title=" " alt="" coords="497,999,585,1024"/>
+<area shape="rect" href="render__load__fill_8c.html#a39b42b96718358b181766f3cb6bfa90f" title=" " alt="" coords="504,949,579,975"/>
+<area shape="rect" href="render__map_8c.html#a0db336c86e58239c9e863f30e214b4e9" title=" " alt="" coords="463,1048,620,1073"/>
+<area shape="rect" href="render__load__fill_8c.html#a35543e7b73478723545c638b68783080" title=" " alt="" coords="504,703,579,728"/>
+<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="297,353,374,379"/>
+<area shape="rect" href="setup__helper_8c.html#aa84f7ee2e4102e036c42d46b41a70e6c" title=" " alt="" coords="296,552,375,577"/>
+<area shape="rect" href="setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b" title=" " alt="" coords="296,181,375,207"/>
+<area shape="rect" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e" title=" " alt="" coords="294,477,377,503"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb" title=" " alt="" coords="494,353,589,379"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a81495a9553ad1a1cacfaebcb999820bd" title=" " alt="" coords="479,403,604,428"/>
+<area shape="rect" href="flood__fill_8c.html#af041b712005663cd76b994cf9d12babb" title=" " alt="" coords="468,304,615,329"/>
+<area shape="rect" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2" title=" " alt="" coords="504,255,579,280"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="668,204,816,229"/>
+<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="709,277,775,303"/>
+<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="914,601,997,627"/>
+<area shape="rect" href="setup__detect_8c.html#a3cbcfdff8927692fd076f3a5722f3cce" title=" " alt="" coords="480,107,603,132"/>
+<area shape="rect" href="ft__strjoin__mod_8c.html#a3a47097b6b2e296222e97098bb5c25ba" title=" " alt="" coords="484,156,599,181"/>
+<area shape="rect" href="setup__helper_8c.html#a32422169502ce6894e31045b6db12305" title=" " alt="" coords="497,205,586,231"/>
+<area shape="rect" href="setup__detect_8c.html#a8489f83e0d94a357d3d3f5040873cd80" title=" " alt="" coords="492,501,591,527"/>
+<area shape="rect" href="setup__detect_8c.html#aa51bf2e19aec51819267d8dc9263b076" title=" " alt="" coords="487,551,596,576"/>
+<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="479,452,603,477"/>
+<area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="691,476,793,501"/>
+<area shape="rect" href="setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80" title=" " alt="" coords="690,551,794,576"/>
+<area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="695,332,789,357"/>
 </map>
 </div>
 

@@ -165,31 +165,45 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   23</span>    <span class="keywordtype">int</span> y;</div>
 <div class="line"><span class="lineno">   24</span> </div>
 <div class="line"><span class="lineno">   25</span>    y = 0;</div>
-<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">while</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>] &amp;&amp; \</div>
-<div class="line"><span class="lineno">   27</span>        y &lt; data-&gt;dim.max_y - data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a> + 1)</div>
-<div class="line"><span class="lineno">   28</span>    {</div>
-<div class="line"><span class="lineno">   29</span>        x = 0;</div>
-<div class="line"><span class="lineno">   30</span>        <span class="keywordflow">while</span> (x &lt; data-&gt;dim.max_x - data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a> + 1)</div>
-<div class="line"><span class="lineno">   31</span>        {</div>
-<div class="line"><span class="lineno">   32</span>            <span class="keywordflow">if</span> (!(data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>]))</div>
-<div class="line"><span class="lineno">   33</span>                break ;</div>
-<div class="line"><span class="lineno">   34</span>            f(data, y, x);</div>
-<div class="line"><span class="lineno">   35</span>            x++;</div>
-<div class="line"><span class="lineno">   36</span>        }</div>
-<div class="line"><span class="lineno">   37</span>        y++;</div>
-<div class="line"><span class="lineno">   38</span>    }</div>
-<div class="line"><span class="lineno">   39</span>}</div>
-<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:138</div></div>
-<div class="ttc" id="astructt__data_html_aa76d070e407d91845c7233af845089ab"><div class="ttname"><a href="structt__data.html#aa76d070e407d91845c7233af845089ab">t_data::dim</a></div><div class="ttdeci">t_dim dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:140</div></div>
-<div class="ttc" id="astructt__dim_html_a2b12aab6bc323b7c6d415cae4ece9569"><div class="ttname"><a href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">t_dim::min_y</a></div><div class="ttdeci">int min_y</div><div class="ttdef"><b>Definition:</b> cub3d.h:104</div></div>
-<div class="ttc" id="astructt__dim_html_a41a774ab17dd743d338d5ac645c95d6a"><div class="ttname"><a href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">t_dim::min_x</a></div><div class="ttdeci">int min_x</div><div class="ttdef"><b>Definition:</b> cub3d.h:103</div></div>
+<div class="line"><span class="lineno">   26</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a> &lt; 0)</div>
+<div class="line"><span class="lineno">   27</span>        return ;</div>
+<div class="line"><span class="lineno">   28</span>    <span class="keywordflow">while</span> (y &lt; data-&gt;dim.max_y - data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a> + 1 &amp;&amp; \</div>
+<div class="line"><span class="lineno">   29</span>        data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>])</div>
+<div class="line"><span class="lineno">   30</span>    {</div>
+<div class="line"><span class="lineno">   31</span>        x = 0;</div>
+<div class="line"><span class="lineno">   32</span>        <span class="keywordflow">while</span> (x &lt; data-&gt;dim.max_x - data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a> + 1)</div>
+<div class="line"><span class="lineno">   33</span>        {</div>
+<div class="line"><span class="lineno">   34</span>            <span class="keywordflow">if</span> (<a class="code hl_function" href="cub3d_8h.html#ab7414e7997775ef5e4f38a4b2023bc5e">valid_i</a>(data, x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>, y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>) != 0 || \</div>
+<div class="line"><span class="lineno">   35</span>                !(data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>]))</div>
+<div class="line"><span class="lineno">   36</span>                break ;</div>
+<div class="line"><span class="lineno">   37</span>            f(data, y, x);</div>
+<div class="line"><span class="lineno">   38</span>            x++;</div>
+<div class="line"><span class="lineno">   39</span>        }</div>
+<div class="line"><span class="lineno">   40</span>        y++;</div>
+<div class="line"><span class="lineno">   41</span>    }</div>
+<div class="line"><span class="lineno">   42</span>}</div>
+<div class="ttc" id="acub3d_8h_html_ab7414e7997775ef5e4f38a4b2023bc5e"><div class="ttname"><a href="cub3d_8h.html#ab7414e7997775ef5e4f38a4b2023bc5e">valid_i</a></div><div class="ttdeci">int valid_i(t_data *data, int x, int y)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:52</div></div>
+<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:158</div></div>
+<div class="ttc" id="astructt__data_html_aa76d070e407d91845c7233af845089ab"><div class="ttname"><a href="structt__data.html#aa76d070e407d91845c7233af845089ab">t_data::dim</a></div><div class="ttdeci">t_dim dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:162</div></div>
+<div class="ttc" id="astructt__dim_html_a2b12aab6bc323b7c6d415cae4ece9569"><div class="ttname"><a href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">t_dim::min_y</a></div><div class="ttdeci">int min_y</div><div class="ttdef"><b>Definition:</b> cub3d.h:124</div></div>
+<div class="ttc" id="astructt__dim_html_a41a774ab17dd743d338d5ac645c95d6a"><div class="ttname"><a href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">t_dim::min_x</a></div><div class="ttdeci">int min_x</div><div class="ttdef"><b>Definition:</b> cub3d.h:123</div></div>
 </div><!-- fragment --><div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="render__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_cgraph.png" border="0" usemap="#arender__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_cgraph" alt=""/></div>
+<map name="arender__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_cgraph" id="arender__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_cgraph">
+<area shape="rect" title=" " alt="" coords="5,5,119,31"/>
+<area shape="rect" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e" title=" " alt="" coords="167,5,232,31"/>
+</map>
+</div>
+<div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="render__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_icgraph.png" border="0" usemap="#arender__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_icgraph" alt=""/></div>
 <map name="arender__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_icgraph" id="arender__draw_8c_a9a18ad12a4f965dbfc38f36dae79baff_icgraph">
-<area shape="rect" title=" " alt="" coords="563,5,676,31"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="367,5,515,31"/>
+<area shape="rect" title=" " alt="" coords="685,5,799,31"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="489,5,637,31"/>
+<area shape="rect" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2" title=" " alt="" coords="367,5,441,31"/>
 <area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="241,5,319,31"/>
 <area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,5,193,31"/>
 <area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,5,60,31"/>
@@ -229,15 +243,15 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   42</span>{</div>
-<div class="line"><span class="lineno">   43</span>    <a class="code hl_function" href="render__draw_8c.html#a0a6455b3def70da687d17024783d8644">draw_picture</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">mlx_ptr</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#ad935d0f8af8224e0100ec90a069ca17c">mm_black_img</a>, \</div>
-<div class="line"><span class="lineno">   44</span>        (y * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>), (x * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>));</div>
-<div class="line"><span class="lineno">   45</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   45</span>{</div>
+<div class="line"><span class="lineno">   46</span>    <a class="code hl_function" href="render__draw_8c.html#a0a6455b3def70da687d17024783d8644">draw_picture</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">mlx_ptr</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#ad935d0f8af8224e0100ec90a069ca17c">mm_black_img</a>, \</div>
+<div class="line"><span class="lineno">   47</span>        (y * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>), (x * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>));</div>
+<div class="line"><span class="lineno">   48</span>}</div>
 <div class="ttc" id="acub3d_8h_html_ae3611cd7caad34521610ef1f7c116772"><div class="ttname"><a href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a></div><div class="ttdeci">#define SPRITE_SIZE</div><div class="ttdef"><b>Definition:</b> cub3d.h:34</div></div>
 <div class="ttc" id="arender__draw_8c_html_a0a6455b3def70da687d17024783d8644"><div class="ttname"><a href="render__draw_8c.html#a0a6455b3def70da687d17024783d8644">draw_picture</a></div><div class="ttdeci">void draw_picture(mlx_t *mlx_ptr, mlx_image_t *picture, int y, int x)</div><div class="ttdef"><b>Definition:</b> render_draw.c:15</div></div>
-<div class="ttc" id="astructt__data_html_a79bc795acc665074776ecf6a617b35a3"><div class="ttname"><a href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">t_data::mlx42</a></div><div class="ttdeci">t_mlx42 mlx42</div><div class="ttdef"><b>Definition:</b> cub3d.h:141</div></div>
-<div class="ttc" id="astructt__mlx42_html_a6e777c2cbcc532a9954b2a1d28fb95c5"><div class="ttname"><a href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">t_mlx42::mlx_ptr</a></div><div class="ttdeci">mlx_t * mlx_ptr</div><div class="ttdef"><b>Definition:</b> cub3d.h:113</div></div>
-<div class="ttc" id="astructt__mlx42_html_ad935d0f8af8224e0100ec90a069ca17c"><div class="ttname"><a href="structt__mlx42.html#ad935d0f8af8224e0100ec90a069ca17c">t_mlx42::mm_black_img</a></div><div class="ttdeci">mlx_image_t * mm_black_img</div><div class="ttdef"><b>Definition:</b> cub3d.h:117</div></div>
+<div class="ttc" id="astructt__data_html_a79bc795acc665074776ecf6a617b35a3"><div class="ttname"><a href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">t_data::mlx42</a></div><div class="ttdeci">t_mlx42 mlx42</div><div class="ttdef"><b>Definition:</b> cub3d.h:163</div></div>
+<div class="ttc" id="astructt__mlx42_html_a6e777c2cbcc532a9954b2a1d28fb95c5"><div class="ttname"><a href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">t_mlx42::mlx_ptr</a></div><div class="ttdeci">mlx_t * mlx_ptr</div><div class="ttdef"><b>Definition:</b> cub3d.h:133</div></div>
+<div class="ttc" id="astructt__mlx42_html_ad935d0f8af8224e0100ec90a069ca17c"><div class="ttname"><a href="structt__mlx42.html#ad935d0f8af8224e0100ec90a069ca17c">t_mlx42::mm_black_img</a></div><div class="ttdeci">mlx_image_t * mm_black_img</div><div class="ttdef"><b>Definition:</b> cub3d.h:137</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -324,15 +338,15 @@ Here is the caller graph for this function:</div>
   </table>
   </dd>
 </dl>
-<div class="fragment"><div class="line"><span class="lineno">   69</span>{</div>
-<div class="line"><span class="lineno">   70</span>    <a class="code hl_struct" href="structt__data.html">t_data</a>      *data;</div>
-<div class="line"><span class="lineno">   71</span> </div>
-<div class="line"><span class="lineno">   72</span>    data = arg;</div>
-<div class="line"><span class="lineno">   73</span>    <a class="code hl_function" href="cub3d_8h.html#a8812fdd4277c60f965d5dafaabcad78d">clear_image</a>(data);</div>
-<div class="line"><span class="lineno">   74</span>    return ;</div>
-<div class="line"><span class="lineno">   75</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   72</span>{</div>
+<div class="line"><span class="lineno">   73</span>    <a class="code hl_struct" href="structt__data.html">t_data</a>      *data;</div>
+<div class="line"><span class="lineno">   74</span> </div>
+<div class="line"><span class="lineno">   75</span>    data = arg;</div>
+<div class="line"><span class="lineno">   76</span>    <a class="code hl_function" href="cub3d_8h.html#a8812fdd4277c60f965d5dafaabcad78d">clear_image</a>(data);</div>
+<div class="line"><span class="lineno">   77</span>    return ;</div>
+<div class="line"><span class="lineno">   78</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a8812fdd4277c60f965d5dafaabcad78d"><div class="ttname"><a href="cub3d_8h.html#a8812fdd4277c60f965d5dafaabcad78d">clear_image</a></div><div class="ttdeci">void clear_image(t_data *data)</div><div class="ttdef"><b>Definition:</b> render_map.c:50</div></div>
-<div class="ttc" id="astructt__data_html"><div class="ttname"><a href="structt__data.html">t_data</a></div><div class="ttdef"><b>Definition:</b> cub3d.h:134</div></div>
+<div class="ttc" id="astructt__data_html"><div class="ttname"><a href="structt__data.html">t_data</a></div><div class="ttdef"><b>Definition:</b> cub3d.h:154</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -387,20 +401,20 @@ Here is the caller graph for this function:</div>
         </tr>
       </table>
 </div><div class="memdoc">
-<div class="fragment"><div class="line"><span class="lineno">   48</span>{</div>
-<div class="line"><span class="lineno">   49</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>] == <span class="charliteral">&#39;1&#39;</span>)</div>
-<div class="line"><span class="lineno">   50</span>    {</div>
-<div class="line"><span class="lineno">   51</span>        <a class="code hl_function" href="render__draw_8c.html#a0a6455b3def70da687d17024783d8644">draw_picture</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">mlx_ptr</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#aaa8e470c2e62c6be27e52c91897f7bbe">mm_grey_img</a>, \</div>
-<div class="line"><span class="lineno">   52</span>            (y * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>), (x * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>));</div>
-<div class="line"><span class="lineno">   53</span>    }</div>
-<div class="line"><span class="lineno">   54</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>] == <span class="charliteral">&#39;0&#39;</span>)</div>
-<div class="line"><span class="lineno">   55</span>    {</div>
-<div class="line"><span class="lineno">   56</span>        <a class="code hl_function" href="render__draw_8c.html#a0a6455b3def70da687d17024783d8644">draw_picture</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">mlx_ptr</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a18ab3463d7d6885750fc1ad35f8a3e2b">mm_white_img</a>, \</div>
-<div class="line"><span class="lineno">   57</span>            (y * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>), (x * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>));</div>
-<div class="line"><span class="lineno">   58</span>    }</div>
-<div class="line"><span class="lineno">   59</span>}</div>
-<div class="ttc" id="astructt__mlx42_html_a18ab3463d7d6885750fc1ad35f8a3e2b"><div class="ttname"><a href="structt__mlx42.html#a18ab3463d7d6885750fc1ad35f8a3e2b">t_mlx42::mm_white_img</a></div><div class="ttdeci">mlx_image_t * mm_white_img</div><div class="ttdef"><b>Definition:</b> cub3d.h:118</div></div>
-<div class="ttc" id="astructt__mlx42_html_aaa8e470c2e62c6be27e52c91897f7bbe"><div class="ttname"><a href="structt__mlx42.html#aaa8e470c2e62c6be27e52c91897f7bbe">t_mlx42::mm_grey_img</a></div><div class="ttdeci">mlx_image_t * mm_grey_img</div><div class="ttdef"><b>Definition:</b> cub3d.h:119</div></div>
+<div class="fragment"><div class="line"><span class="lineno">   51</span>{</div>
+<div class="line"><span class="lineno">   52</span>    <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>] == <span class="charliteral">&#39;1&#39;</span>)</div>
+<div class="line"><span class="lineno">   53</span>    {</div>
+<div class="line"><span class="lineno">   54</span>        <a class="code hl_function" href="render__draw_8c.html#a0a6455b3def70da687d17024783d8644">draw_picture</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">mlx_ptr</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#aaa8e470c2e62c6be27e52c91897f7bbe">mm_grey_img</a>, \</div>
+<div class="line"><span class="lineno">   55</span>            (y * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>), (x * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>));</div>
+<div class="line"><span class="lineno">   56</span>    }</div>
+<div class="line"><span class="lineno">   57</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>[y + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a2b12aab6bc323b7c6d415cae4ece9569">min_y</a>][x + data-&gt;<a class="code hl_variable" href="structt__data.html#aa76d070e407d91845c7233af845089ab">dim</a>.<a class="code hl_variable" href="structt__dim.html#a41a774ab17dd743d338d5ac645c95d6a">min_x</a>] == <span class="charliteral">&#39;0&#39;</span>)</div>
+<div class="line"><span class="lineno">   58</span>    {</div>
+<div class="line"><span class="lineno">   59</span>        <a class="code hl_function" href="render__draw_8c.html#a0a6455b3def70da687d17024783d8644">draw_picture</a>(data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a6e777c2cbcc532a9954b2a1d28fb95c5">mlx_ptr</a>, data-&gt;<a class="code hl_variable" href="structt__data.html#a79bc795acc665074776ecf6a617b35a3">mlx42</a>.<a class="code hl_variable" href="structt__mlx42.html#a18ab3463d7d6885750fc1ad35f8a3e2b">mm_white_img</a>, \</div>
+<div class="line"><span class="lineno">   60</span>            (y * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>), (x * <a class="code hl_define" href="cub3d_8h.html#ae3611cd7caad34521610ef1f7c116772">SPRITE_SIZE</a>));</div>
+<div class="line"><span class="lineno">   61</span>    }</div>
+<div class="line"><span class="lineno">   62</span>}</div>
+<div class="ttc" id="astructt__mlx42_html_a18ab3463d7d6885750fc1ad35f8a3e2b"><div class="ttname"><a href="structt__mlx42.html#a18ab3463d7d6885750fc1ad35f8a3e2b">t_mlx42::mm_white_img</a></div><div class="ttdeci">mlx_image_t * mm_white_img</div><div class="ttdef"><b>Definition:</b> cub3d.h:138</div></div>
+<div class="ttc" id="astructt__mlx42_html_aaa8e470c2e62c6be27e52c91897f7bbe"><div class="ttname"><a href="structt__mlx42.html#aaa8e470c2e62c6be27e52c91897f7bbe">t_mlx42::mm_grey_img</a></div><div class="ttdeci">mlx_image_t * mm_grey_img</div><div class="ttdef"><b>Definition:</b> cub3d.h:139</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">

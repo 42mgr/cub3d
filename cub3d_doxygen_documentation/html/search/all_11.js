@@ -1,12 +1,9 @@
 var searchData=
 [
-  ['w_5fpath_0',['w_path',['../structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a',1,'t_textures']]],
-  ['w_5fwall_1',['w_wall',['../structt__mlx42.html#a75729e09144c6736a9f4da4a202a2abc',1,'t_mlx42']]],
-  ['wall_5fcollision_2ec_2',['wall_collision.c',['../wall__collision_8c.html',1,'']]],
-  ['wall_5foffset_3',['WALL_OFFSET',['../cub3d_8h.html#ae0f4ef9b8e2642febe756a8ffea0c0fb',1,'cub3d.h']]],
-  ['west_4',['WEST',['../cub3d_8h.html#a755da365a2f771fdb9e15af22fee7d74',1,'cub3d.h']]],
-  ['which_5fpicture_5',['which_picture',['../cub3d_8h.html#ab8df44331697bde685dc89d06c683296',1,'which_picture(t_data *data, int y, int x):&#160;render_draw.c'],['../render__draw_8c.html#ab8df44331697bde685dc89d06c683296',1,'which_picture(t_data *data, int y, int x):&#160;render_draw.c']]],
-  ['window_5fheight_6',['WINDOW_HEIGHT',['../cub3d_8h.html#a5473cf64fa979b48335079c99532e243',1,'cub3d.h']]],
-  ['window_5fwidth_7',['WINDOW_WIDTH',['../cub3d_8h.html#a498d9f026138406895e9a34b504ac6a6',1,'cub3d.h']]],
-  ['write_5frgb_8',['write_rgb',['../cub3d_8h.html#aa7f20e3c74803eaaf008f7a0e2d00eea',1,'write_rgb(int *rgb, int red, int green, int blue):&#160;setup_helper.c'],['../setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea',1,'write_rgb(int *rgb, int red, int green, int blue):&#160;setup_helper.c']]]
+  ['valid_5fi_0',['valid_i',['../cub3d_8h.html#ab7414e7997775ef5e4f38a4b2023bc5e',1,'valid_i(t_data *data, int x, int y):&#160;flood_fill.c'],['../flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e',1,'valid_i(t_data *data, int x, int y):&#160;flood_fill.c']]],
+  ['valid_5fpos_1',['valid_pos',['../cub3d_8h.html#af2f8de48dbc25efc4c52b35b1943838b',1,'valid_pos(t_data *data, t_int_p2 pos):&#160;move_player.c'],['../move__player_8c.html#af2f8de48dbc25efc4c52b35b1943838b',1,'valid_pos(t_data *data, t_int_p2 pos):&#160;move_player.c']]],
+  ['vertical_5fline_2',['vertical_line',['../cub3d_8h.html#aa0cee5e5aa8c67c42ef07fb6d3b68e6f',1,'vertical_line(t_data *data, int x, double angle):&#160;game.c'],['../game_8c.html#aa0cee5e5aa8c67c42ef07fb6d3b68e6f',1,'vertical_line(t_data *data, int x, double angle):&#160;game.c']]],
+  ['vertical_5fray_5fcollision_3',['vertical_ray_collision',['../cub3d_8h.html#a15f0903485245d8997a3dff6c280d3d8',1,'vertical_ray_collision(t_data *data, double angle):&#160;ray_collision.c'],['../ray__collision_8c.html#a15f0903485245d8997a3dff6c280d3d8',1,'vertical_ray_collision(t_data *data, double angle):&#160;ray_collision.c']]],
+  ['vrc_5fleft_4',['vrc_left',['../cub3d_8h.html#ad6cce3a8d1937ac1f5d1d42a3c5fe318',1,'vrc_left(t_data *data, double angle):&#160;wall_collision.c'],['../wall__collision_8c.html#ad6cce3a8d1937ac1f5d1d42a3c5fe318',1,'vrc_left(t_data *data, double angle):&#160;wall_collision.c']]],
+  ['vrc_5fright_5',['vrc_right',['../cub3d_8h.html#a75758a3c0b5c06704ca341c891a4d3cc',1,'vrc_right(t_data *data, double angle):&#160;wall_collision.c'],['../wall__collision_8c.html#a75758a3c0b5c06704ca341c891a4d3cc',1,'vrc_right(t_data *data, double angle):&#160;wall_collision.c']]]
 ];

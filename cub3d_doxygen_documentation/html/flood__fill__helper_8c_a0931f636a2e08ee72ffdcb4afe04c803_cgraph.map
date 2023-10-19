@@ -1,6 +1,7 @@
 <map id="create_clean_maze" name="create_clean_maze">
 <area shape="rect" id="node1" title=" " alt="" coords="5,55,153,80"/>
 <area shape="rect" id="node2" href="$render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="215,5,329,31"/>
-<area shape="rect" id="node3" href="$flood__fill_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="211,55,333,80"/>
-<area shape="rect" id="node4" href="$flood__fill_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="201,104,343,129"/>
+<area shape="rect" id="node4" href="$check__around_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="211,55,333,80"/>
+<area shape="rect" id="node5" href="$check__around_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="201,104,343,129"/>
+<area shape="rect" id="node3" href="$flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e" title=" " alt="" coords="391,5,456,31"/>
 </map>

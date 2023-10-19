@@ -162,32 +162,31 @@ Functions</h2></td></tr>
 <div class="line"><span class="lineno">   63</span> </div>
 <div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (ac == 1 || ac != 2)</div>
 <div class="line"><span class="lineno">   65</span>    {</div>
-<div class="line"><span class="lineno">   66</span>        <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;Error\n\tWrong number of arguments.&quot;</span>, NULL);</div>
-<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> (1);</div>
+<div class="line"><span class="lineno">   66</span>        <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tWrong number of arguments.&quot;</span>, NULL);</div>
+<div class="line"><span class="lineno">   67</span>        <span class="keywordflow">return</span> (-1);</div>
 <div class="line"><span class="lineno">   68</span>    }</div>
 <div class="line"><span class="lineno">   69</span>    len = ft_strlen(av[1]);</div>
 <div class="line"><span class="lineno">   70</span>    <span class="keywordflow">if</span> (len &lt; 5)</div>
 <div class="line"><span class="lineno">   71</span>    {</div>
-<div class="line"><span class="lineno">   72</span>        <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;Error\n\tInvalid name for .cub file.&quot;</span>, NULL);</div>
-<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> (1);</div>
+<div class="line"><span class="lineno">   72</span>        <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tInvalid name for .cub file.&quot;</span>, NULL);</div>
+<div class="line"><span class="lineno">   73</span>        <span class="keywordflow">return</span> (-1);</div>
 <div class="line"><span class="lineno">   74</span>    }</div>
 <div class="line"><span class="lineno">   75</span>    <span class="keywordflow">if</span> (ft_strncmp(av[1] + len - 4, <span class="stringliteral">&quot;.cub&quot;</span>, 4))</div>
 <div class="line"><span class="lineno">   76</span>    {</div>
-<div class="line"><span class="lineno">   77</span>        <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;Error\n\tInvalid type. Please use .cub extension.&quot;</span>, NULL);</div>
-<div class="line"><span class="lineno">   78</span>        <span class="keywordflow">return</span> (1);</div>
-<div class="line"><span class="lineno">   79</span>    }</div>
-<div class="line"><span class="lineno">   80</span>    <span class="keywordflow">return</span> (<a class="code hl_function" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8">check_file</a>(av[1]));</div>
-<div class="line"><span class="lineno">   81</span>}</div>
-<div class="ttc" id="acheck__args_8c_html_a661671c130024f9318b2e3e7d6b14ff8"><div class="ttname"><a href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8">check_file</a></div><div class="ttdeci">int check_file(char *path)</div><div class="ttdef"><b>Definition:</b> check_args.c:28</div></div>
+<div class="line"><span class="lineno">   77</span>        <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(\</div>
+<div class="line"><span class="lineno">   78</span>            <span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tInvalid type. Please use .cub extension.&quot;</span>, NULL);</div>
+<div class="line"><span class="lineno">   79</span>        <span class="keywordflow">return</span> (-1);</div>
+<div class="line"><span class="lineno">   80</span>    }</div>
+<div class="line"><span class="lineno">   81</span>    <span class="keywordflow">return</span> (0);</div>
+<div class="line"><span class="lineno">   82</span>}</div>
 <div class="ttc" id="acheck__args_8c_html_ab9255a59e21dae944bf9dcf0712b2217"><div class="ttname"><a href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a></div><div class="ttdeci">static void ft_putstr(char *string, char *arg)</div><div class="ttdef"><b>Definition:</b> check_args.c:18</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="check__args_8c_a294c80172fac1998d755bd50c4f586ca_cgraph.png" border="0" usemap="#acheck__args_8c_a294c80172fac1998d755bd50c4f586ca_cgraph" alt=""/></div>
 <map name="acheck__args_8c_a294c80172fac1998d755bd50c4f586ca_cgraph" id="acheck__args_8c_a294c80172fac1998d755bd50c4f586ca_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,100,56"/>
-<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="148,5,235,31"/>
-<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="283,31,359,56"/>
+<area shape="rect" title=" " alt="" coords="5,5,100,31"/>
+<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="148,5,224,31"/>
 </map>
 </div>
 <div class="dynheader">
@@ -230,7 +229,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   38</span>            <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n opening file:\t&quot;</span>, strerror(errno));</div>
 <div class="line"><span class="lineno">   39</span>        close(fd);</div>
 <div class="line"><span class="lineno">   40</span>        <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;\t&quot;</span>, path);</div>
-<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">return</span> (1);</div>
+<div class="line"><span class="lineno">   41</span>        <span class="keywordflow">return</span> (-1);</div>
 <div class="line"><span class="lineno">   42</span>    }</div>
 <div class="line"><span class="lineno">   43</span>    <span class="keywordflow">else</span></div>
 <div class="line"><span class="lineno">   44</span>    {</div>
@@ -239,7 +238,7 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   47</span>            <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\t&quot;</span>, path);</div>
 <div class="line"><span class="lineno">   48</span>            <a class="code hl_function" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217">ft_putstr</a>(<span class="stringliteral">&quot;\tFile is valid, but no read permissions.&quot;</span>, NULL);</div>
 <div class="line"><span class="lineno">   49</span>            close(fd);</div>
-<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">return</span> (1);</div>
+<div class="line"><span class="lineno">   50</span>            <span class="keywordflow">return</span> (-1);</div>
 <div class="line"><span class="lineno">   51</span>        }</div>
 <div class="line"><span class="lineno">   52</span>    }</div>
 <div class="line"><span class="lineno">   53</span>    close(fd);</div>
@@ -259,13 +258,12 @@ Here is the caller graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="check__args_8c_a661671c130024f9318b2e3e7d6b14ff8_icgraph.png" border="0" usemap="#acheck__args_8c_a661671c130024f9318b2e3e7d6b14ff8_icgraph" alt=""/></div>
 <map name="acheck__args_8c_a661671c130024f9318b2e3e7d6b14ff8_icgraph" id="acheck__args_8c_a661671c130024f9318b2e3e7d6b14ff8_icgraph">
-<area shape="rect" title=" " alt="" coords="687,56,773,81"/>
-<area shape="rect" href="check__args_8c.html#a294c80172fac1998d755bd50c4f586ca" title=" " alt="" coords="387,5,481,31"/>
-<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,56,60,81"/>
-<area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="544,107,639,132"/>
-<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="372,107,496,132"/>
-<area shape="rect" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e" title=" " alt="" coords="241,107,324,132"/>
-<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,107,193,132"/>
+<area shape="rect" title=" " alt="" coords="687,18,773,43"/>
+<area shape="rect" href="main_8c.html#a0c99d968a34e803d378692bde2e3f18f" title=" " alt="" coords="5,18,60,43"/>
+<area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="544,43,639,69"/>
+<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="372,43,496,69"/>
+<area shape="rect" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e" title=" " alt="" coords="241,43,324,69"/>
+<area shape="rect" href="setup__file_8c.html#a32055777ed770ff53b837541c4e34000" title=" " alt="" coords="108,43,193,69"/>
 </map>
 </div>
 

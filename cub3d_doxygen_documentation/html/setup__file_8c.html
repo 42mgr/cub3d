@@ -173,43 +173,45 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 <p >Takes the line with the identified color and parses it to the data struct </p>
-<div class="fragment"><div class="line"><span class="lineno">   81</span>{</div>
-<div class="line"><span class="lineno">   82</span>    <span class="keywordtype">char</span>    *temp;</div>
-<div class="line"><span class="lineno">   83</span>    <span class="keywordtype">char</span>    **rgb;</div>
-<div class="line"><span class="lineno">   84</span>    <span class="keywordtype">int</span>     *loc;</div>
-<div class="line"><span class="lineno">   85</span>    <span class="keywordtype">int</span>     err;</div>
-<div class="line"><span class="lineno">   86</span> </div>
-<div class="line"><span class="lineno">   87</span>    err = 1;</div>
-<div class="line"><span class="lineno">   88</span>    temp = (<span class="keywordtype">char</span> *)malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (len + offset));</div>
-<div class="line"><span class="lineno">   89</span>    <span class="keywordflow">if</span> (!temp)</div>
-<div class="line"><span class="lineno">   90</span>        <span class="keywordflow">return</span> (err);</div>
-<div class="line"><span class="lineno">   91</span>    ft_strlcpy(temp, line + offset, len);</div>
-<div class="line"><span class="lineno">   92</span>    rgb = ft_split(temp, <span class="charliteral">&#39;,&#39;</span>);</div>
-<div class="line"><span class="lineno">   93</span>    <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;C&#39;</span>)</div>
-<div class="line"><span class="lineno">   94</span>        loc = data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a2b2401524ea1fa4e2919ffa356d457f2">ceiling_rgb</a>;</div>
-<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">   96</span>        loc = data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#ac8aabb77193b3455f480ac1aed845374">floor_rgb</a>;</div>
-<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">if</span> (rgb[0] != 0 &amp;&amp; rgb[1] != 0 &amp;&amp; rgb[2] != 0)</div>
-<div class="line"><span class="lineno">   98</span>        err = <a class="code hl_function" href="cub3d_8h.html#aa7f20e3c74803eaaf008f7a0e2d00eea">write_rgb</a>(loc, ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));</div>
-<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">else</span></div>
-<div class="line"><span class="lineno">  100</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tInvalid RGB color format.\n&quot;</span>, 2);</div>
-<div class="line"><span class="lineno">  101</span>    free(temp);</div>
-<div class="line"><span class="lineno">  102</span>    <a class="code hl_function" href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a>(rgb);</div>
-<div class="line"><span class="lineno">  103</span>    <span class="keywordflow">return</span> (err);</div>
-<div class="line"><span class="lineno">  104</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">   83</span>{</div>
+<div class="line"><span class="lineno">   84</span>    <span class="keywordtype">char</span>    *temp;</div>
+<div class="line"><span class="lineno">   85</span>    <span class="keywordtype">char</span>    **rgb;</div>
+<div class="line"><span class="lineno">   86</span>    <span class="keywordtype">int</span>     *loc;</div>
+<div class="line"><span class="lineno">   87</span>    <span class="keywordtype">int</span>     err;</div>
+<div class="line"><span class="lineno">   88</span> </div>
+<div class="line"><span class="lineno">   89</span>    err = 1;</div>
+<div class="line"><span class="lineno">   90</span>    temp = (<span class="keywordtype">char</span> *)malloc(<span class="keyword">sizeof</span>(<span class="keywordtype">char</span>) * (len + offset));</div>
+<div class="line"><span class="lineno">   91</span>    <span class="keywordflow">if</span> (!temp)</div>
+<div class="line"><span class="lineno">   92</span>        <span class="keywordflow">return</span> (err);</div>
+<div class="line"><span class="lineno">   93</span>    ft_strlcpy(temp, line + offset, len);</div>
+<div class="line"><span class="lineno">   94</span>    rgb = ft_split(temp, <span class="charliteral">&#39;,&#39;</span>);</div>
+<div class="line"><span class="lineno">   95</span>    <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;C&#39;</span> &amp;&amp; <a class="code hl_function" href="cub3d_8h.html#a5106b87d455a275de62f11b5d54a1922">check_double_rgb</a>(line[0], &amp;err) == 0)</div>
+<div class="line"><span class="lineno">   96</span>        loc = data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a2b2401524ea1fa4e2919ffa356d457f2">ceiling_rgb</a>;</div>
+<div class="line"><span class="lineno">   97</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;F&#39;</span> &amp;&amp; <a class="code hl_function" href="cub3d_8h.html#a5106b87d455a275de62f11b5d54a1922">check_double_rgb</a>(line[0], &amp;err) == 0)</div>
+<div class="line"><span class="lineno">   98</span>        loc = data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#ac8aabb77193b3455f480ac1aed845374">floor_rgb</a>;</div>
+<div class="line"><span class="lineno">   99</span>    <span class="keywordflow">if</span> (rgb[0] != 0 &amp;&amp; rgb[1] != 0 &amp;&amp; rgb[2] != 0 &amp;&amp; err != 2)</div>
+<div class="line"><span class="lineno">  100</span>        err = <a class="code hl_function" href="cub3d_8h.html#aa7f20e3c74803eaaf008f7a0e2d00eea">write_rgb</a>(loc, ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));</div>
+<div class="line"><span class="lineno">  101</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (err != 2)</div>
+<div class="line"><span class="lineno">  102</span>        ft_putstr_fd(<span class="stringliteral">&quot;\e[1;41mError\e[0m\n\tInvalid RGB color format.\n&quot;</span>, 2);</div>
+<div class="line"><span class="lineno">  103</span>    free(temp);</div>
+<div class="line"><span class="lineno">  104</span>    <a class="code hl_function" href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a>(rgb);</div>
+<div class="line"><span class="lineno">  105</span>    <span class="keywordflow">return</span> (err);</div>
+<div class="line"><span class="lineno">  106</span>}</div>
+<div class="ttc" id="acub3d_8h_html_a5106b87d455a275de62f11b5d54a1922"><div class="ttname"><a href="cub3d_8h.html#a5106b87d455a275de62f11b5d54a1922">check_double_rgb</a></div><div class="ttdeci">int check_double_rgb(char a, int *error)</div><div class="ttdef"><b>Definition:</b> setup_check_double.c:15</div></div>
 <div class="ttc" id="acub3d_8h_html_aa7f20e3c74803eaaf008f7a0e2d00eea"><div class="ttname"><a href="cub3d_8h.html#aa7f20e3c74803eaaf008f7a0e2d00eea">write_rgb</a></div><div class="ttdeci">int write_rgb(int *rgb, int red, int green, int blue)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:44</div></div>
 <div class="ttc" id="acub3d_8h_html_aea09d8cffa70aee143955f37d75b26b7"><div class="ttname"><a href="cub3d_8h.html#aea09d8cffa70aee143955f37d75b26b7">free_2d_array</a></div><div class="ttdeci">void free_2d_array(char **array)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:15</div></div>
-<div class="ttc" id="astructt__data_html_a566388a3805442bb37d00ece7ffe606c"><div class="ttname"><a href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">t_data::textures</a></div><div class="ttdeci">t_textures textures</div><div class="ttdef"><b>Definition:</b> cub3d.h:137</div></div>
-<div class="ttc" id="astructt__textures_html_a2b2401524ea1fa4e2919ffa356d457f2"><div class="ttname"><a href="structt__textures.html#a2b2401524ea1fa4e2919ffa356d457f2">t_textures::ceiling_rgb</a></div><div class="ttdeci">int ceiling_rgb[3]</div><div class="ttdef"><b>Definition:</b> cub3d.h:80</div></div>
-<div class="ttc" id="astructt__textures_html_ac8aabb77193b3455f480ac1aed845374"><div class="ttname"><a href="structt__textures.html#ac8aabb77193b3455f480ac1aed845374">t_textures::floor_rgb</a></div><div class="ttdeci">int floor_rgb[3]</div><div class="ttdef"><b>Definition:</b> cub3d.h:79</div></div>
+<div class="ttc" id="astructt__data_html_a566388a3805442bb37d00ece7ffe606c"><div class="ttname"><a href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">t_data::textures</a></div><div class="ttdeci">t_textures textures</div><div class="ttdef"><b>Definition:</b> cub3d.h:157</div></div>
+<div class="ttc" id="astructt__textures_html_a2b2401524ea1fa4e2919ffa356d457f2"><div class="ttname"><a href="structt__textures.html#a2b2401524ea1fa4e2919ffa356d457f2">t_textures::ceiling_rgb</a></div><div class="ttdeci">int ceiling_rgb[3]</div><div class="ttdef"><b>Definition:</b> cub3d.h:100</div></div>
+<div class="ttc" id="astructt__textures_html_ac8aabb77193b3455f480ac1aed845374"><div class="ttname"><a href="structt__textures.html#ac8aabb77193b3455f480ac1aed845374">t_textures::floor_rgb</a></div><div class="ttdeci">int floor_rgb[3]</div><div class="ttdef"><b>Definition:</b> cub3d.h:99</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="setup__file_8c_a5ea934efc5bc3b5bcb884cba51917c80_cgraph.png" border="0" usemap="#asetup__file_8c_a5ea934efc5bc3b5bcb884cba51917c80_cgraph" alt=""/></div>
 <map name="asetup__file_8c_a5ea934efc5bc3b5bcb884cba51917c80_cgraph" id="asetup__file_8c_a5ea934efc5bc3b5bcb884cba51917c80_cgraph">
-<area shape="rect" title=" " alt="" coords="5,31,109,56"/>
-<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="157,5,269,31"/>
-<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="172,55,255,80"/>
+<area shape="rect" title=" " alt="" coords="5,55,109,80"/>
+<area shape="rect" href="setup__check__double_8c.html#a5106b87d455a275de62f11b5d54a1922" title=" " alt="" coords="157,5,296,31"/>
+<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="171,55,283,80"/>
+<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="185,104,268,129"/>
 </map>
 </div>
 <div class="dynheader">
@@ -278,31 +280,35 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   61</span>    ft_strlcpy(path, line + offset, len - offset + 1);</div>
 <div class="line"><span class="lineno">   62</span>    ret = <a class="code hl_function" href="cub3d_8h.html#a661671c130024f9318b2e3e7d6b14ff8">check_file</a>(path);</div>
 <div class="line"><span class="lineno">   63</span>    color = &amp;data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">n_path</a>;</div>
-<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;N&#39;</span>)</div>
+<div class="line"><span class="lineno">   64</span>    <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;N&#39;</span> &amp;&amp; <a class="code hl_function" href="cub3d_8h.html#a937291645521af79f2820ed9215eb790">check_double_texture</a>(line[0]) == 0)</div>
 <div class="line"><span class="lineno">   65</span>        color = &amp;data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">n_path</a>;</div>
-<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;S&#39;</span>)</div>
+<div class="line"><span class="lineno">   66</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;S&#39;</span> &amp;&amp; <a class="code hl_function" href="cub3d_8h.html#a937291645521af79f2820ed9215eb790">check_double_texture</a>(line[0]) == 0)</div>
 <div class="line"><span class="lineno">   67</span>        color = &amp;data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a9b197d8b49c4f4b1c6d350ba3c917453">s_path</a>;</div>
-<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;E&#39;</span>)</div>
+<div class="line"><span class="lineno">   68</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;E&#39;</span> &amp;&amp; <a class="code hl_function" href="cub3d_8h.html#a937291645521af79f2820ed9215eb790">check_double_texture</a>(line[0]) == 0)</div>
 <div class="line"><span class="lineno">   69</span>        color = &amp;data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#ad0dc994a53add90ac8508534612c21a5">e_path</a>;</div>
-<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;W&#39;</span>)</div>
+<div class="line"><span class="lineno">   70</span>    <span class="keywordflow">else</span> <span class="keywordflow">if</span> (line[0] == <span class="charliteral">&#39;W&#39;</span> &amp;&amp; <a class="code hl_function" href="cub3d_8h.html#a937291645521af79f2820ed9215eb790">check_double_texture</a>(line[0]) == 0)</div>
 <div class="line"><span class="lineno">   71</span>        color = &amp;data-&gt;<a class="code hl_variable" href="structt__data.html#a566388a3805442bb37d00ece7ffe606c">textures</a>.<a class="code hl_variable" href="structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a">w_path</a>;</div>
-<div class="line"><span class="lineno">   72</span>    free(*color);</div>
-<div class="line"><span class="lineno">   73</span>    *color = path;</div>
-<div class="line"><span class="lineno">   74</span>    <span class="keywordflow">return</span> (ret);</div>
-<div class="line"><span class="lineno">   75</span>}</div>
+<div class="line"><span class="lineno">   72</span>    <span class="keywordflow">else</span></div>
+<div class="line"><span class="lineno">   73</span>        ret = 2;</div>
+<div class="line"><span class="lineno">   74</span>    free(*color);</div>
+<div class="line"><span class="lineno">   75</span>    *color = path;</div>
+<div class="line"><span class="lineno">   76</span>    <span class="keywordflow">return</span> (ret);</div>
+<div class="line"><span class="lineno">   77</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a661671c130024f9318b2e3e7d6b14ff8"><div class="ttname"><a href="cub3d_8h.html#a661671c130024f9318b2e3e7d6b14ff8">check_file</a></div><div class="ttdeci">int check_file(char *path)</div><div class="ttdef"><b>Definition:</b> check_args.c:28</div></div>
-<div class="ttc" id="astructt__textures_html_a2789bb70d5771cb64c4687722c0eac8a"><div class="ttname"><a href="structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a">t_textures::w_path</a></div><div class="ttdeci">char * w_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:77</div></div>
-<div class="ttc" id="astructt__textures_html_a9b197d8b49c4f4b1c6d350ba3c917453"><div class="ttname"><a href="structt__textures.html#a9b197d8b49c4f4b1c6d350ba3c917453">t_textures::s_path</a></div><div class="ttdeci">char * s_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:76</div></div>
-<div class="ttc" id="astructt__textures_html_ad0dc994a53add90ac8508534612c21a5"><div class="ttname"><a href="structt__textures.html#ad0dc994a53add90ac8508534612c21a5">t_textures::e_path</a></div><div class="ttdeci">char * e_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:78</div></div>
-<div class="ttc" id="astructt__textures_html_af7ceda440b6f0a13429f03ef5c3c0e5d"><div class="ttname"><a href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">t_textures::n_path</a></div><div class="ttdeci">char * n_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:75</div></div>
+<div class="ttc" id="acub3d_8h_html_a937291645521af79f2820ed9215eb790"><div class="ttname"><a href="cub3d_8h.html#a937291645521af79f2820ed9215eb790">check_double_texture</a></div><div class="ttdeci">int check_double_texture(char c)</div><div class="ttdef"><b>Definition:</b> setup_check_double.c:33</div></div>
+<div class="ttc" id="astructt__textures_html_a2789bb70d5771cb64c4687722c0eac8a"><div class="ttname"><a href="structt__textures.html#a2789bb70d5771cb64c4687722c0eac8a">t_textures::w_path</a></div><div class="ttdeci">char * w_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:97</div></div>
+<div class="ttc" id="astructt__textures_html_a9b197d8b49c4f4b1c6d350ba3c917453"><div class="ttname"><a href="structt__textures.html#a9b197d8b49c4f4b1c6d350ba3c917453">t_textures::s_path</a></div><div class="ttdeci">char * s_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:96</div></div>
+<div class="ttc" id="astructt__textures_html_ad0dc994a53add90ac8508534612c21a5"><div class="ttname"><a href="structt__textures.html#ad0dc994a53add90ac8508534612c21a5">t_textures::e_path</a></div><div class="ttdeci">char * e_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:98</div></div>
+<div class="ttc" id="astructt__textures_html_af7ceda440b6f0a13429f03ef5c3c0e5d"><div class="ttname"><a href="structt__textures.html#af7ceda440b6f0a13429f03ef5c3c0e5d">t_textures::n_path</a></div><div class="ttdeci">char * n_path</div><div class="ttdef"><b>Definition:</b> cub3d.h:95</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="setup__file_8c_a8050db57d3e433a4c325989a8bbec4ee_cgraph.png" border="0" usemap="#asetup__file_8c_a8050db57d3e433a4c325989a8bbec4ee_cgraph" alt=""/></div>
 <map name="asetup__file_8c_a8050db57d3e433a4c325989a8bbec4ee_cgraph" id="asetup__file_8c_a8050db57d3e433a4c325989a8bbec4ee_cgraph">
-<area shape="rect" title=" " alt="" coords="5,5,100,31"/>
-<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="148,5,235,31"/>
-<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="283,5,359,31"/>
+<area shape="rect" title=" " alt="" coords="5,31,100,56"/>
+<area shape="rect" href="setup__check__double_8c.html#a937291645521af79f2820ed9215eb790" title=" " alt="" coords="148,5,313,31"/>
+<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="187,55,274,80"/>
+<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="361,55,437,80"/>
 </map>
 </div>
 <div class="dynheader">
@@ -374,9 +380,9 @@ Here is the caller graph for this function:</div>
 <div class="line"><span class="lineno">   45</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a32422169502ce6894e31045b6db12305"><div class="ttname"><a href="cub3d_8h.html#a32422169502ce6894e31045b6db12305">replace_nl</a></div><div class="ttdeci">void replace_nl(char **buffer)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:58</div></div>
 <div class="ttc" id="acub3d_8h_html_a3a47097b6b2e296222e97098bb5c25ba"><div class="ttname"><a href="cub3d_8h.html#a3a47097b6b2e296222e97098bb5c25ba">ft_strjoin_mod</a></div><div class="ttdeci">char * ft_strjoin_mod(char *s1, char *s2)</div><div class="ttdef"><b>Definition:</b> ft_strjoin_mod.c:15</div></div>
-<div class="ttc" id="acub3d_8h_html_a3cbcfdff8927692fd076f3a5722f3cce"><div class="ttname"><a href="cub3d_8h.html#a3cbcfdff8927692fd076f3a5722f3cce">check_for_start</a></div><div class="ttdeci">int check_for_start(t_data *data, char *buffer, int line)</div><div class="ttdef"><b>Definition:</b> setup_detect.c:90</div></div>
-<div class="ttc" id="astructt__data_html_aa76d070e407d91845c7233af845089ab"><div class="ttname"><a href="structt__data.html#aa76d070e407d91845c7233af845089ab">t_data::dim</a></div><div class="ttdeci">t_dim dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:140</div></div>
-<div class="ttc" id="astructt__dim_html_a1091396bbee3ef8159e5f91a305b97da"><div class="ttname"><a href="structt__dim.html#a1091396bbee3ef8159e5f91a305b97da">t_dim::lines</a></div><div class="ttdeci">int lines</div><div class="ttdef"><b>Definition:</b> cub3d.h:102</div></div>
+<div class="ttc" id="acub3d_8h_html_a3cbcfdff8927692fd076f3a5722f3cce"><div class="ttname"><a href="cub3d_8h.html#a3cbcfdff8927692fd076f3a5722f3cce">check_for_start</a></div><div class="ttdeci">int check_for_start(t_data *data, char *buffer, int line)</div><div class="ttdef"><b>Definition:</b> setup_detect.c:92</div></div>
+<div class="ttc" id="astructt__data_html_aa76d070e407d91845c7233af845089ab"><div class="ttname"><a href="structt__data.html#aa76d070e407d91845c7233af845089ab">t_data::dim</a></div><div class="ttdeci">t_dim dim</div><div class="ttdef"><b>Definition:</b> cub3d.h:162</div></div>
+<div class="ttc" id="astructt__dim_html_a1091396bbee3ef8159e5f91a305b97da"><div class="ttname"><a href="structt__dim.html#a1091396bbee3ef8159e5f91a305b97da">t_dim::lines</a></div><div class="ttdeci">int lines</div><div class="ttdef"><b>Definition:</b> cub3d.h:122</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
@@ -427,27 +433,27 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p >Reads the line and checks for valid textures, colors and characters </p>
-<div class="fragment"><div class="line"><span class="lineno">  110</span>{</div>
-<div class="line"><span class="lineno">  111</span>    <span class="keywordtype">char</span>    *line_ptr;</div>
-<div class="line"><span class="lineno">  112</span>    <span class="keywordtype">int</span>     error;</div>
-<div class="line"><span class="lineno">  113</span> </div>
-<div class="line"><span class="lineno">  114</span>    line_ptr = line;</div>
-<div class="line"><span class="lineno">  115</span>    error = 0;</div>
-<div class="line"><span class="lineno">  116</span>    <span class="keywordflow">while</span> (*line_ptr)</div>
-<div class="line"><span class="lineno">  117</span>    {</div>
-<div class="line"><span class="lineno">  118</span>        line_ptr = line_ptr + <a class="code hl_function" href="cub3d_8h.html#aacdfa9a76cf0f520dc456929d81aa569">detect_textures</a>(data, line_ptr, &amp;error);</div>
-<div class="line"><span class="lineno">  119</span>        line_ptr = line_ptr + <a class="code hl_function" href="cub3d_8h.html#aa51bf2e19aec51819267d8dc9263b076">detect_colors</a>(data, line_ptr, &amp;error);</div>
-<div class="line"><span class="lineno">  120</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="cub3d_8h.html#a8489f83e0d94a357d3d3f5040873cd80">detect_char</a>(*line_ptr))</div>
-<div class="line"><span class="lineno">  121</span>            error = 1;</div>
-<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">if</span> (error != 0)</div>
-<div class="line"><span class="lineno">  123</span>        {</div>
-<div class="line"><span class="lineno">  124</span>            free(line);</div>
-<div class="line"><span class="lineno">  125</span>            <span class="keywordflow">return</span> (error);</div>
-<div class="line"><span class="lineno">  126</span>        }</div>
-<div class="line"><span class="lineno">  127</span>        line_ptr++;</div>
-<div class="line"><span class="lineno">  128</span>    }</div>
-<div class="line"><span class="lineno">  129</span>    <span class="keywordflow">return</span> (error);</div>
-<div class="line"><span class="lineno">  130</span>}</div>
+<div class="fragment"><div class="line"><span class="lineno">  112</span>{</div>
+<div class="line"><span class="lineno">  113</span>    <span class="keywordtype">char</span>    *line_ptr;</div>
+<div class="line"><span class="lineno">  114</span>    <span class="keywordtype">int</span>     error;</div>
+<div class="line"><span class="lineno">  115</span> </div>
+<div class="line"><span class="lineno">  116</span>    line_ptr = line;</div>
+<div class="line"><span class="lineno">  117</span>    error = 0;</div>
+<div class="line"><span class="lineno">  118</span>    <span class="keywordflow">while</span> (*line_ptr)</div>
+<div class="line"><span class="lineno">  119</span>    {</div>
+<div class="line"><span class="lineno">  120</span>        line_ptr = line_ptr + <a class="code hl_function" href="cub3d_8h.html#aacdfa9a76cf0f520dc456929d81aa569">detect_textures</a>(data, line_ptr, &amp;error);</div>
+<div class="line"><span class="lineno">  121</span>        line_ptr = line_ptr + <a class="code hl_function" href="cub3d_8h.html#aa51bf2e19aec51819267d8dc9263b076">detect_colors</a>(data, line_ptr, &amp;error);</div>
+<div class="line"><span class="lineno">  122</span>        <span class="keywordflow">if</span> (<a class="code hl_function" href="cub3d_8h.html#a8489f83e0d94a357d3d3f5040873cd80">detect_char</a>(*line_ptr))</div>
+<div class="line"><span class="lineno">  123</span>            error = 1;</div>
+<div class="line"><span class="lineno">  124</span>        <span class="keywordflow">if</span> (error != 0)</div>
+<div class="line"><span class="lineno">  125</span>        {</div>
+<div class="line"><span class="lineno">  126</span>            free(line);</div>
+<div class="line"><span class="lineno">  127</span>            <span class="keywordflow">return</span> (error);</div>
+<div class="line"><span class="lineno">  128</span>        }</div>
+<div class="line"><span class="lineno">  129</span>        line_ptr++;</div>
+<div class="line"><span class="lineno">  130</span>    }</div>
+<div class="line"><span class="lineno">  131</span>    <span class="keywordflow">return</span> (error);</div>
+<div class="line"><span class="lineno">  132</span>}</div>
 <div class="ttc" id="acub3d_8h_html_a8489f83e0d94a357d3d3f5040873cd80"><div class="ttname"><a href="cub3d_8h.html#a8489f83e0d94a357d3d3f5040873cd80">detect_char</a></div><div class="ttdeci">int detect_char(char c)</div><div class="ttdef"><b>Definition:</b> setup_detect.c:39</div></div>
 <div class="ttc" id="acub3d_8h_html_aa51bf2e19aec51819267d8dc9263b076"><div class="ttname"><a href="cub3d_8h.html#aa51bf2e19aec51819267d8dc9263b076">detect_colors</a></div><div class="ttdeci">int detect_colors(t_data *data, char *line, int *error)</div><div class="ttdef"><b>Definition:</b> setup_detect.c:18</div></div>
 <div class="ttc" id="acub3d_8h_html_aacdfa9a76cf0f520dc456929d81aa569"><div class="ttname"><a href="cub3d_8h.html#aacdfa9a76cf0f520dc456929d81aa569">detect_textures</a></div><div class="ttdeci">int detect_textures(t_data *data, char *line, int *error)</div><div class="ttdef"><b>Definition:</b> setup_detect.c:66</div></div>
@@ -456,17 +462,19 @@ Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="setup__file_8c_aa77f727e42ab94e2266322fe0809ea9e_cgraph.png" border="0" usemap="#asetup__file_8c_aa77f727e42ab94e2266322fe0809ea9e_cgraph" alt=""/></div>
 <map name="asetup__file_8c_aa77f727e42ab94e2266322fe0809ea9e_cgraph" id="asetup__file_8c_aa77f727e42ab94e2266322fe0809ea9e_cgraph">
-<area shape="rect" title=" " alt="" coords="5,55,88,80"/>
-<area shape="rect" href="setup__detect_8c.html#a8489f83e0d94a357d3d3f5040873cd80" title=" " alt="" coords="149,5,247,31"/>
-<area shape="rect" href="setup__detect_8c.html#aa51bf2e19aec51819267d8dc9263b076" title=" " alt="" coords="143,55,253,80"/>
-<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="136,104,260,129"/>
-<area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="309,79,411,104"/>
-<area shape="rect" href="setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80" title=" " alt="" coords="308,29,412,55"/>
-<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="460,5,572,31"/>
-<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="475,55,557,80"/>
-<area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="313,128,407,153"/>
-<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="473,128,559,153"/>
-<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="620,128,696,153"/>
+<area shape="rect" title=" " alt="" coords="5,80,88,105"/>
+<area shape="rect" href="setup__detect_8c.html#a8489f83e0d94a357d3d3f5040873cd80" title=" " alt="" coords="149,31,247,56"/>
+<area shape="rect" href="setup__detect_8c.html#aa51bf2e19aec51819267d8dc9263b076" title=" " alt="" coords="143,80,253,105"/>
+<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="136,129,260,155"/>
+<area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="309,104,411,129"/>
+<area shape="rect" href="setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80" title=" " alt="" coords="308,55,412,80"/>
+<area shape="rect" href="setup__check__double_8c.html#a5106b87d455a275de62f11b5d54a1922" title=" " alt="" coords="473,5,612,31"/>
+<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="487,55,599,80"/>
+<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="501,104,584,129"/>
+<area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="313,153,407,179"/>
+<area shape="rect" href="setup__check__double_8c.html#a937291645521af79f2820ed9215eb790" title=" " alt="" coords="460,153,625,179"/>
+<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="499,203,586,228"/>
+<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="673,203,749,228"/>
 </map>
 </div>
 <div class="dynheader">
@@ -508,64 +516,69 @@ Here is the caller graph for this function:</div>
       </table>
 </div><div class="memdoc">
 <p >Main to intialize the data struct and read the file and check validity </p>
-<div class="fragment"><div class="line"><span class="lineno">  136</span>{</div>
-<div class="line"><span class="lineno">  137</span>    <span class="keywordtype">char</span>    *line;</div>
-<div class="line"><span class="lineno">  138</span>    <span class="keywordtype">int</span>     ret;</div>
-<div class="line"><span class="lineno">  139</span> </div>
-<div class="line"><span class="lineno">  140</span>    ret = <a class="code hl_function" href="cub3d_8h.html#aa84f7ee2e4102e036c42d46b41a70e6c">init_data</a>(data);</div>
-<div class="line"><span class="lineno">  141</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">  142</span>    {</div>
-<div class="line"><span class="lineno">  143</span>        line = <a class="code hl_function" href="setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b">read_file</a>(data, av[1]);</div>
-<div class="line"><span class="lineno">  144</span>        ret = <a class="code hl_function" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e">read_line</a>(data, line);</div>
-<div class="line"><span class="lineno">  145</span>    }</div>
-<div class="line"><span class="lineno">  146</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">  147</span>    {</div>
-<div class="line"><span class="lineno">  148</span>        data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a> = ft_split(line, <span class="charliteral">&#39;\n&#39;</span>);</div>
-<div class="line"><span class="lineno">  149</span>        <span class="keywordflow">if</span> (!data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>)</div>
-<div class="line"><span class="lineno">  150</span>            ret = 1;</div>
-<div class="line"><span class="lineno">  151</span>        free(line);</div>
-<div class="line"><span class="lineno">  152</span>    }</div>
-<div class="line"><span class="lineno">  153</span>    <span class="keywordflow">if</span> (ret == 0)</div>
-<div class="line"><span class="lineno">  154</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a2c253ed201a20c0702857d82d926e1c3">flood_fill</a>(data);</div>
-<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">return</span> (ret);</div>
-<div class="line"><span class="lineno">  156</span>}</div>
-<div class="ttc" id="acub3d_8h_html_a2c253ed201a20c0702857d82d926e1c3"><div class="ttname"><a href="cub3d_8h.html#a2c253ed201a20c0702857d82d926e1c3">flood_fill</a></div><div class="ttdeci">int flood_fill(t_data *data)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:96</div></div>
+<div class="fragment"><div class="line"><span class="lineno">  138</span>{</div>
+<div class="line"><span class="lineno">  139</span>    <span class="keywordtype">char</span>    *line;</div>
+<div class="line"><span class="lineno">  140</span>    <span class="keywordtype">int</span>     ret;</div>
+<div class="line"><span class="lineno">  141</span> </div>
+<div class="line"><span class="lineno">  142</span>    ret = <a class="code hl_function" href="cub3d_8h.html#aa84f7ee2e4102e036c42d46b41a70e6c">init_data</a>(data);</div>
+<div class="line"><span class="lineno">  143</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">  144</span>    {</div>
+<div class="line"><span class="lineno">  145</span>        line = <a class="code hl_function" href="setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b">read_file</a>(data, av[1]);</div>
+<div class="line"><span class="lineno">  146</span>        ret = <a class="code hl_function" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e">read_line</a>(data, line);</div>
+<div class="line"><span class="lineno">  147</span>    }</div>
+<div class="line"><span class="lineno">  148</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">  149</span>    {</div>
+<div class="line"><span class="lineno">  150</span>        data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a> = ft_split(line, <span class="charliteral">&#39;\n&#39;</span>);</div>
+<div class="line"><span class="lineno">  151</span>        <span class="keywordflow">if</span> (!data-&gt;<a class="code hl_variable" href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">maze</a>)</div>
+<div class="line"><span class="lineno">  152</span>            ret = 1;</div>
+<div class="line"><span class="lineno">  153</span>        free(line);</div>
+<div class="line"><span class="lineno">  154</span>    }</div>
+<div class="line"><span class="lineno">  155</span>    <span class="keywordflow">if</span> (ret == 0)</div>
+<div class="line"><span class="lineno">  156</span>        ret = <a class="code hl_function" href="cub3d_8h.html#a2c253ed201a20c0702857d82d926e1c3">flood_fill</a>(data);</div>
+<div class="line"><span class="lineno">  157</span>    <span class="keywordflow">return</span> (ret);</div>
+<div class="line"><span class="lineno">  158</span>}</div>
+<div class="ttc" id="acub3d_8h_html_a2c253ed201a20c0702857d82d926e1c3"><div class="ttname"><a href="cub3d_8h.html#a2c253ed201a20c0702857d82d926e1c3">flood_fill</a></div><div class="ttdeci">int flood_fill(t_data *data)</div><div class="ttdef"><b>Definition:</b> flood_fill.c:102</div></div>
 <div class="ttc" id="acub3d_8h_html_aa84f7ee2e4102e036c42d46b41a70e6c"><div class="ttname"><a href="cub3d_8h.html#aa84f7ee2e4102e036c42d46b41a70e6c">init_data</a></div><div class="ttdeci">int init_data(t_data *data)</div><div class="ttdef"><b>Definition:</b> setup_helper.c:70</div></div>
-<div class="ttc" id="asetup__file_8c_html_aa77f727e42ab94e2266322fe0809ea9e"><div class="ttname"><a href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e">read_line</a></div><div class="ttdeci">int read_line(t_data *data, char *line)</div><div class="ttdef"><b>Definition:</b> setup_file.c:109</div></div>
+<div class="ttc" id="asetup__file_8c_html_aa77f727e42ab94e2266322fe0809ea9e"><div class="ttname"><a href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e">read_line</a></div><div class="ttdeci">int read_line(t_data *data, char *line)</div><div class="ttdef"><b>Definition:</b> setup_file.c:111</div></div>
 <div class="ttc" id="asetup__file_8c_html_ad49f158217775efefcae9b1cac9dd63b"><div class="ttname"><a href="setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b">read_file</a></div><div class="ttdeci">char * read_file(t_data *data, char *path)</div><div class="ttdef"><b>Definition:</b> setup_file.c:19</div></div>
-<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:138</div></div>
+<div class="ttc" id="astructt__data_html_a4ac7c5669727ba2fc69338bb367de24a"><div class="ttname"><a href="structt__data.html#a4ac7c5669727ba2fc69338bb367de24a">t_data::maze</a></div><div class="ttdeci">char ** maze</div><div class="ttdef"><b>Definition:</b> cub3d.h:158</div></div>
 </div><!-- fragment --><div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
 <div class="center"><img src="setup__file_8c_a32055777ed770ff53b837541c4e34000_cgraph.png" border="0" usemap="#asetup__file_8c_a32055777ed770ff53b837541c4e34000_cgraph" alt=""/></div>
 <map name="asetup__file_8c_a32055777ed770ff53b837541c4e34000_cgraph" id="asetup__file_8c_a32055777ed770ff53b837541c4e34000_cgraph">
-<area shape="rect" title=" " alt="" coords="5,415,91,440"/>
-<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="141,165,219,191"/>
-<area shape="rect" href="setup__helper_8c.html#aa84f7ee2e4102e036c42d46b41a70e6c" title=" " alt="" coords="141,440,219,465"/>
-<area shape="rect" href="setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b" title=" " alt="" coords="141,515,219,540"/>
-<area shape="rect" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e" title=" " alt="" coords="139,365,221,391"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="269,91,417,116"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb" title=" " alt="" coords="296,140,391,165"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a81495a9553ad1a1cacfaebcb999820bd" title=" " alt="" coords="281,189,406,215"/>
-<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="656,265,768,291"/>
-<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="310,29,377,55"/>
-<area shape="rect" href="render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="479,116,593,141"/>
-<area shape="rect" href="flood__fill_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="475,165,597,191"/>
-<area shape="rect" href="flood__fill_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="465,67,607,92"/>
-<area shape="rect" href="flood__fill_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="480,17,592,43"/>
-<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="655,17,769,43"/>
-<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="671,439,753,464"/>
-<area shape="rect" href="setup__detect_8c.html#a3cbcfdff8927692fd076f3a5722f3cce" title=" " alt="" coords="282,491,405,516"/>
-<area shape="rect" href="ft__strjoin__mod_8c.html#a3a47097b6b2e296222e97098bb5c25ba" title=" " alt="" coords="286,540,401,565"/>
-<area shape="rect" href="setup__helper_8c.html#a32422169502ce6894e31045b6db12305" title=" " alt="" coords="299,589,388,615"/>
-<area shape="rect" href="setup__detect_8c.html#a8489f83e0d94a357d3d3f5040873cd80" title=" " alt="" coords="294,389,393,415"/>
-<area shape="rect" href="setup__detect_8c.html#aa51bf2e19aec51819267d8dc9263b076" title=" " alt="" coords="289,291,398,316"/>
-<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="281,340,405,365"/>
-<area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="485,340,587,365"/>
-<area shape="rect" href="setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80" title=" " alt="" coords="484,291,588,316"/>
-<area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="489,389,583,415"/>
-<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="669,389,755,415"/>
-<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="817,389,893,415"/>
+<area shape="rect" title=" " alt="" coords="5,459,91,484"/>
+<area shape="rect" href="flood__fill_8c.html#a2c253ed201a20c0702857d82d926e1c3" title=" " alt="" coords="141,236,219,261"/>
+<area shape="rect" href="setup__helper_8c.html#aa84f7ee2e4102e036c42d46b41a70e6c" title=" " alt="" coords="141,484,219,509"/>
+<area shape="rect" href="setup__file_8c.html#ad49f158217775efefcae9b1cac9dd63b" title=" " alt="" coords="141,559,219,584"/>
+<area shape="rect" href="setup__file_8c.html#aa77f727e42ab94e2266322fe0809ea9e" title=" " alt="" coords="139,409,221,435"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a3fb23b5d4b5d8075fb9d6155bb3cecdb" title=" " alt="" coords="295,187,390,212"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a81495a9553ad1a1cacfaebcb999820bd" title=" " alt="" coords="280,236,405,261"/>
+<area shape="rect" href="flood__fill_8c.html#af041b712005663cd76b994cf9d12babb" title=" " alt="" coords="269,285,416,311"/>
+<area shape="rect" href="flood__fill_8c.html#a33088d55ae5fea8e6c1f07d65bff2aa2" title=" " alt="" coords="305,137,380,163"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a0931f636a2e08ee72ffdcb4afe04c803" title=" " alt="" coords="464,144,612,169"/>
+<area shape="rect" href="setup__helper_8c.html#aea09d8cffa70aee143955f37d75b26b7" title=" " alt="" coords="687,377,799,403"/>
+<area shape="rect" href="flood__fill_8c.html#a52958bcb8c22a547e94e217cd74be8c2" title=" " alt="" coords="505,56,571,81"/>
+<area shape="rect" href="render__draw_8c.html#a9a18ad12a4f965dbfc38f36dae79baff" title=" " alt="" coords="686,156,799,181"/>
+<area shape="rect" href="check__around_8c.html#a0b508e5e1394dcb779bb0d648364da57" title=" " alt="" coords="681,107,804,132"/>
+<area shape="rect" href="check__around_8c.html#afc0e8777f304873cf63853227d64f053" title=" " alt="" coords="672,205,813,231"/>
+<area shape="rect" href="flood__fill_8c.html#ab7414e7997775ef5e4f38a4b2023bc5e" title=" " alt="" coords="898,56,963,81"/>
+<area shape="rect" href="check__around_8c.html#a500bfd096fe7f5cc955e3c81f12a105d" title=" " alt="" coords="687,5,799,31"/>
+<area shape="rect" href="flood__fill__helper_8c.html#a023e6a40dc1de476216ff0333fa73d1a" title=" " alt="" coords="873,5,988,31"/>
+<area shape="rect" href="setup__helper_8c.html#aa7f20e3c74803eaaf008f7a0e2d00eea" title=" " alt="" coords="701,483,784,508"/>
+<area shape="rect" href="setup__detect_8c.html#a3cbcfdff8927692fd076f3a5722f3cce" title=" " alt="" coords="281,535,404,560"/>
+<area shape="rect" href="ft__strjoin__mod_8c.html#a3a47097b6b2e296222e97098bb5c25ba" title=" " alt="" coords="285,584,400,609"/>
+<area shape="rect" href="setup__helper_8c.html#a32422169502ce6894e31045b6db12305" title=" " alt="" coords="298,633,387,659"/>
+<area shape="rect" href="setup__detect_8c.html#a8489f83e0d94a357d3d3f5040873cd80" title=" " alt="" coords="293,335,392,360"/>
+<area shape="rect" href="setup__detect_8c.html#aa51bf2e19aec51819267d8dc9263b076" title=" " alt="" coords="288,433,397,459"/>
+<area shape="rect" href="setup__detect_8c.html#aacdfa9a76cf0f520dc456929d81aa569" title=" " alt="" coords="281,384,405,409"/>
+<area shape="rect" href="setup__helper_8c.html#a2440cb9ed115389c79ce2f55237b5865" title=" " alt="" coords="487,384,589,409"/>
+<area shape="rect" href="setup__file_8c.html#a5ea934efc5bc3b5bcb884cba51917c80" title=" " alt="" coords="486,433,590,459"/>
+<area shape="rect" href="setup__check__double_8c.html#a5106b87d455a275de62f11b5d54a1922" title=" " alt="" coords="673,433,812,459"/>
+<area shape="rect" href="setup__file_8c.html#a8050db57d3e433a4c325989a8bbec4ee" title=" " alt="" coords="491,283,585,308"/>
+<area shape="rect" href="setup__check__double_8c.html#a937291645521af79f2820ed9215eb790" title=" " alt="" coords="660,327,825,352"/>
+<area shape="rect" href="check__args_8c.html#a661671c130024f9318b2e3e7d6b14ff8" title=" " alt="" coords="699,277,786,303"/>
+<area shape="rect" href="check__args_8c.html#ab9255a59e21dae944bf9dcf0712b2217" title=" " alt="" coords="893,277,969,303"/>
 </map>
 </div>
 <div class="dynheader">

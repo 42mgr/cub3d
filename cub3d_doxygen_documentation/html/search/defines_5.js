@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['north_0',['NORTH',['../cub3d_8h.html#a1711232abf72723b5216c206e6bbb175',1,'cub3d.h']]]
+  ['mud_5fbrown_0',['MUD_BROWN',['../cub3d_8h.html#abf518716a06908b445cdf64c8e2fee87',1,'cub3d.h']]]
 ];

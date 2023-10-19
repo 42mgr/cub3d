@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_player.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
+/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/01 22:57:28 by fheld             #+#    #+#             */
-/*   Updated: 2023/10/19 16:17:30 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/19 16:55:27 by fheld            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,10 @@ void	move_player(void *arg)
 		move_forward(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_S))
 		move_backward(data);
+	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_A))
+		data->start.dir = (data->start.dir + 2) % 360;
+	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_D))
+		data->start.dir = (data->start.dir + 358) % 360;
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_LEFT))
 		data->start.dir = (data->start.dir + 2) % 360;
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_RIGHT))
@@ -100,7 +104,4 @@ void	move_player(void *arg)
 		move_forward(data);
 	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_DOWN))
 		move_backward(data);
-	if (mlx_is_key_down(data->mlx42.mlx_ptr, MLX_KEY_H))
-		data->mlx42.mm_player_img->enabled = \
-			!data->mlx42.mm_player_img->enabled;
 }

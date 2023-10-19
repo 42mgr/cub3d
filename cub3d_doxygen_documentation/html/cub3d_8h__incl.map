@@ -1,5 +1,5 @@
-<map id="cub3d.h" name="cub3d.h">
-<area shape="rect" id="node1" title=" " alt="" coords="580,5,653,31"/>
+<map id="include/cub3d.h" name="include/cub3d.h">
+<area shape="rect" id="node1" title=" " alt="" coords="555,5,679,31"/>
 <area shape="rect" id="node2" title=" " alt="" coords="5,86,127,111"/>
 <area shape="rect" id="node3" title=" " alt="" coords="151,79,328,119"/>
 <area shape="rect" id="node4" title=" " alt="" coords="353,86,419,111"/>
