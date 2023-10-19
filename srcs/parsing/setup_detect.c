@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup_detect.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fheld <fheld@student.42.fr>                +#+  +:+       +#+        */
+/*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 16:31:54 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/18 22:42:42 by fheld            ###   ########.fr       */
+/*   Updated: 2023/10/19 14:54:39 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ int	detect_textures(t_data *data, char *line, int *error)
 		if (parse_path(data, line, len, offset))
 		{
 			*error = 1;
-			ft_putstr_fd("Error\nTexture invalid.\n", 2);
 		}
 		return (len);
 	}

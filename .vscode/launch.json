@@ -9,7 +9,7 @@
 			"request": "launch",
 			"name": "Debug",
 			"program": "${workspaceFolder}/cub3D",
-			"args": ["maps/map_should_error/doublekey.cub"],
+			"args": ["maps/map_should_ok/map10stairs.cub"],
 			"cwd": "${workspaceFolder}"
 			"preLaunchTask": "build",
         }

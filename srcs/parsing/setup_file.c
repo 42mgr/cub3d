@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 22:09:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/18 17:50:55 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/19 15:05:51 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,16 +61,16 @@ int	parse_path(t_data *data, char *line, int len, int offset)
 	ft_strlcpy(path, line + offset, len - offset + 1);
 	ret = check_file(path);
 	color = &data->textures.n_path;
-	if (line[0] == 'N' && !ft_strncmp(data->textures.n_path, DEFAULT_NORTH_TEXTURE, 25))
+	if (line[0] == 'N' && check_double_texture(line[0]) == 0)
 		color = &data->textures.n_path;
-	else if (line[0] == 'S' && !ft_strncmp(data->textures.s_path, DEFAULT_SOUTH_TEXTURE, 25))
+	else if (line[0] == 'S' && check_double_texture(line[0]) == 0)
 		color = &data->textures.s_path;
-	else if (line[0] == 'E' && !ft_strncmp(data->textures.e_path, DEFAULT_EAST_TEXTURE, 25))
+	else if (line[0] == 'E' && check_double_texture(line[0]) == 0)
 		color = &data->textures.e_path;
-	else if (line[0] == 'W' && !ft_strncmp(data->textures.w_path, DEFAULT_WEST_TEXTURE, 25))
+	else if (line[0] == 'W' && check_double_texture(line[0]) == 0)
 		color = &data->textures.w_path;
 	else
-		ret = 1;
+		ret = 2;
 	free(*color);
 	*color = path;
 	return (ret);
@@ -92,13 +92,13 @@ int	parse_colors(t_data *data, char *line, int len, int offset)
 		return (err);
 	ft_strlcpy(temp, line + offset, len);
 	rgb = ft_split(temp, ',');
-	if (line[0] == 'C')
+	if (line[0] == 'C' && check_double_rgb(line[0], &err) == 0)
 		loc = data->textures.ceiling_rgb;
-	else
+	else if (line[0] == 'F' && check_double_rgb(line[0], &err) == 0)
 		loc = data->textures.floor_rgb;
-	if (rgb[0] != 0 && rgb[1] != 0 && rgb[2] != 0)
+	if (rgb[0] != 0 && rgb[1] != 0 && rgb[2] != 0 && err != 2)
 		err = write_rgb(loc, ft_atoi(rgb[0]), ft_atoi(rgb[1]), ft_atoi(rgb[2]));
-	else
+	else if (err != 2)
 		ft_putstr_fd("\e[1;41mError\e[0m\n\tInvalid RGB color format.\n", 2);
 	free(temp);
 	free_2d_array(rgb);

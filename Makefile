@@ -110,6 +110,15 @@ maptest: all
 	./$(NAME) maps/map_should_error/small_open.cub
 	- ./$(NAME) maps/map_should_error/wall_hole.cubb
 	./$(NAME) maps/map_should_ok/asciiart_dot_eu.cub
+	./$(NAME) maps/simple_fail/S.cub
+	./$(NAME) maps/simple_fail/nothing.cub
+	./$(NAME) maps/simple_fail/no_closing_right.cub
+	./$(NAME) maps/simple_fail/no_closing_bottom.cub
+	./$(NAME) maps/simple_fail/0.cub
+	./$(NAME) maps/simple_fail/no_closing_top.cub
+	./$(NAME) maps/simple_fail/no_closing_left.cub
+	./$(NAME) maps/map_should_error/double_color_key.cub
+	./$(NAME) maps/map_should_error/double_texture_key.cub
 	./$(NAME) maps/map_should_ok/l.cub
 	./$(NAME) maps/map_should_ok/map02.cub
 	./$(NAME) maps/map_should_ok/map03.cub
@@ -123,13 +132,6 @@ maptest: all
 	./$(NAME) maps/map_should_ok/map10stairs.cub
 	./$(NAME) maps/map_should_ok/map_pdf.cub
 	./$(NAME) maps/map_should_ok/n.cub
-	./$(NAME) maps/simple_fail/S.cub
-	./$(NAME) maps/simple_fail/nothing.cub
-	./$(NAME) maps/simple_fail/no_closing_right.cub
-	./$(NAME) maps/simple_fail/no_closing_bottom.cub
-	./$(NAME) maps/simple_fail/0.cub
-	./$(NAME) maps/simple_fail/no_closing_top.cub
-	./$(NAME) maps/simple_fail/no_closing_left.cub
 
 valmaptest: all
 	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/bad_file_path/map03.cub
@@ -166,6 +168,8 @@ valmaptest: all
 	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/0.cub
 	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/no_closing_top.cub
 	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/simple_fail/no_closing_left.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/double_color_key.cub
+	-valgrind -q --leak-check=full --show-leak-kinds=all ./$(NAME) maps/map_should_error/double_texture_key.cub
 
 okmaptest: all
 	-./$(NAME) maps/map_should_ok/asciiart_dot_eu.cub

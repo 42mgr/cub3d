@@ -1,6 +1,8 @@
 NO ./textures/default_n_wall
 SO ./textures/default_s_wall
 WE ./textures/default_e_wall
+
+EA ./textures/default_w_wall
 EA ./textures/default_w_wall
 F 40,40,40
 C 100,100,100

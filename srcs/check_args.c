@@ -6,7 +6,7 @@
 /*   By: mgraf <mgraf@student.42berlin.de>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/20 12:29:37 by mgraf             #+#    #+#             */
-/*   Updated: 2023/10/16 17:06:32 by mgraf            ###   ########.fr       */
+/*   Updated: 2023/10/19 14:57:38 by mgraf            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	check_args(int ac, char **av)
 
 	if (ac == 1 || ac != 2)
 	{
-		ft_putstr("Error\n\tWrong number of arguments.", NULL);
+		ft_putstr("\e[1;41mError\e[0m\n\tWrong number of arguments.", NULL);
 		return (-1);
 	}
 	len = ft_strlen(av[1]);
